@@ -6,8 +6,8 @@ class Spot < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :spot_activities, dependent: :destroy
   has_many :activities, through: :spot_activities
-  has_one :weather, dependent: :destroy
-  has_one :service
+  has_many :weathers, dependent: :destroy
+  has_one :service, dependent: :destroy
 
   validates :full_name, :address, :description, :type, :icon, presence: true
   validates :description, length: {min: 100}
