@@ -10,7 +10,7 @@ class Spot < ApplicationRecord
   has_one :service, dependent: :destroy
 
   validates :full_name, :address, :description, :type, :icon, presence: true
-  validates :description, length: {min: 100}
+  validates :description, length: {minimum: 100}
   validates :type, inclusion: {in: TYPES}
   validates :category, inclusion: {in: CATEGORIES}, allow_blank: true
 end
