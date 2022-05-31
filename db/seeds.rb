@@ -95,18 +95,6 @@ file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz.jpeg")
 plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz.jpeg', content_type: 'image/jpeg')
 plage_goas_treiz.save!
 
-plage_goas_treiz = Spot.new(user: wits, full_name: 'Plage de Tresmeur', street: "Plage de Tresmeur", zipcode:"22560", city:"Trébeurden",
-                            longitude: 48.7668390, latitude: -3.58137660,
-                            description: 'C’est le spot à proximité de l’Ecole de voile de Trébeurden.
-                              On y pratique tous les sports de glisse : le windsurf, le wingfoil, le kyte selon
-                              les conditions de vent. Les jours de pétole, les balades en SUP invitent à la découverte de
-                              la côte. A Tresmeur, les bars sont sur la promenade le long de la plage,
-                              le petit plus après une bonne nav.',
-                            spot_type: 'Plage', verified: true)
-file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz.jpeg")
-plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz.jpeg', content_type: 'image/jpeg')
-plage_goas_treiz.save!
-
 plage_tresmeur = Spot.new(user: wits, full_name: 'Plage de Tresmeur', street: "Plage de Tresmeur", zipcode:"22560", city:"Trébeurden",
                           longitude: 48.7668390, latitude: -3.58137660,
                           description: 'C’est le spot à proximité de l’Ecole de voile de Trébeurden.
@@ -177,3 +165,70 @@ catamaran_activity = Activity.create!(name: "Catamaran", description: "Un catama
                                       se classe donc dans la catégorie des bateaux multicoques qui comprend également
                                       le trimaran, dont le nom dérive.", icon:'catamaran.jpg')
 catamaran_activity.save!
+
+##################################################################################################
+########################################### SPOT_ACTIVITIES ######################################
+##################################################################################################
+
+surf_to_tresmeur = SpotActivity.create!(spot:plage_tresmeur, activity: surf_activity)
+kayak_to_tresmeur = SpotActivity.create!(spot:plage_tresmeur, activity: kayak_activity)
+kitesurf_to_tresmeur = SpotActivity.create!(spot:plage_tresmeur, activity: kitesurf_activity)
+
+catamaran_to_toul_gwenn = SpotActivity.create!(spot:plage_toul_gwenn, activity: catamaran_activity)
+cliff_diving_to_toul_gwenn = SpotActivity.create!(spot:plage_toul_gwenn, activity:cliff_diving_activity)
+scuba_diving_to_toul_gwenn = SpotActivity.create!(spot:plage_toul_gwenn, activity: scuba_diving_activity)
+
+kayak_to_goas_treiz = SpotActivity.create!(spot:plage_goas_treiz, activity: kayak_activity)
+windsurf_to_goas_treiz = SpotActivity.create!(spot:plage_goas_treiz, activity: windsurf_activity)
+yachting_to_goas_treiz = SpotActivity.create!(spot:plage_goas_treiz, activity: yachting_activity)
+
+
+yachting_to_perros = SpotActivity.create!(spot:evt_perros, activity:yachting_activity )
+catamaran_to_perros = SpotActivity.create!(spot:evt_perros, activity: catamaran_activity)
+cliff_diving_to_perros = SpotActivity.create!(spot:evt_perros, activity:cliff_diving_activity)
+
+cliff_diving_to_tregastel = SpotActivity.create!(spot:evt_tregastel, activity:cliff_diving_activity)
+windsurf_to_tregastel = SpotActivity.create!(spot:evt_tregastel, activity: windsurf_activity)
+
+cliff_diving_to_ile_grande = SpotActivity.create!(spot:evt_ile_grande, activity:cliff_diving_activity)
+yachting_to_ile_grande = SpotActivity.create!(spot:evt_ile_grande, activity:yachting_activity )
+surf_to_ile_grande = SpotActivity.create!(spot:evt_ile_grande, activity: surf_activity)
+catamaran_to_ile_grande = SpotActivity.create!(spot:evt_ile_grande, activity: catamaran_activity)
+
+surf_to_treb = SpotActivity.create!(spot:evt_treb, activity:surf_activity)
+windsurf_to_treb = SpotActivity.create!(spot:evt_treb, activity: windsurf_activity)
+kayak_to_treb = SpotActivity.create!(spot:evt_treb, activity: kayak_activity)
+scuba_diving_to_treb = SpotActivity.create!(spot:evt_treb, activity: scuba_diving_activity)
+
+##################################################################################################
+########################################### COMMENTS #############################################
+##################################################################################################
+
+comment_to_treb = Comment.create!( user:valentin, spot:evt_treb, content:" une école pas terrible mais avec une super discothèque au dessus de la plage", rating: 3)
+comment_to_treb_2 = Comment.create!( user:aurore, spot:evt_treb, content:" une école parfaite pour les débutants pour apprendre à naviguer", rating: 5)
+comment_to_treb_3 = Comment.create!( user:shiyun, spot:evt_treb, content:" une plage agréable et proche de tous les commerces nécessaires pour une famille", rating: 5)
+
+comment_to_ile_grande = Comment.create!( user:corentin, spot:evt_ile_grande, content:" le personnel est agréable et où il est possible de louer facilement des catamarans", rating: 4)
+comment_to_ile_grande_2 = Comment.create!( user:valentin, spot:evt_ile_grande, content:" l'école m'a montré un super coin pas loin des rochers, où il y a pleins de jolis poissons", rating: 5)
+comment_to_ile_grande_3 = Comment.create!( user:aurore, spot:evt_ile_grande, content:"ATTENTION AU MONITEUR QUI NE FAIT QUE REGARDER LES FILLES QUI MARCHENT SUR LA PLAGE", rating: 1)
+
+comment_to_toul_gwenn = Comment.create!( user:shiyun, spot:plage_toul_gwenn, content:" une ballade sympa avec un moniteur en catamaran, dommage qu'il ne faisait pas beau", rating: 3)
+comment_to_toul_gwenn_2 = Comment.create!( user:valentin, spot:plage_toul_gwenn, content:"le spot de saut est difficle d'accès, mais une fois qu'on y est, la vue est incroyable", rating: 5)
+comment_to_toul_gwenn_3 = Comment.create!( user:corentin, spot:plage_toul_gwenn, content:"la plage était remplie de tous ses connards de parisiens, impossible de trouver une place, vivement qu'ils se cassent!", rating: 2)
+
+comment_to_goas_treiz = Comment.create!( user:shiyun, spot: plage_goas_treiz, content:"la ballade en kayak le long de la cote de granit rose est à faire!", rating: 5)
+comment_to_goas_treiz_2 = Comment.create!( user:aurore, spot: plage_goas_treiz, content:"un temps purement breton m'a empeché de bronzer, j'ai été obligé d'aller dans une salle de bronzage pour faire croire que j'étais parti en vacances.
+  La prochaine fois j'irais à Nice", rating: 1)
+comment_to_goas_treiz_3 = Comment.create!( user: corentin, spot:plage_goas_treiz, content:"la monitrice de planche à voile est compétente, je recommande la leçon", rating: 5)
+
+comment_to_perros = Comment.create!(user:valentin, spot:evt_perros, content:"le moniteur de catamaran est vraiment nul, à cause de lui on a dessalé, et je garderais une cicatrice au visage après m'être pris le mat", rating: 0)
+comment_to_perros_2 = Comment.create!(user:shiyun, spot:evt_perros, content:"j'ai réussi à faire une double backflip sur le spot de saut de 20 mètres, je suis prête pour les JO 2024", rating: 5)
+comment_to_perros_3 = Comment.create!(user:corentin, spot:evt_perros, content:"le marchand de glaces fait des glaces artisanales à se taper le cul par terre", rating: 4)
+
+comment_to_tregastel = Comment.create!(user:aurore, spot:evt_tregastel, content:"le petit saut du haut de la digue est à faire à marée haute, et non quand on voit le sable", rating: 2 )
+comment_to_tregastel_2 = Comment.create!(user:shiyun, spot: evt_tregastel, content:"il a fait trop moche pour pouvoir profiter da la bouée géante de l'école de voile...", rating: 1)
+comment_to_tregastel_3 = Comment.create!(user:valentin, spot:evt_tregastel, content: "une plage calme et agréable pour une ballade en famille le long du sentier des douaniers", rating: 4)
+
+comment_to_tresmeur = Comment.create!(user:shiyun, spot:plage_tresmeur, content: "on m'avait vendu la plage comme étant belle, mais franchement c'est surcôté", rating: 1)
+comment_to_tresmeur_2 = Comment.create!(user: valentin, spot: plage_tresmeur, content: " je me suis fait charrier sur les rochers à cause d'une rafale de vent, franchement cette plague est mal entretenu", rating: 0)
+comment_to_tresmeur_3 = Comment.create!(user: aurore, spot: plage_tresmeur, content: "J'ai venu, j'ai vu, il a plu, cela ne m'a pas plu", rating: 0 )
