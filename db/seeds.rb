@@ -42,7 +42,7 @@ wits.save!
 ########################################### SPOTS ###########################################
 #############################################################################################
 
-evt_treb = Spot.new(user: wits, full_name: 'École de voile de Trébeurden', address: "3 Rue de Traou Meur, 22560 Trébeurden",
+evt_treb = Spot.new(user: wits, full_name: 'École de voile de Trébeurden', street: "3 Rue de Traou Meur", zipcode:"22560", city:"Trébeurden",
                     longitude: 48.768374, latitude: -3.581077,
                     description: 'L’école de voile de Trébeurden est une association labellisée FFVoile et située
                       au cœur de la côte de granit rose en Bretagne dont le but est de rendre
@@ -51,7 +51,7 @@ file_evt_treb = File.open("db/fixtures/evt_treb.jpeg")
 evt_treb.photos.attach(io: file_evt_treb, filename: 'evt_treb.jpeg', content_type: 'image/jpeg')
 evt_treb.save!
 
-evt_ile_grande = Spot.new(user: wits, full_name: 'Base Nautique Ile Grande', address: "Imp. de Pors-Gelen, 22560 Pleumeur-Bodou",
+evt_ile_grande = Spot.new(user: wits, full_name: 'Base Nautique Ile Grande', street: "Imp. de Pors-Gelen", zipcode:"22560", city:"Pleumeur-Bodou",
                           longitude: 48.80651976306186, latitude: -3.5646267302955557,
                           description: "Affiliée à la Fédération Française de Voile, nous respectons la Charte Qualité,
                             ce qui nous confère les labels d'école française de voile, de voile loisir et d'école de sport.
@@ -62,7 +62,7 @@ file_evt_ile_grande = File.open("db/fixtures/evt_ile_grande.jpeg")
 evt_ile_grande.photos.attach(io: file_evt_ile_grande, filename: 'evt_ile_grande.jpeg', content_type: 'image/jpeg')
 evt_ile_grande.save!
 
-evt_tregastel = Spot.new(user: wits, full_name: 'Club Nautique de Trégastel', address: "41 Av. de la Grève Blanche, 22730 Trégastel",
+evt_tregastel = Spot.new(user: wits, full_name: 'Club Nautique de Trégastel', street: "41 Av. de la Grève Blanche", zipcode:"22730", city:"Trégastel",
                          longitude: 48.82996826216762, latitude: -3.52501805913103,
                          description: "Ecole Française de Voile et Ecole Française de Canoë-Kayak. Une équipe à votre
                           service : investis dans une démarche qualité, nous vous accueillons toute l'année dans une
@@ -73,7 +73,7 @@ file_evt_tregastel = File.open("db/fixtures/evt_tregastel.jpeg")
 evt_tregastel.photos.attach(io: file_evt_tregastel, filename: 'evt_tregastel.jpeg', content_type: 'image/jpeg')
 evt_tregastel.save!
 
-evt_perros = Spot.new(user: wits, full_name: 'Centre Nautique de Perros-Guirec', address: "Plage de Trestraou, 22700 Perros-Guirec",
+evt_perros = Spot.new(user: wits, full_name: 'Centre Nautique de Perros-Guirec', street: "Plage de Trestraou", zipcode:"22700", city:"Perros-Guirec",
                       longitude: 48.8178555, latitude: -3.46072919,
                       description: 'Découvrir la voile, se perfectionner, louer du matériel ou simplement se laisser
                         guider lors d’une balade nautique : venez profiter d’un espace de navigation unique, le long
@@ -84,7 +84,7 @@ file_evt_perros = File.open("db/fixtures/evt_perros.jpeg")
 evt_perros.photos.attach(io: file_evt_perros, filename: 'evt_perros.jpeg', content_type: 'image/jpeg')
 evt_perros.save!
 
-plage_goas_treiz = Spot.new(user: wits, full_name: 'Plage de Goas Treiz', address: "Plage de Goas Treiz, 22560 Trébeurden",
+plage_goas_treiz = Spot.new(user: wits, full_name: 'Plage de Goas Treiz', street: "Plage de Goas Treiz", zipcode:"22560", city:"Trébeurden",
                             longitude: 48.781748, latitude: 3.578422,
                             description: 'A la sortie de Trébeurden, face au marais du Quellen, la plage de Goas Treiz,
                               orientée Nord-Ouest est le spot de glisse prisé des wingfoilers, windsurfeurs et les kitesurfeurs
@@ -95,7 +95,7 @@ file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz.jpeg")
 plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz.jpeg', content_type: 'image/jpeg')
 plage_goas_treiz.save!
 
-plage_goas_treiz = Spot.new(user: wits, full_name: 'Plage de Tresmeur', address: "Plage de Tresmeur, 22560 Trébeurden",
+plage_goas_treiz = Spot.new(user: wits, full_name: 'Plage de Tresmeur', street: "Plage de Tresmeur", zipcode:"22560", city:"Trébeurden",
                             longitude: 48.7668390, latitude: -3.58137660,
                             description: 'C’est le spot à proximité de l’Ecole de voile de Trébeurden.
                               On y pratique tous les sports de glisse : le windsurf, le wingfoil, le kyte selon
@@ -107,7 +107,7 @@ file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz.jpeg")
 plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz.jpeg', content_type: 'image/jpeg')
 plage_goas_treiz.save!
 
-plage_tresmeur = Spot.new(user: wits, full_name: 'Plage de Tresmeur', address: "Plage de Tresmeur, 22560 Trébeurden",
+plage_tresmeur = Spot.new(user: wits, full_name: 'Plage de Tresmeur', street: "Plage de Tresmeur", zipcode:"22560", city:"Trébeurden",
                           longitude: 48.7668390, latitude: -3.58137660,
                           description: 'C’est le spot à proximité de l’Ecole de voile de Trébeurden.
                             On y pratique tous les sports de glisse : le windsurf, le wingfoil, le kyte selon
@@ -119,7 +119,7 @@ file_plage_tresmeur = File.open("db/fixtures/plage_tresmeur.jpeg")
 plage_tresmeur.photos.attach(io: file_plage_tresmeur, filename: 'plage_tresmeur.jpeg', content_type: 'image/jpeg')
 plage_tresmeur.save!
 
-plage_toul_gwenn = Spot.new(user: wits, full_name: 'Plage de Toul Gwenn', address: "Plage de Toul Gwenn, 22560 Pleumeur-Bodou",
+plage_toul_gwenn = Spot.new(user: wits, full_name: 'Plage de Toul Gwenn', street: "Plage de Toul Gwenn", zipcode:"22560", city:"Pleumeur-Bodou",
                             longitude: 48.801364049065796, latitude: -3.563637586114924,
                             description: 'A l’abri des vents dominants, la plus grande dune de l’Ile Grande abrite
                               la plage de Toul Gwen. A marée haute, ce véritable lagon de sable blanc à l’eau transparente
