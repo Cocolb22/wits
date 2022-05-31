@@ -8,6 +8,8 @@ class Spot < ApplicationRecord
   has_many :activities, through: :spot_activities
   has_many :weathers, dependent: :destroy
   has_one :service, dependent: :destroy
+  has_many_attached :icon
+  has_many_attached :photo
 
   validates :full_name, :address, :description, :type, :icon, presence: true
   validates :description, length: {minimum: 100}
