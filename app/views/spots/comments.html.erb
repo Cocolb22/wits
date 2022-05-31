@@ -1,11 +1,12 @@
-<%= render 'header', spot: @spot %>
-<% @comments.each do |comment| %>
-  <p><%= comment.rating %></p>
-  <p><%= comment.content %>
-<% end %>
+<%= render 'spots/header', spot: @spot %>
 
-<%= simple_form_for [ @spot, @comment ] do |f| %>
-  <%= f.input :content %>
-  <%= f.input :rating %>
-  <%= f.submit "Laisser un commentaire", class: "btn btn-primary" %>
-<% end %>
+<div data-controller="spot-comments">
+  <%= render "comments/form", spot: @spot, comment: @comment %>
+
+
+  <div data-spot-comments-target='list'>
+    <% @comments.each do |comment| %>
+      <%= render 'spots/comment', comment: comment%>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+  <%= simple_form_for [ spot, comment ], html: { data: {spot_comments_target: 'form', action: 'submit->spot-comments#post'}} do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>

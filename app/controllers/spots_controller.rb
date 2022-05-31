@@ -6,7 +6,7 @@ class SpotsController < ApplicationController
 
   def comments
     @spot = Spot.find(params[:id])
-    @comments = @spot.comments
+    @comments = @spot.comments.order('id DESC')
     @comment = Comment.new
   end
 end
