@@ -1,26 +1,9 @@
-<!--Image du spot-->
-<div class="banner" url='(<%= cl_image_tag @spot.photos.key, crop: :fill, width: 100% %>'></div>
-
-<!--lien vers l'index spots-->
-<%= link_to '<-- Retour', spots_path %>
-
-<!-- Météo du spot
-<div class="spot-weather">
-<%= @spot.weathers %>
-</div> -->
-
-<!--Categories du spot-->
-<div class="spot_category"><%= @spot.spot_type %></div>
-
-<!--Carte du spot-->
-<div class="card-show">
-  <h2><%= spot.full_name %></h2>
-  <h4><%= @spot.address %></h4>
-  <p><%= spot.description %></p>
-  <%= spot.category %>
-  <%= spot.service %>
+<%= render 'header', spot: @spot%>
+<div class="show-descr">
+  <p><%= @spot.description %></p>
+  <%= @spot.service %>
 </div>
 
 <div class="gps-container">
-<p>Obtenir l'itinéraire</p>
+  <p>Obtenir l'itinéraire</p>
 </div>
