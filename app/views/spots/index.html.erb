@@ -1,11 +1,46 @@
 <h1>Spots</h1>
-<%= form_tag spots_path, method: :get do %>
+<%= form_for spots_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
-    placeholder: "Search"
+    placeholder: "Where?"
   %>
+
+  <% Activity.all.each do |activity| %>
+    <%= label_tag "activities_#{activity.id}", activity.name %>
+    <%= check_box_tag "activities[]", activity.id, params[:activities]&.include?(activity.id.to_s), id: "activities_#{activity.id}" %>
+  <% end %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
-  li name, address, etc. spot each do
+<%= link_to spots_path(query: params[:query]) do %>
+  <p>Toutes les catégories</p>
+<% end %>
+<%= link_to spots_path(query: params[:query], category: "Plage Familiale") do %>
+  <p>Plage Familiale</p>
+<% end %>
+<%= link_to spots_path(query: params[:query], category: "Sable Fin") do %>
+  <p>Sable Fin</p>
+<% end %>
+<%= link_to spots_path(query: params[:query], category: "Pour Les Débutants") do %>
+  <p>Pour Les Débutants</p>
+<% end %>
+<%= link_to spots_path(query: params[:query], category: "Galets") do %>
+  <p>Galets</p>
+<% end %>
+<%= link_to spots_path(query: params[:query], category: "Pour Les Experts") do %>
+  <p>Pour Les Experts</p>
+<% end %>
+<%= link_to spots_path(query: params[:query], category: "Perle Rare") do %>
+  <p>Perle Rare</p>
+<% end %>
+
+<% @spots.each do |spot| %>
+  <%= link_to spot_path(spot) do %>
+    <% spot.photos.each do |photo| %>
+     <%= cl_image_tag photo.key, crop: :fill %>
+    <% end %>
+    <%= spot.full_name %>
+    <%= spot.address %>
+  <% end %>
+<% end %>
