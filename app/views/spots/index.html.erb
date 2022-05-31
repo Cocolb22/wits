@@ -1,0 +1,11 @@
+<h1>Spots</h1>
+<%= form_tag spots_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+  li name, address, etc. spot each do
