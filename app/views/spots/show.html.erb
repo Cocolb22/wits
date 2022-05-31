@@ -1,1 +1,16 @@
+<!--Image du spot-->
 <div class="banner" url='(<%= cl_image_tag @spot.photo.key, crop: :fill, width: 100% %>'></div>
+
+<!--lien vers l'index spots-->
+<%= link_to 'Retour', spots_path %>
+
+<!--Categories du spot-->
+<div class="spot_category"><%= @spot.category %></div>
+
+<!--Carte du spot-->
+<div class="card-show">
+  <%= spot.full_name %>
+  <%= spot.description %>
+  <%= spot.type %>
+  <%= spot.service %>
+</div>
