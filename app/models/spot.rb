@@ -1,5 +1,5 @@
 class Spot < ApplicationRecord
-  TYPES = ["plage", "reef", "falaise", "école", "base nautique", "port"]
+  TYPES = ["Plage", "Spot de Surf", "Falaise", "École", "Port"]
   CATEGORIES = ["Plage Familiale", "Sable Fin", "Pour Les Débutants", "Galets", "Pour Les Experts", "Perle Rare" ]
 
   belongs_to :user
@@ -7,12 +7,13 @@ class Spot < ApplicationRecord
   has_many :spot_activities, dependent: :destroy
   has_many :activities, through: :spot_activities
   has_many :weathers, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   has_one :service, dependent: :destroy
-  has_many_attached :icon
-  has_many_attached :photo
 
-  validates :full_name, :address, :description, :type, :icon, presence: true
+  has_many_attached :photos
+
+  validates :full_name, :address, :description, :spot_type, presence: true
   validates :description, length: {minimum: 100}
-  validates :type, inclusion: {in: TYPES}
+  validates :spot_type, inclusion: {in: TYPES}
   validates :category, inclusion: {in: CATEGORIES}, allow_blank: true
 end
