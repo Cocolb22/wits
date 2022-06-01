@@ -6,8 +6,30 @@ class SpotsController < ApplicationController
       @spots = Spot.all
     end
 
-    if params[:query].present?
-      @spots = @spots.global_search(params[:query])
+    @spots = @spots.near(params[:location], 10) if params[:location].present?
+
+   # @markers = @flats.geocoded.map do |flat|
+     # {
+       # lat: flat.latitude,
+       # lng: flat.longitude
+      # }
+
+
+      # @markers = @spots.geocoded.map do |spot|
+      #   {
+      #     lat: spot.latitude,
+      #     lng: spot.longitude,
+      #     info_window: render_to_string(partial: "info_window", locals: { spot: spot }),
+      #     image_url: helpers.asset_url("beach.png"),
+      #     spot_id: spot.id
+      #   }
+      # end
+
+      @markers = @spots.geocoded.map do |spot|
+        {
+          lat: spot.latitude,
+          lng: spot.longitude
+        }
+      end
     end
   end
-end
