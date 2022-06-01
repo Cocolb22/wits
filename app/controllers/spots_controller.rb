@@ -21,7 +21,7 @@ class SpotsController < ApplicationController
   def show
     @spot = Spot.find(params[:id])
     @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
-    @spot_service = Service.select(spot: @spot, boolean: true)
+    @services = @spot.service
   end
 
   def comments
