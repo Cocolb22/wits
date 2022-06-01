@@ -1,10 +1,13 @@
 <h1>Spots</h1>
 <%= form_for spots_path, method: :get do %>
-  <%= text_field_tag :location,
-    params[:location],
-    class: "form-control",
-    placeholder: "Where?"
-  %>
+  <div data-controller="geocoder" data-geocoder-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    <%= text_field_tag :location,
+      params[:location],
+      class: "form-control d-none",
+      data: { geocoder_target: "address" },
+      placeholder: "Where?"
+    %>
+  </div>
 
   <% Activity.all.each do |activity| %>
     <%= label_tag "activities_#{activity.id}", activity.name %>
