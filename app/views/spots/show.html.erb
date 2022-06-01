@@ -1,7 +1,22 @@
 <%= render 'header', spot: @spot%>
 <div class="show-descr">
   <p><%= @spot.description %></p>
-  <%= @spot.service %>
+
+  <% if @services.parking? %>
+    <%=  image_tag "icons/Parking.svg" %>
+  <% end %>
+  <% if @services.restaurant? %>
+    <%=  image_tag "icons/Restaurant_proche.svg" %>
+  <% end %>
+  <% if @services.shower? %>
+    <%=  image_tag "icons/Douches_proches.svg" %>
+  <% end %>
+  <% if @services.camping? %>
+    <%=  image_tag "icons/Camping_proche.svg" %>
+  <% end %>
+  <% if @services.beach_surveillance? %>
+    <%=  image_tag "icons/Baignade_surveillee.svg" %>
+  <% end %>
 </div>
 
 <div class="gps-container">
