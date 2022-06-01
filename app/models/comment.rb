@@ -5,4 +5,6 @@ class Comment < ApplicationRecord
   validates :content, :rating, presence: true
   validates :content, length: { maximum: 1000 }
   validates :rating, inclusion: { in: 0..5 }, numericality: true
+
+  has_many_attached :images
 end

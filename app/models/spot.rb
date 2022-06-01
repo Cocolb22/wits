@@ -23,6 +23,7 @@ class Spot < ApplicationRecord
     self.address = "#{street}, #{zipcode} #{city}"
   end
 
+  def avg_rating
+    comments.average(:rating).round(1)
+  end
 end
-
-

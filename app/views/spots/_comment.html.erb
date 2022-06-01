@@ -1,2 +1,10 @@
-<p><%= comment.rating %></p>
-<p><%= comment.content %>
+<p>
+<%= comment.rating %>
+<%= comment.content %>
+<% if comment.images.attached? %>
+  <% comment.images.each do |image| %>
+    <%= cl_image_tag image.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
+<% end %>
+
+</p>

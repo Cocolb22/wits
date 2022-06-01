@@ -3,7 +3,10 @@
 <div data-controller="spot-comments">
   <%= render "comments/form", spot: @spot, comment: @comment %>
 
+  <%= render 'comments/rating', spot: @spot%>
 
+  <br>
+  <br>
   <div data-spot-comments-target='list'>
     <% @comments.each do |comment| %>
       <%= render 'spots/comment', comment: comment%>

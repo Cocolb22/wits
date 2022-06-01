@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
         format.json do
           render json: { success: true,
             partial: render_to_string(partial: 'spots/comment', locals: { comment: @comment }, formats: [:html]),
-            form: render_to_string(partial: 'comments/form', locals: { spot: @spot, comment: Comment.new }, formats: [:html])
+            form: render_to_string(partial: 'comments/form', locals: { spot: @spot, comment: Comment.new }, formats: [:html]),
+            rating: render_to_string(partial: 'comments/rating', locals: {spot: @spot}, formats: [:html])
           }.to_json
         end
       end
@@ -31,6 +32,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :rating)
+    params.require(:comment).permit(:content, :rating, images: [])
   end
 end
