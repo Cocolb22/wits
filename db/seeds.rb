@@ -276,3 +276,57 @@ comment_to_tregastel_3 = Comment.create!(user:valentin, spot:evt_tregastel, cont
 comment_to_tresmeur = Comment.create!(user:shiyun, spot:plage_tresmeur, content: "on m'avait vendu la plage comme étant belle, mais franchement c'est surcôté", rating: 1)
 comment_to_tresmeur_2 = Comment.create!(user: valentin, spot: plage_tresmeur, content: " je me suis fait charrier sur les rochers à cause d'une rafale de vent, franchement cette plague est mal entretenu", rating: 0)
 comment_to_tresmeur_3 = Comment.create!(user: aurore, spot: plage_tresmeur, content: "J'ai venu, j'ai vu, il a plu, cela ne m'a pas plu", rating: 0 )
+
+##################################################################################################
+########################################### FAVORITES ############################################
+##################################################################################################
+
+favorite_to_valentin = Favorite.create!(user:valentin , spot:plage_tresmeur)
+favorite_to_valentin_1 = Favorite.create!(user:valentin , spot:evt_tregastel)
+favorite_to_valentin_2 = Favorite.create!(user:valentin , spot:plage_goas_treiz)
+
+favorite_to_shiyun = Favorite.create!(user:shiyun , spot:plage_goas_treiz)
+favorite_to_shiyun_1 = Favorite.create!(user:shiyun , spot:plage_toul_gwenn)
+favorite_to_shiyun_2 = Favorite.create!(user:shiyun , spot:evt_treb)
+favorite_to_shiyun_3 = Favorite.create!(user:shiyun , spot:evt_ile_grande)
+
+
+favorite_to_aurore = Favorite.create!(user:aurore , spot:plage_goas_treiz)
+favorite_to_aurore_1 = Favorite.create!(user:aurore , spot:plage_tresmeur)
+favorite_to_aurore_2 = Favorite.create!(user:aurore , spot:evt_perros)
+
+favorite_to_corentin = Favorite.create!(user:corentin, spot: evt_perros)
+favorite_to_corentin_1 = Favorite.create!(user:corentin, spot: evt_tregastel)
+favorite_to_corentin_2 = Favorite.create!(user:corentin, spot: evt_treb )
+
+##################################################################################################
+########################################### SERVICES ############################################
+##################################################################################################
+
+services_to_perros = Service.create!(spot:evt_perros, parking: true, restaurant: true, shower: true, camping: true, beach_surveillance: true)
+services_to_tregastel = Service.create!(spot:evt_tregastel, parking: true, shower: true, beach_surveillance: true)
+services_to_tremeur = Service.create!(spot:plage_tresmeur, parking: true, beach_surveillance: true, restaurant: true)
+services_to_goas_treiz = Service.create!(spot:plage_goas_treiz, shower: true)
+services_to_toul_gwenn = Service.create!(spot: plage_toul_gwenn, restaurant:true, shower:true, beach_surveillance: true)
+services_to_treb = Service.create!(spot:evt_treb, parking: true, beach_surveillance: true)
+services_to_ile_grande = Service.create!(spot:evt_ile_grande, restaurant: true, shower: true, camping: true, beach_surveillance: true)
+
+##################################################################################################
+######################################### LIKES ##################################################
+##################################################################################################
+
+likes_to_comment = Like.create!(user: valentin, comment: comment_to_treb_2)
+likes_to_comment_1 = Like.create!(user: valentin, comment: comment_to_tresmeur_3)
+likes_to_comment_2 = Like.create!(user: valentin, comment: comment_to_ile_grande)
+
+likes_to_comment_3 = Like.create!(user: shiyun, comment: comment_to_tresmeur_2 )
+likes_to_comment_4 = Like.create!(user: shiyun, comment: comment_to_tresmeur_2 )
+likes_to_comment_5 = Like.create!(user: shiyun, comment: comment_to_tregastel_3 )
+
+likes_to_comment_6 = Like.create!(user: corentin, comment: comment_to_goas_treiz)
+likes_to_comment_7 = Like.create!(user: corentin, comment: comment_to_treb_2)
+likes_to_comment_8 = Like.create!(user: corentin, comment: comment_to_toul_gwenn_2)
+
+likes_to_comment_9 = Like.create!(user:aurore, comment: comment_to_ile_grande_3)
+likes_to_comment_10 = Like.create!(user:aurore, comment: comment_to_treb_2 )
+likes_to_comment_11 = Like.create!(user: shiyun, comment: comment_to_tregastel_3 )
