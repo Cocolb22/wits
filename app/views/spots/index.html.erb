@@ -1,7 +1,7 @@
 <h1>Spots</h1>
 <%= form_for spots_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
+  <%= text_field_tag :location,
+    params[:location],
     class: "form-control",
     placeholder: "Where?"
   %>
@@ -35,12 +35,22 @@
   <p>Perle Rare</p>
 <% end %>
 
+<div style="width: 100%; height: 600px;"
+    data-controller="mapbox"
+    data-mapbox-markers-value="<%= @markers.to_json %>"
+    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+</div>
+
 <% @spots.each do |spot| %>
-  <%= link_to spot_path(spot) do %>
-    <% spot.photos.each do |photo| %>
-     <%= cl_image_tag photo.key, crop: :fill %>
+  <div>
+    <%= link_to spot_path(spot) do %>
+      <div>
+        <% spot.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill, width: 400 %>
+        <% end %>
+        <%= spot.full_name %>
+        <%= spot.address %>
+      </div>
     <% end %>
-    <%= spot.full_name %>
-    <%= spot.address %>
-  <% end %>
+  </div>
 <% end %>
