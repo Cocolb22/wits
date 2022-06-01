@@ -159,16 +159,6 @@ Spot.all.each do |spot|
         weather: CODES_TEMPS[forecast["weather"].to_i]
       )
     end
-
-
-      # puts Time.parse(forecast['datetime']).strftime("%d/%m/%Y")
-      # puts "Min temp: #{forecast["tmin"]}°C"
-      # puts "Max temp: #{forecast["tmax"]}°C"
-      # puts "Vent: #{forecast["wind10m"]} km/h"
-      # puts "Rafales: #{forecast["gust10m"]} km/h"
-      # puts "Direction vent: #{forecast["dirwind10m"]}°"
-      # puts "Proba pluie: #{forecast["probarain"]}%"
-      # puts "Météo: #{CODES_TEMPS[forecast["weather"].to_i]}"
   end
 end
 
