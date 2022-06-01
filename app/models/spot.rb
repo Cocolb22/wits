@@ -19,10 +19,19 @@ class Spot < ApplicationRecord
   validates :spot_type, inclusion: {in: TYPES}
   validates :category, inclusion: {in: CATEGORIES}, allow_blank: true
 
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [ :full_name, :address, :description, :spot_type, :category ],
+    associated_against: {
+      activities: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true }
+  }
+
   def build_address
     self.address = "#{street}, #{zipcode} #{city}"
   end
-
 end
 
 
