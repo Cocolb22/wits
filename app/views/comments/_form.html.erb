@@ -1,8 +1,13 @@
-  <%= simple_form_for [ spot, comment ], html: { data: {spot_comments_target: 'form', action: 'submit->spot-comments#post'}} do |f| %>
-    <%= f.input :content %>
-    <%= f.input :rating %>
-    <%= f.input :images, as: :file, input_html: {multiple: true} %>
+  <%= simple_form_for [ spot, comment ], html: { data: {spot_comments_target: 'form', action: 'submit->spot-comments#post', uppy:'comment[images][]'}} do |f| %>
+    <%= f.input :content, input_html: { data: { spot_comments_target: "input" } } %>
+    <%= f.input :rating, input_html: { data: { spot_comments_target: "input" } } %>
+    <% if comment.images.attached? %>
+      <% comment.images.each do |image| %>
+        <%= cl_image_tag image.key, width: 280, data: { behavior: 'uppy-preview'} %>
+      <% end %>
+    <% else%>
+      <div id="imgPreview"></div>
+    <% end %>
+    <%= link_to 'Upload', '#', data: {behavior: 'uppy-trigger'} %>
     <%= f.button :button, "Ajouter un commentaire", class: "btn btn-primary btn-submit-form-comment", data: {spot_comments_target: 'btn'} %>
-
-
   <% end %>
