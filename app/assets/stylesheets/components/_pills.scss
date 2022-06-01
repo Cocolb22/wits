@@ -1,0 +1,22 @@
+.pills {
+  font-family: "Gt-Am-cond-reg";
+  line-height: 16px;
+  font-size: 13px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  border: 1px solid $primary;
+  border-radius: 50px;
+  padding: 4px 8px;
+  color: $primary;
+  width: fit-content;
+}
+
+.pills.active {
+  background-color: $primary;
+  color: white;
+}
+.pills.pop {
+  border: $pop;
+  background-color: $pop;
+  color: white;
+}
