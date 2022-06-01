@@ -1,7 +1,12 @@
 <%= render 'header', spot: @spot%>
 <div class="show-descr">
   <p><%= @spot.description %></p>
-  <%= @spot.service %>
+
+  <% if @spot_service %>
+  <%=  "coucou" %>
+
+  <% end %>
+
 </div>
 
 <div class="gps-container">
