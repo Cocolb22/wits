@@ -7,3 +7,9 @@
 <div class="gps-container">
   <p>Obtenir l'itinéraire</p>
 </div>
+
+<% if @user_favorite %>
+  <%= button_to 'Destroy', favorite_path(@user_favorite), method: :delete %>
+<% else %>
+  <%= button_to "Favorite", spot_favorites_path(@spot), method: :post %>
+<% end %>
