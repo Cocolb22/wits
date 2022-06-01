@@ -6,7 +6,7 @@ class SpotsController < ApplicationController
     # else
     #   @spots = Spot.all
     # end
-
+    
     if params[:activities]
       @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i))
     else
@@ -19,6 +19,7 @@ class SpotsController < ApplicationController
     # p Spot.activity_search(params[:activities].reject(&:blank?).map(&:to_i))
 
     # @spots = @spots.where(spot_type: params[:spot_type]) if params[:spot_type].present?
+  end
 
   def show
     @spot = Spot.find(params[:id])

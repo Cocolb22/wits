@@ -1,5 +1,5 @@
 class Spot < ApplicationRecord
-  TYPES = ["Plage", "Spot de Surf", "Falaise", "École", "Port"]
+  TYPES = ["Plage", "Spot sauvage", "École", "Port"]
   CATEGORIES = ["Plage Familiale", "Sable Fin", "Pour Les Débutants", "Galets", "Pour Les Experts", "Perle Rare" ]
 
   before_validation :build_address
