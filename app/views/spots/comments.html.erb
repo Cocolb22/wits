@@ -1,0 +1,11 @@
+<%= render 'header', spot: @spot %>
+<% @comments.each do |comment| %>
+  <p><%= comment.rating %></p>
+  <p><%= comment.content %>
+<% end %>
+
+<%= simple_form_for [ @spot, @comment ] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "Laisser un commentaire", class: "btn btn-primary" %>
+<% end %>
