@@ -1,5 +1,5 @@
 class Spot < ApplicationRecord
-  TYPES = ["Plage", "Spot de Surf", "Falaise", "École", "Port"]
+  TYPES = ["Plage", "Spot sauvage", "École", "Port"]
   CATEGORIES = ["Plage Familiale", "Sable Fin", "Pour Les Débutants", "Galets", "Pour Les Experts", "Perle Rare" ]
 
   before_validation :build_address
@@ -18,6 +18,16 @@ class Spot < ApplicationRecord
   validates :description, length: {minimum: 100}
   validates :spot_type, inclusion: {in: TYPES}
   validates :category, inclusion: {in: CATEGORIES}, allow_blank: true
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
+  include PgSearch::Model
+  pg_search_scope :global_search,
+    against: [:address],
+    using: {
+      tsearch: { prefix: true }
+  }
 
   def build_address
     self.address = "#{street}, #{zipcode} #{city}"
