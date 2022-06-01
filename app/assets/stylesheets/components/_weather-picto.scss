@@ -1,0 +1,31 @@
+.weather-picto {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.weather-picto-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background-color: $black-50;
+  margin-right: $spacing-s;
+
+  i {
+    color: $black-300;
+    font-size: 20px;
+  }
+}
+
+.weather-picto-right {
+  .weather-picto-right-title {
+    color: $black-700;
+  }
+  h3 {
+    margin-bottom: 0;
+    color: $primary;
+  }
+}

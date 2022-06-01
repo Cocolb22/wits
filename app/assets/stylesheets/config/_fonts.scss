@@ -1,16 +1,101 @@
-// Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
-
-// Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
 
 // To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+@font-face {
+  font-family: "Gt-Am-reg";
+  src: font-url('GT-America-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: "Gt-Am-bold";
+  src: font-url('GT-America-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: "Gt-Am-comp-bold";
+  src: font-url('GT-America-Compressed-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: "Gt-Am-comp-med";
+  src: font-url('GT-America-Compressed-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: "Gt-Am-comp-reg";
+  src: font-url('GT-America-Compressed-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: "Gt-Am-cond-bold";
+  src: font-url('GT-America-Condensed-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: "Gt-Am-cond-med";
+  src: font-url('GT-America-Condensed-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: "Gt-Am-cond-reg";
+  src: font-url('GT-America-Condensed-Regular.woff') format('woff');
+}
+
+h1 {
+  font-family: "Gt-Am-comp-bold";
+  font-size: 36px;font-size: 36px;
+  line-height: 43px;
+  letter-spacing: 0.05em;
+  color: $primary;
+}
+
+h2 {
+  font-family: "Gt-Am-comp-bold";
+  font-size: 36px;
+  line-height: 43px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: $primary;
+}
+h3 {
+  font-family: "Gt-Am-comp-med";
+  font-size: 24px;
+}
+
+p {
+  font-family: "Gt-Am-reg";
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.call-to-action {
+  font-family: "Gt-Am-bold";
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.text-x-small {
+  font-family: "Gt-Am-cond-med";
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.text-x-small-bold {
+  font-family: "Gt-Am-cond-bold";
+  font-size: 11px;
+  line-height: 13px;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.label {
+  font-family: "Gt-Am-cond-reg";
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.label-bold {
+  font-family: "Gt-Am-cond-bold";
+  font-size: 13px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+// Define fonts for body and headers
+$body-font: "Gt-Am-reg", "Georgia", "sans-serif";
