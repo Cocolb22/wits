@@ -1,0 +1,67 @@
+<%= link_to "Edit", edit_profile_path %>
+
+<p><%= @user.nick_name %></p>
+<p><%= @user.email %></p>
+
+<strong>Nom</strong>
+<% if @user.last_name.present? %>
+  <p><%= @user.last_name %></p>
+<% else %>
+  <p>Non renseigné</p>
+<% end %>
+
+<strong>Prénom</strong>
+<% if @user.first_name.present? %>
+<p><%= @user.first_name %></p>
+<% else %>
+  <p>Non renseigné</p>
+<% end %>
+
+<strong>Adresse</strong>
+<% if @user.address.present? %>
+<p><%= @user.address %></p>
+<% else %>
+  <p>Non renseigné</p>
+<% end %>
+
+<strong>Ajouter un photo</strong>
+<% if @user.photo.present? %>
+<p><%= cl_image_tag @user.photo.key, crop: :fill, class: "avatar" %></p>
+<% else %>
+  <p>Non renseigné</p>
+<% end %>
+
+<strong>Anniversaitre</strong>
+<% if @user.birthday.present? %>
+<p><%= @user.birthday %></p>
+<% else %>
+  <p>Non renseigné</p>
+<% end %>
+
+<strong>Sexe</strong>
+<% if @user.gender.present? %>
+<p><%= @user.gender %></p>
+<% else %>
+  <p>Non renseigné</p>
+<% end %>
+
+<strong>Profile_exp</strong>
+<% if @user.profile_exp.present? %>
+<p><%= @user.profile_exp %></p>
+<% else %>
+  <p>Non renseigné</p>
+<% end %>
+
+<strong>Status</strong>
+<% if @user.status.present? %>
+<p><%= @user.status %></p>
+<% else %>
+  <p>Non renseigné</p>
+<% end %>
+
+<strong>Favoris</strong>
+<% if @user.favorite_area.present? %>
+<p><%= @user.favorite_area %></p>
+<% else %>
+  <p>Non renseigné</p>
+<% end %>

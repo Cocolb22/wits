@@ -14,9 +14,10 @@ Rails.application.routes.draw do
       patch :unapprove
     end
     resources :comments, only: [:create]
+    resources :favorites, only: [:create]
   end
 
-  resources :favorites, only: [:create, :index]
+  resources :favorites, only: [:index, :destroy ]
 
   resources :comments, only: [] do
     member do
