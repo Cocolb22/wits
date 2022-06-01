@@ -42,11 +42,15 @@
 </div>
 
 <% @spots.each do |spot| %>
-  <%= link_to spot_path(spot) do %>
-    <% spot.photos.each do |photo| %>
-     <%= cl_image_tag photo.key, crop: :fill %>
+  <div>
+    <%= link_to spot_path(spot) do %>
+      <div>
+        <% spot.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, crop: :fill, width: 400 %>
+        <% end %>
+        <%= spot.full_name %>
+        <%= spot.address %>
+      </div>
     <% end %>
-    <%= spot.full_name %>
-    <%= spot.address %>
-  <% end %>
+  </div>
 <% end %>
