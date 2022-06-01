@@ -8,6 +8,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
+    "@uppy/companion": "^3.6.0",
     "@uppy/core": "^2.3.0",
     "@uppy/dashboard": "^2.3.0",
     "@uppy/drag-drop": "^2.1.1",
