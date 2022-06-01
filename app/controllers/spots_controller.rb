@@ -6,22 +6,14 @@ class SpotsController < ApplicationController
       @spots = Spot.all
     end
 
-    @spots = @spots.near(params[:location], 10) if params[:location].present?
-
-    # @markers = @spots.geocoded.map do |spot|
-    #   {
-    #     lat: spot.latitude,
-    #     lng: spot.longitude,
-    #     info_window: render_to_string(partial: "info_window", locals: { spot: spot }),
-    #     image_url: helpers.asset_url("beach.png"),
-    #     spot_id: spot.id
-    #   }
-    # end
+    @spots = @spots.near(params[:location], 3) if params[:location].present?
 
     @markers = @spots.geocoded.map do |spot|
       {
         lat: spot.latitude,
-        lng: spot.longitude
+        lng: spot.longitude,
+        image_url: helpers.asset_url("icons/#{spot.icon}"),
+        id: spot.id
       }
     end
   end
