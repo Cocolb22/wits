@@ -19,6 +19,13 @@
   <% end %>
 </div>
 
+  <div>
+    <% @activities.each do |activity| %>
+      <%=  image_tag "icons/#{activity.icon}" %>
+    <% end %>
+
+
+  </div>
 <div class="gps-container">
   <p>Obtenir l'itinéraire</p>
 </div>

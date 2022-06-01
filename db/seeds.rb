@@ -175,11 +175,11 @@ kitesurf_activity = Activity.create!(name: "Kitesurf", description: " Le kitesur
                                       est un sport de glisse consistant à évoluer avec une planche à la surface
                                       d'une étendue d'eau en étant tracté par un cerf-volant (kite en anglais)
                                       spécialement adapté, nommé aile ou voile. Ce sport a pris son essor au début
-                                      des années 2000.", icon:'kite_surf.jpg')
+                                      des années 2000.", icon:'kite_surf.png')
 kitesurf_activity.save!
 
 kayak_activity = Activity.create!(name: "Kayak", description: "Un kayak ou kayac est un type de pirogue légère utilisant
-                                  une pagaie pour le propulser, le diriger et l'équilibrer.", icon:"kayak.jpg")
+                                  une pagaie pour le propulser, le diriger et l'équilibrer.", icon:"kayak.png")
 kayak_activity.save!
 
 cliff_diving_activity = Activity.create!(name: "Saut depuis une falaise", description: "Le saut de falaises est un sport
@@ -190,12 +190,12 @@ cliff_diving_activity.save!
 yachting_activity = Activity.create!(name: "Char à voile", description: "Un char à voile est un véhicule à roues propulsé
                                       par une voile. Par métonymie, ce terme désigne aussi le sport qui consiste à
                                       conduire cet engin. Il est pratiqué sur les grandes plages de sable et quelques
-                                      fois dans les terres.", icon:'yachting.jpg' )
+                                      fois dans les terres.", icon:'yachting.png' )
 yachting_activity.save!
 
 windsurf_activity = Activity.create!(name: "Planche à voile", description: "La planche à voile (parfois désignée par
                                     son nom anglais, windsurf) est un type d'embarcation à voile minimaliste,
-                                    c'est aussi le sport de glisse pratiqué avec cette embarcation.", icon:'windsurf.jpg' )
+                                    c'est aussi le sport de glisse pratiqué avec cette embarcation.", icon:'windsurf.png' )
 windsurf_activity.save!
 
 scuba_diving_activity = Activity.create!(name: "Plongée en apnée", description: "La plongée sous-marine est une activité
@@ -207,7 +207,7 @@ scuba_diving_activity.save!
 catamaran_activity = Activity.create!(name: "Catamaran", description: "Un catamaran est un bateau possédant deux coques,
                                       en général parallèles l'une à côté de l'autre. Le catamaran possédant deux coques
                                       se classe donc dans la catégorie des bateaux multicoques qui comprend également
-                                      le trimaran, dont le nom dérive.", icon:'catamaran.jpg')
+                                      le trimaran, dont le nom dérive.", icon:'catamaran.png')
 catamaran_activity.save!
 
 ##################################################################################################
