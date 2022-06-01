@@ -1,0 +1,24 @@
+<!--Image du spot-->
+<div class="banner">
+  <% spot.photos.each do |photo|%>
+    <%= cl_image_tag photo.key, crop: :fill, height: 150, width: 600 %>
+  <% end %>
+
+</div>
+<!--lien vers l'index spots-->
+<%= link_to '<-- Retour', spots_path, class:'btn btn-primary' %>
+
+<!-- Météo du spot
+<div class="spot-weather">
+<%= @spot.weathers %>
+</div> -->
+
+<!--Categories du spot-->
+<div class="spot_category"><%= @spot.spot_type %></div>
+
+<!--Carte du spot-->
+<div class="card-show">
+  <h2><%= spot.full_name %></h2>
+  <h4><%= spot.address %></h4>
+  <%= spot.category %>
+</div>
