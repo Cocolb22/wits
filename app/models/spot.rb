@@ -19,10 +19,7 @@ class Spot < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :global_search,
-    against: [ :full_name, :address, :description, :spot_type, :category ],
-    associated_against: {
-      activities: [ :name ]
-    },
+    against: [:address],
     using: {
       tsearch: { prefix: true }
   }
