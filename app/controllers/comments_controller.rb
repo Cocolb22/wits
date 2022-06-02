@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
     @comment.spot = @spot
     @comment.user = current_user
 
+
+
     if @comment.save
       respond_to do |format|
         format.html { redirect_to comments_spot_path(@spot) }
@@ -17,6 +19,7 @@ class CommentsController < ApplicationController
           }.to_json
         end
       end
+      point_created
     else
       respond_to do |format|
         format.html { render 'spots/comments' }
@@ -33,5 +36,16 @@ class CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:content, :rating, images: [])
+  end
+
+  def point_created
+    unless current_user.comments.where(created_at: (Date.today.midnight..Date.tomorrow.midnight)).count >= 2
+      @comment.user.add_points_and_update_status(2)
+    end
+
+    if @comment.images.attached?
+      @comment.user.add_points_and_update_status(5)
+
+    end
   end
 end

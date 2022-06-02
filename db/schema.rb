@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2022_06_02_131900) do
 
   # These are extensions that must be enabled in order to support this database
@@ -81,6 +82,15 @@ ActiveRecord::Schema.define(version: 2022_06_02_131900) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
+  end
+
   create_table "services", force: :cascade do |t|
     t.bigint "spot_id", null: false
     t.boolean "parking", default: false
@@ -136,9 +146,16 @@ ActiveRecord::Schema.define(version: 2022_06_02_131900) do
     t.string "address"
     t.date "birthday"
     t.string "gender"
-    t.integer "profile_exp"
+    t.integer "profile_exp", default: 10
     t.string "status"
     t.string "favorite_area"
+    t.boolean "last_name_completed", default: false
+    t.boolean "first_name_completed", default: false
+    t.boolean "address_completed", default: false
+    t.boolean "birthday_completed", default: false
+    t.boolean "gender_completed", default: false
+    t.boolean "favorite_area_completed", default: false
+    t.boolean "photo_completed", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
