@@ -8,8 +8,8 @@
         <div class="comment-pseudo-user label-bold">
           <%= comment.user.nick_name %>
         </div>
-        <div class="comment-date">
-          <p> il y a <%= ((Time.now - comment.created_at)/(3600*24)).floor %> jour(s).</p>
+        <div class="comment-date label">
+          il y a <%= ((Time.now - comment.created_at)/(3600*24)).floor %> jour(s).
         </div>
       </div>
     </div>

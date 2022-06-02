@@ -33,6 +33,11 @@
   src: font-url('GT-America-Condensed-Regular.woff') format('woff');
 }
 
+*{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
 h1 {
   font-family: "Gt-Am-comp-bold";
   font-size: 36px;font-size: 36px;

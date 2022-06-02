@@ -1,7 +1,7 @@
 .comment-rating {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 30px);
   grid-column-gap: 8px;
   grid-row-gap: 0px;
 }
@@ -10,8 +10,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom:$spacing-s;
   p {
     font-size: 52px;
+    font-family: "Gt-Am-comp-reg";
   }
 }
 
@@ -21,6 +23,25 @@
   justify-content: center;
   align-items: flex-start;
 }
+
+.comment-rating-line  {
+  margin:$spacing-xs 0;
+}
+
+// Select each individual line
+.comment-rating-line {
+  background-color:$black-100;
+  border-radius:16px;
+}
+
+// Styling completed line
+.completed-comment-range {
+  background-color: $black;
+  height:4px;
+  width:100px;
+  border-radius:16px;
+}
+
 .comment-rating-range-1 {
   grid-area: 1 / 2 / 2 / 4;
 }
@@ -37,28 +58,27 @@
   grid-area: 5 / 2 / 6 / 4;
 }
 
+
 .comment-rating-range-1, .comment-rating-range-2, .comment-rating-range-3,
 .comment-rating-range-4, .comment-rating-range-5 {
-  height: 24px;
+  height: 4px;
   p {
     margin: 0;
   }
 }
 
-.comment-content {
-  border-bottom: 1px solid $black-300;
-}
 
 .comments-sorting {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: $spacing-s;
+  margin: $spacing-s 0;
 }
 
 .comment-content {
   margin-bottom: $spacing-s;
   margin-top: $spacing-s;
+  border-bottom: 1px solid $black-100;
 }
 
 .comment-header {
@@ -79,10 +99,15 @@
     border-radius: 50px;
   }
 }
+
 .comment-info-user {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   margin-left: $spacing-xs;
+}
+
+.comment-date {
+  color:$black-300;
 }
