@@ -14,8 +14,6 @@ class CommentsController < ApplicationController
       @comment.user.add_points_and_update_status(5)
     end
 
-
-
     if @comment.save
       respond_to do |format|
         format.html { redirect_to comments_spot_path(@spot) }
@@ -38,8 +36,6 @@ class CommentsController < ApplicationController
       end
     end
   end
-
-
 
   private
 
