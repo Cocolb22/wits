@@ -1,10 +1,10 @@
 .container-description {
-  position: absolute;
   // Attention c'est triché de ouf et il faut gérer le blur opacité aussi
-  top: 339px;
   width: 100%;
   background: rgba(255, 255, 255, 1);
   padding: 0 16px;
+  // Pour le bouton fixé en bas
+  padding-bottom:64px;
 }
 
 .nav-link {
@@ -22,10 +22,12 @@
 }
 
 .show-onglets {
-  margin-top: $spacing-xs;
+  width:100vw;
+  margin-left: -$spacing-s;
   margin-bottom: $spacing-s;
   border-top: 1px solid $black-300;
   border-bottom: 1px solid $black-300;
+  padding:0 $spacing-s;
 }
 
 .show-descr {
@@ -38,7 +40,8 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  }
+  margin-top:$spacing-s;
+}
 
 .show-descr-grid-type, .show-descr-grid-category, .show-descr-grid-fluent {
   padding: $spacing-xs 0;
@@ -48,10 +51,15 @@
 }
 
 .show-descr-services {
-  margin-bottom: 12px;
+  margin-top:$spacing-s;
+  padding-bottom:$spacing-xs;
 }
 .show-descr-services-content {
   padding-bottom: $spacing-xs;
+  display:flex;
+  img {
+    margin-right:$spacing-xs;
+  }
 }
 
 .show-descr-activities, .show-comments-photos {
@@ -62,11 +70,7 @@
   margin-bottom: $spacing-xs;
 }
 
-.btn-cta {
-  color: white;
-  width: 100%;
-  background: linear-gradient(89.48deg, #5FC1FA 6.24%, #1A82BE 93.98%);
-  text-align: center;
-  height: 56px;
-  line-height: 56px;
+
+.show-activities {
+  margin-top:$spacing-s;
 }

@@ -1,0 +1,24 @@
+.btn-cta {
+  color: white;
+  width: 100%;
+  background: linear-gradient(89.48deg, #5FC1FA 6.24%, #1A82BE 93.98%);
+  text-align: center;
+  height: 56px;
+  line-height: 56px;
+}
+
+.btn-fixed {
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100vw;
+}
+
+.btn-cta-rounded {
+  background: $pop;
+  border-radius: 60px;
+  height: 48px;
+  color: white;
+  width: 75%;
+  border: none;
+}

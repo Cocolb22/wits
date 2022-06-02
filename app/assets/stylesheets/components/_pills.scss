@@ -13,10 +13,12 @@
 
 .pills.active {
   background-color: $primary;
+  font-family: "Gt-Am-cond-med";
   color: white;
 }
 .pills.pop {
   border: $pop;
   background-color: $pop;
   color: white;
+  font-family: "Gt-Am-cond-reg";
 }
