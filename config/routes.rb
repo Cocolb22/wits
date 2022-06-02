@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :favorites, only: [:index, :destroy ]
+  resources :likes, only: [:destroy]
 
   resources :comments, only: [] do
     member do
