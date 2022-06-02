@@ -6,6 +6,14 @@ class CommentsController < ApplicationController
     @comment.spot = @spot
     @comment.user = current_user
 
+    unless current_user.comments.where(created_at: (Date.today.midnight..Date.tomorrow.midnight)).count >= 2
+      @comment.user.add_points_and_update_status(2)
+    end
+
+    unless current_user.comments.images.where(created_at: (Date.today.midnight..Date.tomorrow.midnight)).count >= 2
+      @comment.user.add_points_and_update_status(5)
+    end
+
     if @comment.save
       respond_to do |format|
         format.html { redirect_to comments_spot_path(@spot) }

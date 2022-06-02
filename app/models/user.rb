@@ -15,4 +15,20 @@ class User < ApplicationRecord
 
   validates :nick_name, presence: true, uniqueness: true
   validates :gender, inclusion: {in: GENDERS}, allow_blank: true
+
+  def add_points_and_update_status(points)
+    self.profile_exp += points
+    if (20..49).to_a.include?(profile_exp)
+      self.status = "Mousse"
+    elsif (50..99).to_a.include?(profile_exp)
+      self.status = "Matelot"
+    elsif (100..249).to_a.include?(profile_exp)
+      self.status = "Capitaine"
+    elsif (250..499).to_a.include?(profile_exp)
+      self.status = "Amiral"
+    elsif profile_exp > 500
+      self.status = "Vieux Briscard"
+    end
+    self.save
+  end
 end

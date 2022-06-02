@@ -8,6 +8,8 @@ class FavoritesController < ApplicationController
     @favorite.user = current_user
     @favorite.save
     redirect_to spot_path(@spot)
+
+    @favorite.user.add_points_and_update_status(10)
   end
 
   def destroy
