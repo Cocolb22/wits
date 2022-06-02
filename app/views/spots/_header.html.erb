@@ -5,11 +5,11 @@
   <% end %>
 
   <% if @user_favorite %>
-    <%= button_to favorite_path(@user_favorite), method: :delete do %>
+    <%= button_to favorite_path(@user_favorite), method: :delete, class:"favorites-button" do %>
       <i class="far fa-heart"></i>
     <% end %>
   <% else %>
-    <%= button_to spot_favorites_path(@spot), method: :post do %>
+    <%= button_to spot_favorites_path(@spot), class:"favorites-button", method: :post do %>
       <i class="fas fa-heart"></i>
     <% end %>
   <% end %>
@@ -61,7 +61,7 @@
     <div class="card-spot-infos-localisation">
       <i class="fas fa-map-marker-alt"></i>
       <div class="card-spot-infos-localisation-city text-x-small-bold">
-      <%= @spot.address %>
+      <%= @spot.address %> à 3 km
       </div>
     </div>
     <%= @spot.category %>

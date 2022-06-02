@@ -13,14 +13,17 @@
 }
 
 .container-header {
-  position: absolute;
   // Attention c'est triché de ouf et il faut gérer le blur opacité aussi
-  top: 246px;
   width: 100%;
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0px 7px 28px rgba(0, 0, 0, 0.7);
+  margin-top:-20px;
+  background: rgba(255, 255, 255, .8);
   backdrop-filter: blur(16px);
   /* Note: backdrop-filter has minimal browser support */
   border-radius: 24px 24px 0px 0px;
-  padding: 0 16px;
+  padding: 16px;
+}
+
+
+.button_to {
+  height:0;
 }
