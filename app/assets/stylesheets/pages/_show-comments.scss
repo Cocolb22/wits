@@ -1,10 +1,11 @@
 .comment-rating {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(5, 30px);
-  grid-column-gap: 8px;
+  grid-template-columns: 0.5fr 1fr 1fr;
+  grid-template-rows: repeat(5, 13px);
+  grid-column-gap: 24px;
   grid-row-gap: 0px;
 }
+
 .comment-rating-avg {
   grid-area: 1 / 1 / 5 / 2;
   display: flex;
@@ -24,10 +25,6 @@
   align-items: flex-start;
 }
 
-.comment-rating-line  {
-  margin:$spacing-xs 0;
-}
-
 // Select each individual line
 .comment-rating-line {
   background-color:$black-100;
@@ -38,7 +35,6 @@
 .completed-comment-range {
   background-color: $black;
   height:4px;
-  width:100px;
   animation: scaleWidth 1s;
   border-radius:16px;
   transform-origin: left;
@@ -46,11 +42,9 @@
 
 @keyframes scaleWidth {
   0% {
-    opacity:0;
     transform:scaleX(0);
   }
   100% {
-    opacity:1;
     transform:scaleX(1);
   }
 }

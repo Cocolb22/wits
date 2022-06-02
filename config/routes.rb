@@ -13,6 +13,9 @@ Rails.application.routes.draw do
       patch :approve
       patch :unapprove
     end
+    collection do
+      get :search
+    end
     resources :comments, only: [:create]
     resources :favorites, only: [:create]
   end
