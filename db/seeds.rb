@@ -73,6 +73,330 @@ file_wits = File.open("db/fixtures/WITS.png")
 wits.photo.attach(io: file_wits, filename: 'WITS.png', content_type: 'image/png')
 wits.save!
 
+emilie = User.new(
+  nick_name: 'emijolie',
+  email: "emilie@test.com",
+  password: "password"
+)
+file_emilie = File.open("db/fixtures/fake1.jpg")
+corentin.photo.attach(io: file_emilie, filename: 'fake1.jpg', content_type: 'image/jpeg')
+corentin.save!
+
+aurelie = User.new(
+  nick_name: 'auré',
+  email: "aurelie@test.com",
+  password: "password"
+)
+file_aurelie = File.open("db/fixtures/fake2.jpeg")
+aurelie.photo.attach(io: file_aurelie, filename: 'fake2.jpg', content_type: 'image/jpeg')
+aurelie.save!
+
+alicia = User.new(
+  nick_name: 'alili',
+  email: "alicia@test.com",
+  password: "password"
+)
+file_alicia = File.open("db/fixtures/fake3.jpg")
+alicia.photo.attach(io: file_alicia, filename: 'fake3.jpg', content_type: 'image/jpeg')
+alicia.save!
+
+jean_michou = User.new(
+  nick_name: 'jean_michou',
+  email: "jean_michou@test.com",
+  password: "password"
+)
+file_jean_michou = File.open("db/fixtures/fake4.jpg")
+jean_michou.photo.attach(io: file_jean_michou, filename: 'fake4.jpg', content_type: 'image/jpeg')
+jean_michou.save!
+
+sylvie = User.new(
+  nick_name: 'vartan22',
+  email: "sylvie@test.com",
+  password: "password"
+)
+file_sylvie = File.open("db/fixtures/fake5.jpg")
+sylvie.photo.attach(io: file_sylvie, filename: 'fake5.jpg', content_type: 'image/jpeg')
+sylvie.save!
+
+morganne = User.new(
+  nick_name: "momor l'amor",
+  email: "morganne@test.com",
+  password: "password"
+)
+file_morganne = File.open("db/fixtures/fake6.jpg")
+morganne.photo.attach(io: file_morganne, filename: 'fake6.jpg', content_type: 'image/jpeg')
+morganne.save!
+
+julio = User.new(
+  nick_name: 'el iglesia',
+  email: "julio@test.com",
+  password: "password"
+)
+file_julio = File.open("db/fixtures/fake7.jpg")
+julio.photo.attach(io: file_julio, filename: 'fake7.jpg', content_type: 'image/jpeg')
+julio.save!
+
+camille = User.new(
+  nick_name: 'mimile',
+  email: "camille@test.com",
+  password: "password"
+)
+file_camille = File.open("db/fixtures/fake8.jpg")
+camille.photo.attach(io: file_camille, filename: 'fake8.jpg', content_type: 'image/jpeg')
+camille.save!
+
+helene = User.new(
+  nick_name: 'la troyenne',
+  email: "helene@test.com",
+  password: "password"
+)
+file_helene = File.open("db/fixtures/fake9.jpg")
+helene.photo.attach(io: file_helene, filename: 'fake9.jpg', content_type: 'image/jpeg')
+helene.save!
+
+audrey = User.new(
+  nick_name: 'pas pulvar',
+  email: "audrey@test.com",
+  password: "password"
+)
+file_audrey = File.open("db/fixtures/fake10.jpg")
+audrey.photo.attach(io: file_audrey, filename: 'fake10.jpg', content_type: 'image/jpeg')
+audrey.save!
+
+patrick = User.new(
+  nick_name: 'papat',
+  email: "patrick@test.com",
+  password: "password"
+)
+file_patrick = File.open("db/fixtures/fake11.jpg")
+patrick.photo.attach(io: file_patrick, filename: 'fake11.jpg', content_type: 'image/jpeg')
+patrick.save!
+
+elsa = User.new(
+  nick_name: 'libérée',
+  email: "elsa@test.com",
+  password: "password"
+)
+file_elsa = File.open("db/fixtures/fake12.jpg")
+elsa.photo.attach(io: file_elsa, filename: 'elsa.jpeg', content_type: 'image/jpeg')
+elsa.save!
+
+anna = User.new(
+  nick_name: 'ptite blonde',
+  email: "anna@test.com",
+  password: "password"
+)
+file_anna = File.open("db/fixtures/fake13.jpg")
+anna.photo.attach(io: file_anna, filename: 'fake13.jpg', content_type: 'image/jpeg')
+anna.save!
+
+zoe = User.new(
+  nick_name: 'Cocolb22',
+  email: "zoe@test.com",
+  password: "password"
+)
+file_zoe = File.open("db/fixtures/fake14.jpg")
+zoe.photo.attach(io: file_zoe, filename: 'fake14.jpg', content_type: 'image/jpeg')
+zoe.save!
+
+michelle = User.new(
+  nick_name: 'michou',
+  email: "michelle@test.com",
+  password: "password"
+)
+file_michelle = File.open("db/fixtures/fake15.jpg")
+michelle.photo.attach(io: file_michelle, filename: 'fake15.jpg', content_type: 'image/jpeg')
+michelle.save!
+
+emilia = User.new(
+  nick_name: 'clé',
+  email: "emilia@test.com",
+  password: "password"
+)
+file_emilia = File.open("db/fixtures/fake16.jpg")
+emilia.photo.attach(io: file_emilia, filename: 'fake16.jpg', content_type: 'image/jpeg')
+emilia.save!
+
+sophie = User.new(
+  nick_name: 'blondie',
+  email: "sophie@test.com",
+  password: "password"
+)
+file_sophie = File.open("db/fixtures/fake17.jpg")
+sophie.photo.attach(io: file_sophie, filename: 'fake17.jpg', content_type: 'image/jpeg')
+sophie.save!
+
+christianne = User.new(
+  nick_name: 'bibi',
+  email: "christianne@test.com",
+  password: "password"
+)
+file_christianne = File.open("db/fixtures/fake18.jpg")
+christianne.photo.attach(io: file_christianne, filename: 'fake18.jpg', content_type: 'image/jpeg')
+christianne.save!
+
+noe = User.new(
+  nick_name: 'sir19854',
+  email: "noe@test.com",
+  password: "password"
+)
+file_noe = File.open("db/fixtures/fake19.jpg")
+noe.photo.attach(io: file_noe, filename: 'fake19.jpg', content_type: 'image/jpeg')
+noe.save!
+
+christine = User.new(
+  nick_name: 'cricri',
+  email: "christine@test.com",
+  password: "password"
+)
+file_christine = File.open("db/fixtures/fake20.jpg")
+christine.photo.attach(io: file_christine, filename: 'fake20.jpg', content_type: 'image/jpeg')
+christine.save!
+
+maelie = User.new(
+  nick_name: 'kawaii',
+  email: "maelie@test.com",
+  password: "password"
+)
+file_maelie = File.open("db/fixtures/fake21.jpg")
+maelie.photo.attach(io: file_maelie, filename: 'fake21.jpg', content_type: 'image/jpeg')
+maelie.save!
+
+charles = User.new(
+  nick_name: 'le roi',
+  email: "charles@test.com",
+  password: "password"
+)
+file_charles = File.open("db/fixtures/fake22.jpg")
+charles.photo.attach(io: file_charles, filename: 'fake22.jpg', content_type: 'image/jpeg')
+charles.save!
+
+francois = User.new(
+  nick_name: 'francois',
+  email: "francois@test.com",
+  password: "password"
+)
+file_francois = File.open("db/fixtures/fake23.jpg")
+francois.photo.attach(io: file_francois, filename: 'fake23.jpg', content_type: 'image/jpeg')
+francois.save!
+
+sarah = User.new(
+  nick_name: 'sarah38',
+  email: "sarah@test.com",
+  password: "password"
+)
+file_sarah = File.open("db/fixtures/fake24.jpg")
+sarah.photo.attach(io: file_sarah, filename: 'fake24.jpg', content_type: 'image/jpeg')
+sarah.save!
+
+josianne = User.new(
+  nick_name: 'jojo',
+  email: "josianne@test.com",
+  password: "password"
+)
+file_josianne = File.open("db/fixtures/fake26.jpg")
+josianne.photo.attach(io: file_josianne, filename: 'fake26.jpg', content_type: 'image/jpeg')
+josianne.save!
+
+melanie = User.new(
+  nick_name: 'mel',
+  email: "melanie@test.com",
+  password: "password"
+)
+file_melanie = File.open("db/fixtures/fake27.jpg")
+melanie.photo.attach(io: file_melanie, filename: 'fake27.jpg', content_type: 'image/jpeg')
+melanie.save!
+
+jeanne = User.new(
+  nick_name: 'pépétte',
+  email: "jeanne@test.com",
+  password: "password"
+)
+file_jeanne = File.open("db/fixtures/fake28.jpg")
+jeanne.photo.attach(io: file_jeanne, filename: 'fake28.jpg', content_type: 'image/jpeg')
+jeanne.save!
+
+thomas = User.new(
+  nick_name: 'dallina',
+  email: "thomas@test.com",
+  password: "password"
+)
+file_thomas = File.open("db/fixtures/fake29.jpg")
+thomas.photo.attach(io: file_thomas, filename: 'fake29.jpg', content_type: 'image/jpeg')
+thomas.save!
+
+arianne = User.new(
+  nick_name: 'doudou',
+  email: "arianne@test.com",
+  password: "password"
+)
+file_arianne = File.open("db/fixtures/fake30.jpg")
+arianne.photo.attach(io: file_arianne, filename: 'fake30.jpg', content_type: 'image/jpeg')
+arianne.save!
+
+marianne = User.new(
+  nick_name: 'revolutionnaire',
+  email: "marianne@test.com",
+  password: "password"
+)
+file_marianne = File.open("db/fixtures/fake31.jpg")
+marianne.photo.attach(io: file_marianne, filename: 'fake31.jpg', content_type: 'image/jpeg')
+marianne.save!
+
+olympe = User.new(
+  nick_name: 'gouges',
+  email: "olympe@test.com",
+  password: "password"
+)
+file_olympe = File.open("db/fixtures/fake32.jpg")
+olympe.photo.attach(io: file_olympe, filename: 'fake32.jpg', content_type: 'image/jpeg')
+olympe.save!
+
+louisa = User.new(
+  nick_name: 'délice',
+  email: "louisa@test.com",
+  password: "password"
+)
+file_louisa = File.open("db/fixtures/fake25.jpg")
+louisa.photo.attach(io: file_louisa, filename: 'fake25.jpg', content_type: 'image/jpeg')
+louisa.save!
+
+eloise = User.new(
+  nick_name: 'elo',
+  email: "eloise@test.com",
+  password: "password"
+)
+file_eloise = File.open("db/fixtures/fake33.jpg")
+eloise.photo.attach(io: file_eloise, filename: 'fake33.jpg', content_type: 'image/jpeg')
+eloise.save!
+
+marc = User.new(
+  nick_name: 'marcus32',
+  email: "marc@test.com",
+  password: "password"
+)
+file_marc = File.open("db/fixtures/fake34.jpg")
+marc.photo.attach(io: file_marc, filename: 'fake34.jpg', content_type: 'image/jpeg')
+marc.save!
+
+jean = User.new(
+  nick_name: 'ptit mec',
+  email: "jean@test.com",
+  password: "password"
+)
+file_jean = File.open("db/fixtures/fake36.jpg")
+jean.photo.attach(io: file_jean, filename: 'fake36.jpg', content_type: 'image/jpeg')
+jean.save!
+
+claude = User.new(
+  nick_name: 'claudius le best',
+  email: "claude@test.com",
+  password: "password"
+)
+file_claude = File.open("db/fixtures/fake37.jpg")
+claude.photo.attach(io: file_claude, filename: 'fake37.jpg', content_type: 'image/jpeg')
+claude.save!
+
 #############################################################################################
 ########################################### SPOTS ###########################################
 #############################################################################################
@@ -169,7 +493,7 @@ CODES_TEMPS = ["Soleil", "Peu nuageux", "Ciel voilé", "Nuageux", "Très nuageux
                   "Orages fréquents de pluie et neige mêlées ou grésil", "Orages forts et fréquents de pluie et neige mêlées ou grésil", "Pluies orageuses", "Pluie et neige mêlées à caractère orageux", "Neige à caractère orageux", "Pluie faible intermittente", "Pluie modérée intermittente",
                   "Pluie forte intermittente", "Neige faible intermittente", "Neige modérée intermittente", "Neige forte intermittente", "Pluie et neige mêlées", "Pluie et neige mêlées", "Pluie et neige mêlées", "Averses de grêle"]
 
-                  
+
 Spot.all.each do |spot|
   latlngt = [spot.latitude, spot.longitude].join(",")
 
