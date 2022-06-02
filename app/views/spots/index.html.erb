@@ -9,6 +9,9 @@
     %>
   </div>
 
+  <%= hidden_field_tag :spot_type, params[:spot_type] %>
+  <%= hidden_field_tag :order, params[:order] %>
+
   <% Activity.all.each do |activity| %>
     <%= label_tag "activities_#{activity.id}", activity.name %>
     <%= check_box_tag "activities[]", activity.id, params[:activities]&.include?(activity.id.to_s), id: "activities_#{activity.id}" %>
@@ -16,27 +19,34 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
-<%= link_to spots_path(query: params[:query]) do %>
-  <p>Toutes les catégories</p>
+<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order]) do %>
+  <p>Toutes les types</p>
 <% end %>
-<%= link_to spots_path(query: params[:query], category: "Plage Familiale") do %>
-  <p>Plage Familiale</p>
+<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Plage") do %>
+  <p>Plage</p>
 <% end %>
-<%= link_to spots_path(query: params[:query], category: "Sable Fin") do %>
-  <p>Sable Fin</p>
+<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Spot sauvage") do %>
+  <p>Spot sauvage</p>
 <% end %>
-<%= link_to spots_path(query: params[:query], category: "Pour Les Débutants") do %>
-  <p>Pour Les Débutants</p>
+<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "École") do %>
+  <p>École</p>
 <% end %>
-<%= link_to spots_path(query: params[:query], category: "Galets") do %>
-  <p>Galets</p>
+<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Port") do %>
+  <p>Port</p>
 <% end %>
-<%= link_to spots_path(query: params[:query], category: "Pour Les Experts") do %>
-  <p>Pour Les Experts</p>
+
+<% if params[:spot_type] %>
+    <p>Résultats pour <%= params[:spot_type] %></p>
 <% end %>
-<%= link_to spots_path(query: params[:query], category: "Perle Rare") do %>
-  <p>Perle Rare</p>
-<% end %>
+
+<div class="dropdown-sort my-2">
+  <button class="btn btn-ghost btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Trier par
+  </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <%= link_to "Meilleurs notes", spots_path(location: params[:location], activities: params[:activities], order: "desc_moyen_rating", spot_type: params[:spot_type]), class: "dropdown-item"%>
+    </div>
+</div>
 
 <div style="width: 100%; height: 600px;"
     data-controller="mapbox"
@@ -53,6 +63,7 @@
         <% end %>
         <%= spot.full_name %>
         <%= spot.address %>
+        <%= spot.avg_rating %>
       </div>
     <% end %>
   </div>
