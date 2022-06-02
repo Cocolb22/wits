@@ -1,37 +1,101 @@
-<%= render 'spots/header', spot: @spot%>
-<div class="show-descr">
-  <p><%= @spot.description %></p>
+<%= render 'spots/header', spot: @spot %>
+<div class="container-description">
+  <div class="show-onglets">
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to spot_path(@spot), class:"nav-link active label-bold nav-left" do %>
+          <i class="far fa-file-alt"></i> Présentation
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "#", class:"nav-link label" do %>
+          <i class="fas fa-thermometer-empty"></i> Météo
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to spot_comments_path(@spot), class:"nav-link label nav-right" do %>
+          <i class="far fa-comment-alt"></i> Commentaires
+        <% end %>
+      </li>
+    </ul>
+  </div>
 
-  <% if @services.parking? %>
-    <%=  image_tag "icons/Parking.svg" %>
-  <% end %>
-  <% if @services.restaurant? %>
-    <%=  image_tag "icons/Restaurant_proche.svg" %>
-  <% end %>
-  <% if @services.shower? %>
-    <%=  image_tag "icons/Douches_proches.svg" %>
-  <% end %>
-  <% if @services.camping? %>
-    <%=  image_tag "icons/Camping_proche.svg" %>
-  <% end %>
-  <% if @services.beach_surveillance? %>
-    <%=  image_tag "icons/Baignade_surveillee.svg" %>
-  <% end %>
-</div>
 
-  <div>
+<!-- Météo du spot
+<div class="spot-weather">
+<%= @spot.weathers %>
+</div> -->
+
+  <div class="show-descr">
+    <p><%= @spot.description %></p>
+
+    <div class="show-descr-grid">
+      <div class="show-descr-grid-type label-bold">
+        Type
+      </div>
+      <div class="show-descr-grid-category label-bold">
+        Categorie
+      </div>
+      <div class="show-descr-grid-fluent label-bold">
+        Affluence
+      </div>
+      <div class="show-descr-grid-type-content label">
+        <%= @spot.spot_type %>
+      </div>
+      <div class="show-descr-grid-category-content label">
+        <%= @spot.category %>
+      </div>
+      <div class="show-descr-grid-fluent-content label">
+        Calm
+      </div>
+    </div>
+
+    <div class="show-descr-services label-bold">
+      Services
+    </div>
+    <div class="show-descr-services-content">
+      <% if @services.parking? %>
+        <%=  image_tag "icons/Parking.svg" %>
+      <% end %>
+      <% if @services.restaurant? %>
+        <%=  image_tag "icons/Restaurant_proche.svg" %>
+      <% end %>
+      <% if @services.shower? %>
+        <%=  image_tag "icons/Douches_proches.svg" %>
+      <% end %>
+      <% if @services.camping? %>
+        <%=  image_tag "icons/Camping_proche.svg" %>
+      <% end %>
+      <% if @services.beach_surveillance? %>
+        <%=  image_tag "icons/Baignade_surveillee.svg" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="show-activities label-bold">
+   Activités
+  </div>
+  <div class="show-activities-content">
     <% @activities.each do |activity| %>
       <%=  image_tag "icons/#{activity.icon}" %>
     <% end %>
-
-
   </div>
-<div class="gps-container">
-  <p>Obtenir l'itinéraire</p>
-</div>
 
-<% if @user_favorite %>
-  <%= button_to 'Destroy', favorite_path(@user_favorite), method: :delete %>
-<% else %>
-  <%= button_to "Favorite", spot_favorites_path(@spot), method: :post %>
-<% end %>
+  <div class="show-comments-photos label-bold">
+   Toutes les photos du spots
+  </div>
+  <div class="show-comments-photos-content">
+    <% @spot.comments do |comment| %>
+      <% if comment.images.attached? %>
+        <% comment.images.each do |image| %>
+          <%= cl_image_tag image.key, width: 400, crop: :fill %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="gps-container btn-cta call-to-action">
+    Obtenir l'itinéraire
+  </div>
+
+</div>

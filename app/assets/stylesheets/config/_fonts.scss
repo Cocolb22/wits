@@ -58,6 +58,8 @@ p {
   font-family: "Gt-Am-reg";
   font-size: 16px;
   line-height: 24px;
+  color: $black-700;
+  margin-bottom: 0 !important;
 }
 
 .call-to-action {
@@ -84,6 +86,7 @@ p {
 
 .label {
   font-family: "Gt-Am-cond-reg";
+  font-size: 13px;
   line-height: 16px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -95,6 +98,7 @@ p {
   line-height: 16px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  color: $black-700;
 }
 
 // Define fonts for body and headers

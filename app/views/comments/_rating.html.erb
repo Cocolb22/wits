@@ -1,8 +1,23 @@
-<div data-spot-comments-target='rating'>
-    <h3>moyenne <%= spot.avg_rating %></h3>
+<div data-spot-comments-target='rating' class="comment-rating">
+  <div class="comment-rating-avg">
+    <p><%= spot.avg_rating %></p>
+  </div>
+  <div class="comment-rating-count label">
+    <p><%= spot.comments.count %> avis</p>
+  </div>
+  <div class="comment-rating-range-1">
     <p><%= spot.comments.where("rating = 5").count %></p>
+  </div>
+  <div class="comment-rating-range-2">
     <p><%= spot.comments.where("rating = 4").count %></p>
+  </div>
+  <div class="comment-rating-range-3">
     <p><%= spot.comments.where("rating = 3").count %></p>
+  </div>
+  <div class="comment-rating-range-4">
     <p><%= spot.comments.where("rating = 2").count %></p>
+  </div>
+  <div class="comment-rating-range-5">
     <p><%= spot.comments.where("rating = 1").count %></p>
   </div>
+</div>
