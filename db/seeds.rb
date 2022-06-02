@@ -8,34 +8,68 @@ User.destroy_all
 #############################################################################################
 ########################################### USERS ###########################################
 #############################################################################################
-corentin = User.new(nick_name: 'Cocolb22', email: "corentin@test.com", password: "password")
+corentin = User.new(
+                    nick_name: 'Cocolb22',
+                    email: "corentin@test.com",
+                    password: "password"
+                  )
 file_corentin = File.open("db/fixtures/Corentin.jpeg")
 corentin.photo.attach(io: file_corentin, filename: 'Corentin.jpeg', content_type: 'image/jpeg')
 corentin.save!
 
-shiyun = User.new(first_name: 'Shiyun', last_name: 'Batlle', nick_name: 'RabbitBatlle', email: "shiyun@test.com",
-                  password: "password", address: "2 rue de la mabilais, 35000 Rennes",
-                  birthday: Date.new(1988, 6, 7), gender: "Femme")
+shiyun = User.new(
+                  email: "shiyun@test.com",
+                  password: "password",
+                  nick_name: 'RabbitBatlle',
+                  address: "2 rue de la mabilais, 35000 Rennes", address_completed: true,
+                  first_name: 'Shiyun', first_name_completed: true,
+                  last_name: 'Batlle', last_name_completed: true,
+                  birthday: Date.new(1988, 6, 7), birthday_completed: true,
+                  gender: "Femme", gender_completed: true,
+                  profile_exp: 12
+                )
 file_shiyun = File.open("db/fixtures/Shiyun.jpeg")
 shiyun.photo.attach(io: file_shiyun, filename: 'Shiyun.jpeg', content_type: 'image/jpeg')
 shiyun.save!
 
-aurore = User.new(first_name: 'Aurore', last_name: 'Qoi', nick_name: 'AuroreQoi', email: "aurore@test.com",
-                  password: "password")
+aurore = User.new(
+                  nick_name: 'AuroreQoi',
+                  email: "aurore@test.com",
+                  password: "password",
+                  first_name: 'Aurore', first_name_completed: true,
+                  last_name: 'Qoi', last_name_completed: true,
+                  profile_exp: 4
+                )
 file_aurore = File.open("db/fixtures/Aurore.jpeg")
 aurore.photo.attach(io: file_aurore, filename: 'aurore.jpeg', content_type: 'image/jpeg')
 aurore.save!
 
-valentin = User.new(first_name: 'Valentin', last_name: 'Renon', nick_name: 'Neron22', email: "valentin@test.com",
-                    password: "password", address: "38 rue de bonne nouvelle, 22560 Trebeurden",
-                    birthday: Date.new(1998, 8, 10))
+valentin = User.new(
+                  nick_name: 'Neron22',
+                  email: "valentin@test.com",
+                  password: "password",
+                  first_name: 'Valentin', first_name_completed: true,
+                  last_name: 'Renon', last_name_completed: true,
+                  address: "38 rue de bonne nouvelle, 22560 Trebeurden", address_completed: true,
+                  birthday: Date.new(1998, 8, 10), birthday_completed: true,
+                  profile_exp: 8
+              )
 file_valentin = File.open("db/fixtures/Valentin.png")
 valentin.photo.attach(io: file_valentin, filename: 'Valentin.png', content_type: 'image/png')
 valentin.save!
 
-wits = User.new(first_name: 'wits', last_name: 'Wagon', nick_name: 'Wits', email: "wits@test.com",
-                password: "password", address: "2 rue de la mabilais, 35000 Rennes",
-                birthday: Date.new(2000, 2, 12), gender: "Homme")
+
+wits = User.new(
+              nick_name: 'Wits',
+              email: "wits@test.com",
+              password: "password",
+              first_name: 'wits', first_name_completed: true,
+              last_name: 'Wagon', last_name_completed: true,
+              address: "2 rue de la mabilais, 35000 Rennes", address_completed: true,
+              birthday: Date.new(2000, 2, 12), birthday_completed: true,
+              gender: "Homme", gender_completed: true,
+              profile_exp:10
+               )
 file_wits = File.open("db/fixtures/WITS.png")
 wits.photo.attach(io: file_wits, filename: 'WITS.png', content_type: 'image/png')
 wits.save!

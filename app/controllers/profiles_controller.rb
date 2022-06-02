@@ -10,6 +10,23 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     if @user.update(profile_params)
+
+      # check_profile_point(@user)
+
+      User::OPT_FIELDS.each do |field|
+        if @user.send(field).present? && !@user.send("#{field}_completed")
+          @user.add_points_and_update_status(2)
+          @user.send("#{field}_completed=", true)
+          @user.save
+        end
+      end
+
+      if @user.photo.attached? && !@user.photo_completed
+        @user.add_points_and_update_status(2)
+        @user.photo_completed = true
+        @user.save
+      end
+
       redirect_to profile_path
       flash[:notice] = "Profil modifié !"
     else

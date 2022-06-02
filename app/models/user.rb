@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   GENDERS =["Homme", "Femme", "Non Binaire"]
+  OPT_FIELDS = ["last_name", "first_name", "address", "birthday", "gender", "favorite_area"]
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
