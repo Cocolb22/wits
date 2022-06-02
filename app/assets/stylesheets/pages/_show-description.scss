@@ -1,0 +1,72 @@
+.container-description {
+  position: absolute;
+  // Attention c'est triché de ouf et il faut gérer le blur opacité aussi
+  top: 339px;
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+  padding: 0 16px;
+}
+
+.nav-link {
+  padding: $spacing-s $spacing-s;
+  color: $black-300;
+}
+.nav-link.active {
+  color: $primary;
+}
+.nav-left {
+  padding-left: 0 !important;
+}
+.nav-right {
+  padding-right: 0 !important;
+}
+
+.show-onglets {
+  margin-top: $spacing-xs;
+  margin-bottom: $spacing-s;
+  border-top: 1px solid $black-300;
+  border-bottom: 1px solid $black-300;
+}
+
+.show-descr {
+  color: $black-700;
+}
+
+.show-descr-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+
+.show-descr-grid-type, .show-descr-grid-category, .show-descr-grid-fluent {
+  padding: $spacing-xs 0;
+}
+.show-descr-grid-type-content, .show-descr-grid-category-content, .show-descr-grid-fluent-content {
+  padding-bottom: $spacing-xs;
+}
+
+.show-descr-services {
+  margin-bottom: 12px;
+}
+.show-descr-services-content {
+  padding-bottom: $spacing-xs;
+}
+
+.show-descr-activities, .show-comments-photos {
+  color: $primary;
+  margin-top: 12px;
+}
+.show-descr-activities-content, .show-comments-photos-content {
+  margin-bottom: $spacing-xs;
+}
+
+.btn-cta {
+  color: white;
+  width: 100%;
+  background: linear-gradient(89.48deg, #5FC1FA 6.24%, #1A82BE 93.98%);
+  text-align: center;
+  height: 56px;
+  line-height: 56px;
+}

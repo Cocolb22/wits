@@ -1,24 +1,70 @@
 <!--Image du spot-->
-<div class="banner">
-  <% spot.photos.each do |photo|%>
-    <%= cl_image_tag photo.key, crop: :fill, height: 150, width: 600 %>
+<div class="card-spot-carousel-show">
+  <%= link_to spots_path do %>
+    <i class="fas fa-angle-left card-image-tag"></i>
   <% end %>
 
+  <% if @user_favorite %>
+    <%= button_to favorite_path(@user_favorite), method: :delete do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  <% else %>
+    <%= button_to spot_favorites_path(@spot), method: :post do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+  <% end %>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <% @spot.photos.each do |photo|%>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= cl_image_tag photo.key, crop: :fill %>
+        </div>
+      </div>
+    <% end %>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 </div>
-<!--lien vers l'index spots-->
-<%= link_to '<-- Retour', spots_path, class:'btn btn-primary' %>
 
-<!-- Météo du spot
-<div class="spot-weather">
-<%= @spot.weathers %>
-</div> -->
+<div class="container-header">
+  <div class="card-spot-infos">
 
-<!--Categories du spot-->
-<div class="spot_category"><%= @spot.spot_type %></div>
+    <div class="card-spot-infos-rating">
+      <div class="card-spot-infos-rating-stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <%= @spot.avg_rating %>
+      <div class="pills pop">
+        <%= @spot.spot_type %>
+      </div>
+    </div>
 
-<!--Carte du spot-->
-<div class="card-show">
-  <h2><%= spot.full_name %></h2>
-  <h4><%= spot.address %></h4>
-  <%= spot.category %>
+    <div class="card-spot-infos-title">
+      <h2><%= @spot.full_name %></h2>
+      <i class="fas fa-cloud"></i>
+    </div>
+
+    <div class="card-spot-infos-localisation">
+      <i class="fas fa-map-marker-alt"></i>
+      <div class="card-spot-infos-localisation-city text-x-small-bold">
+      <%= @spot.address %>
+      </div>
+    </div>
+    <%= @spot.category %>
+
+  </div>
 </div>

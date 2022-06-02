@@ -1,15 +1,49 @@
 <%= render 'spots/header', spot: @spot %>
+<div class="container-description">
+  <div class="show-onglets">
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to spot_path(@spot), class:"nav-link label nav-left" do %>
+          <i class="far fa-file-alt"></i> Présentation
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "#", class:"nav-link label" do %>
+          <i class="fas fa-thermometer-empty"></i> Météo
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to spot_comments_path(@spot), class:"nav-link active label-bold nav-right" do %>
+          <i class="far fa-comment-alt"></i> Commentaires
+        <% end %>
+      </li>
+    </ul>
+  </div>
 
-<div data-controller="spot-comments">
-  <%= render "comments/form", spot: @spot, comment: @comment %>
+  <div data-controller="spot-comments">
 
-  <%= render 'comments/rating', spot: @spot%>
+    <%= render 'comments/rating', spot: @spot%>
 
-  <br>
-  <br>
-  <div data-spot-comments-target='list'>
-    <% @comments.each do |comment| %>
-      <%= render 'spots/comment', comment: comment%>
-    <% end %>
+    <div class="comments-sorting">
+      <div class="comments-sorting-text label-bold">
+        Trier
+      </div>
+      <div class="pills active">
+        Populaires
+      </div>
+      <div class="pills">
+        Récent
+      </div>
+      <div class="pills">
+        5 étoiles
+      </div>
+    </div>
+
+    <div data-spot-comments-target='list'>
+      <% @comments.each do |comment| %>
+        <%= render 'spots/comment', comment: comment%>
+      <% end %>
+    </div>
+    <%= render "comments/form", spot: @spot, comment: @comment %>
   </div>
 </div>

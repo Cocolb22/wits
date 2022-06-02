@@ -1,0 +1,26 @@
+.card-spot-carousel-show {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-spot-carousel-show i {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  color: white;
+  font-size: 24px;
+}
+
+.container-header {
+  position: absolute;
+  // Attention c'est triché de ouf et il faut gérer le blur opacité aussi
+  top: 246px;
+  width: 100%;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 7px 28px rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(16px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 24px 24px 0px 0px;
+  padding: 0 16px;
+}
