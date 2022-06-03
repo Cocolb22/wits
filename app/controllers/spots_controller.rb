@@ -36,6 +36,6 @@ class SpotsController < ApplicationController
 
   def forecast
     @spot = Spot.find(params[:id])
-    @weather = @spot.weathers
+    @weathers = @spot.weathers
   end
 end
