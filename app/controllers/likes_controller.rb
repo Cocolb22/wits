@@ -6,9 +6,10 @@ class LikesController < ApplicationController
     @like.user = current_user
 
     if @like.save
-      redirect_to comments_spot_path(@comment.spot)
-    else
-      redirect_to comments_spot_path(@comment.spot)
+      respond_to do |format|
+        format.html { redirect_to comments_spot_path(@comment.spot) }
+        format.text { render partial: "likes/destroy", locals: { like: @like, comment: @comment }, formats: [:html] }
+      end
     end
   end
 
@@ -16,6 +17,9 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
 
     @like.destroy
-    redirect_to comments_spot_path(@like.comment.spot)
+    respond_to do |format|
+      format.html { redirect_to comments_spot_path(@like.comment.spot) }
+      format.text { render partial: "likes/create", locals: { comment: @like.comment }, formats: [:html] }
+    end
   end
 end

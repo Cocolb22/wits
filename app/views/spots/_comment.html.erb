@@ -29,10 +29,15 @@
       <%= cl_image_tag image.key, width: 400, crop: :fill %>
     <% end %>
   <% end %>
-  <p class="mb-3"><%= comment.content %></p>
-  <% if Like.find_by(user: current_user, comment: comment) %>
-    <%= link_to "Unliker", like_path(Like.find_by(user: current_user, comment: comment)), method: :delete %>
-  <% else %>
-    <%= link_to "Liker", comment_likes_path(comment), method: :post %>
-  <% end %>
+  <p><%= comment.content %></p>
+
+  <div data-controller="like" class="like-controls">
+    <div data-like-target="button">
+      <% if like = Like.find_by(user: current_user, comment: comment) %>
+        <%= render "likes/destroy", like: like, comment: comment %>
+      <% else %>
+        <%= render "likes/create", comment: comment %>
+      <% end %>
+    </div>
+  </div>
 </div>
