@@ -33,4 +33,9 @@ class SpotsController < ApplicationController
     @comments = @spot.comments.order('id DESC')
     @comment = Comment.new
   end
+
+  def forecast
+    @spot = Spot.find(params[:id])
+    @weather = @spot.weathers
+  end
 end

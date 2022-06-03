@@ -1,0 +1,183 @@
+<%= render 'spots/header', spot: @spot %>
+<div class="container-description">
+  <div class="show-onglets">
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to spot_path(@spot), class:"nav-link label-bold nav-left" do %>
+          <i class="far fa-file-alt"></i> Présentation
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to forecast_spot_path(@spot), class:"nav-link active label" do %>
+          <i class="fas fa-thermometer-empty"></i> Météo
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to spot_comments_path(@spot), class:"nav-link label nav-right" do %>
+          <i class="far fa-comment-alt"></i> Commentaires
+        <% end %>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="d-flex forecast-days">
+    <div class="pills active">
+      AUJOURD'HUI
+    </div>
+
+    <div class="pills">
+      DEMAIN
+    </div>
+
+    <div class="pills">
+      JEUDI
+    </div>
+
+    <div class="pills">
+      VENDREDI
+    </div>
+
+    <div class="pills">
+      SAMEDI
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/tempB.svg'%>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            temp. min.
+          </div>
+          <h3>02°C</h3>
+        </div>
+      </div>
+
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/tempH.svg'%>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            temp. max.
+          </div>
+          <h3>24°C</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/cloud.svg'%>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            météo
+          </div>
+          <h3>Nuageux</h3>
+        </div>
+      </div>
+
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/sund.svg'%>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            uv
+          </div>
+          <h3>2</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/wind.svg'%>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            vent
+          </div>
+          <h3>15 nds</h3>
+        </div>
+      </div>
+
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/rafale.svg' %>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            rafales
+          </div>
+          <h3>45 nds</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/windDir.svg'%>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            dir. du vent
+          </div>
+          <h3>N-NE</h3>
+        </div>
+      </div>
+
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/humidity.svg'%>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            pluie
+          </div>
+          <h3>12%</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/maréeB.svg'%>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            marée basse
+          </div>
+          <h3>16h32</h3>
+        </div>
+      </div>
+
+      <div class="weather-picto col">
+        <div class="weather-picto-left">
+          <%= image_tag 'icons/maréeH.svg'%>
+        </div>
+        <div class="weather-picto-right">
+          <div class="weather-picto-right-title text-x-small">
+            marée haute
+          </div>
+          <h3>23h32</h3>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+</div>
