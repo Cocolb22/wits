@@ -31,7 +31,7 @@
   <% end %>
   <p><%= comment.content %></p>
 
-  <div data-controller="like">
+  <div data-controller="like" class="like-controls">
     <div data-like-target="button">
       <% if like = Like.find_by(user: current_user, comment: comment) %>
         <%= render "likes/destroy", like: like, comment: comment %>
