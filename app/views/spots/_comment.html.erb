@@ -15,13 +15,13 @@
     </div>
     <div class="comment-header-right">
       <div class="card-spot-infos-rating-stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="far fa-star"></i>
+        <% comment.rating.floor.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - comment.rating.floor).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
       </div>
-      <%= comment.rating %>
     </div>
   </div>
   <% if comment.images.attached? %>
