@@ -38,18 +38,17 @@
 
 <div class="container-header">
   <div class="card-spot-infos">
-
     <div class="card-spot-infos-rating">
       <div class="card-spot-infos-rating-stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="far fa-star"></i>
-      </div>
-      <%= @spot.avg_rating %>
+        <% @spot.avg_rating.floor.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - @spot.avg_rating.floor).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
       <div class="pills pop">
         <%= @spot.spot_type %>
+      </div>
       </div>
     </div>
 
@@ -64,6 +63,5 @@
       </div>
     </div>
     <%= @spot.category %>
-
   </div>
 </div>

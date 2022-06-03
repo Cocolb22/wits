@@ -60,18 +60,30 @@ Look at your main `application.scss` file to see how SCSS files are imported. Th
 // app/assets/stylesheets/application.scss
 
 // Graphical variables
-@import "config/fonts";
 @import "config/colors";
+@import "config/fonts";
 @import "config/bootstrap_variables";
+@import "config/spacing";
 
 // External libraries
-@import "bootstrap/scss/bootstrap"; // from the node_modules
+@import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "mapbox-gl/dist/mapbox-gl";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "geocoder";
+@import "components/dropdown-sort";
+@import "components/button";
+
+// Main style
+
+a {
+  text-decoration:none !important;
+}
 ```
 
 For every folder (**`components`**, **`pages`**), there is one `_index.scss` partial which is responsible for importing all the other partials of its folder.

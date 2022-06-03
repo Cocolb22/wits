@@ -1,2 +1,30 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container-home">
+  <div class="home-video-wrapper">
+    <%= video_tag "video_mer.mp4", autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video" %>
+    <div class="home-content">
+      <div class="logo">
+        WITS
+      </div>
+
+      <div class="spot-parfait">
+        Le spot parfait pour ton sport nautique préféré
+      </div>
+
+
+      <div class="btn-col-home">
+        <div class="btn-connect call-to-action">
+          <%= link_to "Se connecter", user_session_path %>
+        </div>
+
+        <div class="btn-sign-up call-to-action">
+          <%= link_to "S'inscrire", new_user_registration_path %>
+        </div>
+      </div>
+
+      <div class="btn-without-connect call-to-action">
+        <%= link_to "Continuer sans se connecter", search_spots_path %>
+      </div>
+
+    </div>
+  </div>
+</div>

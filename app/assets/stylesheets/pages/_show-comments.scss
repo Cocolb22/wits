@@ -81,6 +81,14 @@
   justify-content: space-between;
   align-items: center;
   margin: $spacing-s 0;
+  a {
+    text-decoration: none;
+    font-family: "Gt-Am-cond-reg";
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
 }
 
 .comment-content {
