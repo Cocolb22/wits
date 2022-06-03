@@ -13,11 +13,15 @@ Rails.application.routes.draw do
       patch :approve
       patch :unapprove
     end
+    collection do
+      get :search
+    end
     resources :comments, only: [:create]
     resources :favorites, only: [:create]
   end
 
   resources :favorites, only: [:index, :destroy ]
+  resources :likes, only: [:destroy]
 
   resources :comments, only: [] do
     member do
