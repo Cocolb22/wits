@@ -1,4 +1,19 @@
 class SpotsController < ApplicationController
+  def new
+    @spot = Spot.new
+  end
+
+  def create
+    @spot = Spot.new(spot_params)
+    @spot.user = current_user
+
+    if @spot.save
+      redirect_to spot_path(@spot)
+    else
+      render :new
+    end
+  end
+
   def index
     if params[:activities]
       @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i))
