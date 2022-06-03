@@ -16,7 +16,9 @@ module Wits
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.action_view.automatically_disable_submit_tag = false
+    config.i18n.default_locale = :fr
     config.action_view.embed_authenticity_token_in_remote_forms = true
+
 
     # Configuration for the application, engines, and railties goes here.
     #
