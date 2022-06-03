@@ -26,7 +26,8 @@ shiyun = User.new(
                   last_name: 'Batlle', last_name_completed: true,
                   birthday: Date.new(1988, 6, 7), birthday_completed: true,
                   gender: "Femme", gender_completed: true,
-                  profile_exp: 12
+                  profile_exp: 150,
+                  status: "Capitaine"
                 )
 file_shiyun = File.open("db/fixtures/Shiyun.jpeg")
 shiyun.photo.attach(io: file_shiyun, filename: 'Shiyun.jpeg', content_type: 'image/jpeg')
@@ -38,7 +39,8 @@ aurore = User.new(
                   password: "password",
                   first_name: 'Aurore', first_name_completed: true,
                   last_name: 'Qoi', last_name_completed: true,
-                  profile_exp: 4
+                  profile_exp: 260,
+                  status: "Amiral"
                 )
 file_aurore = File.open("db/fixtures/Aurore.jpeg")
 aurore.photo.attach(io: file_aurore, filename: 'aurore.jpeg', content_type: 'image/jpeg')
@@ -52,8 +54,9 @@ valentin = User.new(
                   last_name: 'Renon', last_name_completed: true,
                   address: "38 rue de bonne nouvelle, 22560 Trebeurden", address_completed: true,
                   birthday: Date.new(1998, 8, 10), birthday_completed: true,
-                  profile_exp: 8
-              )
+                  profile_exp: 550,
+                  status: "Vieux Briscard"
+                  )
 file_valentin = File.open("db/fixtures/Valentin.png")
 valentin.photo.attach(io: file_valentin, filename: 'Valentin.png', content_type: 'image/png')
 valentin.save!
@@ -169,7 +172,7 @@ CODES_TEMPS = ["Soleil", "Peu nuageux", "Ciel voilé", "Nuageux", "Très nuageux
                   "Orages fréquents de pluie et neige mêlées ou grésil", "Orages forts et fréquents de pluie et neige mêlées ou grésil", "Pluies orageuses", "Pluie et neige mêlées à caractère orageux", "Neige à caractère orageux", "Pluie faible intermittente", "Pluie modérée intermittente",
                   "Pluie forte intermittente", "Neige faible intermittente", "Neige modérée intermittente", "Neige forte intermittente", "Pluie et neige mêlées", "Pluie et neige mêlées", "Pluie et neige mêlées", "Averses de grêle"]
 
-                  
+
 Spot.all.each do |spot|
   latlngt = [spot.latitude, spot.longitude].join(",")
 
