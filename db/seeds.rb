@@ -26,7 +26,8 @@ shiyun = User.new(
                   last_name: 'Batlle', last_name_completed: true,
                   birthday: Date.new(1988, 6, 7), birthday_completed: true,
                   gender: "Femme", gender_completed: true,
-                  profile_exp: 12
+                  profile_exp: 150,
+                  status: "Capitaine"
                 )
 file_shiyun = File.open("db/fixtures/Shiyun.jpeg")
 shiyun.photo.attach(io: file_shiyun, filename: 'Shiyun.jpeg', content_type: 'image/jpeg')
@@ -38,7 +39,8 @@ aurore = User.new(
                   password: "password",
                   first_name: 'Aurore', first_name_completed: true,
                   last_name: 'Qoi', last_name_completed: true,
-                  profile_exp: 4
+                  profile_exp: 260,
+                  status: "Amiral"
                 )
 file_aurore = File.open("db/fixtures/Aurore.jpeg")
 aurore.photo.attach(io: file_aurore, filename: 'aurore.jpeg', content_type: 'image/jpeg')
@@ -52,8 +54,9 @@ valentin = User.new(
                   last_name: 'Renon', last_name_completed: true,
                   address: "38 rue de bonne nouvelle, 22560 Trebeurden", address_completed: true,
                   birthday: Date.new(1998, 8, 10), birthday_completed: true,
-                  profile_exp: 8
-              )
+                  profile_exp: 550,
+                  status: "Vieux Briscard"
+                  )
 file_valentin = File.open("db/fixtures/Valentin.png")
 valentin.photo.attach(io: file_valentin, filename: 'Valentin.png', content_type: 'image/png')
 valentin.save!
@@ -72,6 +75,330 @@ wits = User.new(
 file_wits = File.open("db/fixtures/WITS.png")
 wits.photo.attach(io: file_wits, filename: 'WITS.png', content_type: 'image/png')
 wits.save!
+
+emilie = User.new(
+  nick_name: 'emijolie',
+  email: "emilie@test.com",
+  password: "password"
+)
+file_emilie = File.open("db/fixtures/fake1.jpeg")
+emilie.photo.attach(io: file_emilie, filename: 'fake1.jpeg', content_type: 'image/jpeg')
+emilie.save!
+
+aurelie = User.new(
+  nick_name: 'auré',
+  email: "aurelie@test.com",
+  password: "password"
+)
+file_aurelie = File.open("db/fixtures/fake2.jpeg")
+aurelie.photo.attach(io: file_aurelie, filename: 'fake2.jpeg', content_type: 'image/jpeg')
+aurelie.save!
+
+alicia = User.new(
+  nick_name: 'alili',
+  email: "alicia@test.com",
+  password: "password"
+)
+file_alicia = File.open("db/fixtures/fake3.jpeg")
+alicia.photo.attach(io: file_alicia, filename: 'fake3.jpeg', content_type: 'image/jpeg')
+alicia.save!
+
+jean_michou = User.new(
+  nick_name: 'jean_michou',
+  email: "jean_michou@test.com",
+  password: "password"
+)
+file_jean_michou = File.open("db/fixtures/fake4.jpeg")
+jean_michou.photo.attach(io: file_jean_michou, filename: 'fake4.jpeg', content_type: 'image/jpeg')
+jean_michou.save!
+
+sylvie = User.new(
+  nick_name: 'vartan22',
+  email: "sylvie@test.com",
+  password: "password"
+)
+file_sylvie = File.open("db/fixtures/fake5.jpeg")
+sylvie.photo.attach(io: file_sylvie, filename: 'fake5.jpeg', content_type: 'image/jpeg')
+sylvie.save!
+
+morganne = User.new(
+  nick_name: "momor l'amor",
+  email: "morganne@test.com",
+  password: "password"
+)
+file_morganne = File.open("db/fixtures/fake6.jpeg")
+morganne.photo.attach(io: file_morganne, filename: 'fake6.jpeg', content_type: 'image/jpeg')
+morganne.save!
+
+julio = User.new(
+  nick_name: 'el iglesia',
+  email: "julio@test.com",
+  password: "password"
+)
+file_julio = File.open("db/fixtures/fake7.jpeg")
+julio.photo.attach(io: file_julio, filename: 'fake7.jpeg', content_type: 'image/jpeg')
+julio.save!
+
+camille = User.new(
+  nick_name: 'mimile',
+  email: "camille@test.com",
+  password: "password"
+)
+file_camille = File.open("db/fixtures/fake8.jpeg")
+camille.photo.attach(io: file_camille, filename: 'fake8.jpeg', content_type: 'image/jpeg')
+camille.save!
+
+helene = User.new(
+  nick_name: 'la troyenne',
+  email: "helene@test.com",
+  password: "password"
+)
+file_helene = File.open("db/fixtures/fake9.jpeg")
+helene.photo.attach(io: file_helene, filename: 'fake9.jpeg', content_type: 'image/jpeg')
+helene.save!
+
+audrey = User.new(
+  nick_name: 'pas pulvar',
+  email: "audrey@test.com",
+  password: "password"
+)
+file_audrey = File.open("db/fixtures/fake10.jpeg")
+audrey.photo.attach(io: file_audrey, filename: 'fake10.jpeg', content_type: 'image/jpeg')
+audrey.save!
+
+patrick = User.new(
+  nick_name: 'papat',
+  email: "patrick@test.com",
+  password: "password"
+)
+file_patrick = File.open("db/fixtures/fake11.jpeg")
+patrick.photo.attach(io: file_patrick, filename: 'fake11.jpeg', content_type: 'image/jpeg')
+patrick.save!
+
+elsa = User.new(
+  nick_name: 'libérée',
+  email: "elsa@test.com",
+  password: "password"
+)
+file_elsa = File.open("db/fixtures/fake12.jpeg")
+elsa.photo.attach(io: file_elsa, filename: 'fake12.jpeg', content_type: 'image/jpeg')
+elsa.save!
+
+anna = User.new(
+  nick_name: 'ptite blonde',
+  email: "anna@test.com",
+  password: "password"
+)
+file_anna = File.open("db/fixtures/fake13.jpeg")
+anna.photo.attach(io: file_anna, filename: 'fake13.jpeg', content_type: 'image/jpeg')
+anna.save!
+
+zoe = User.new(
+  nick_name: 'zozo',
+  email: "zoe@test.com",
+  password: "password"
+)
+file_zoe = File.open("db/fixtures/fake14.jpeg")
+zoe.photo.attach(io: file_zoe, filename: 'fake14.jpeg', content_type: 'image/jpeg')
+zoe.save!
+
+michelle = User.new(
+  nick_name: 'michou',
+  email: "michelle@test.com",
+  password: "password"
+)
+file_michelle = File.open("db/fixtures/fake15.jpeg")
+michelle.photo.attach(io: file_michelle, filename: 'fake15.jpeg', content_type: 'image/jpeg')
+michelle.save!
+
+emilia = User.new(
+  nick_name: 'clé',
+  email: "emilia@test.com",
+  password: "password"
+)
+file_emilia = File.open("db/fixtures/fake16.jpeg")
+emilia.photo.attach(io: file_emilia, filename: 'fake16.jpeg', content_type: 'image/jpeg')
+emilia.save!
+
+sophie = User.new(
+  nick_name: 'blondie',
+  email: "sophie@test.com",
+  password: "password"
+)
+file_sophie = File.open("db/fixtures/fake17.jpeg")
+sophie.photo.attach(io: file_sophie, filename: 'fake17.jpeg', content_type: 'image/jpeg')
+sophie.save!
+
+christianne = User.new(
+  nick_name: 'bibi',
+  email: "christianne@test.com",
+  password: "password"
+)
+file_christianne = File.open("db/fixtures/fake18.jpeg")
+christianne.photo.attach(io: file_christianne, filename: 'fake18.jpeg', content_type: 'image/jpeg')
+christianne.save!
+
+noe = User.new(
+  nick_name: 'sir19854',
+  email: "noe@test.com",
+  password: "password"
+)
+file_noe = File.open("db/fixtures/fake19.jpeg")
+noe.photo.attach(io: file_noe, filename: 'fake19.jpeg', content_type: 'image/jpeg')
+noe.save!
+
+christine = User.new(
+  nick_name: 'cricri',
+  email: "christine@test.com",
+  password: "password"
+)
+file_christine = File.open("db/fixtures/fake20.jpeg")
+christine.photo.attach(io: file_christine, filename: 'fake20.jpeg', content_type: 'image/jpeg')
+christine.save!
+
+maelie = User.new(
+  nick_name: 'kawaii',
+  email: "maelie@test.com",
+  password: "password"
+)
+file_maelie = File.open("db/fixtures/fake21.jpeg")
+maelie.photo.attach(io: file_maelie, filename: 'fake21.jpeg', content_type: 'image/jpeg')
+maelie.save!
+
+charles = User.new(
+  nick_name: 'le roi',
+  email: "charles@test.com",
+  password: "password"
+)
+file_charles = File.open("db/fixtures/fake22.jpeg")
+charles.photo.attach(io: file_charles, filename: 'fake22.jpeg', content_type: 'image/jpeg')
+charles.save!
+
+francois = User.new(
+  nick_name: 'francois',
+  email: "francois@test.com",
+  password: "password"
+)
+file_francois = File.open("db/fixtures/fake23.jpeg")
+francois.photo.attach(io: file_francois, filename: 'fake23.jpeg', content_type: 'image/jpeg')
+francois.save!
+
+sarah = User.new(
+  nick_name: 'sarah38',
+  email: "sarah@test.com",
+  password: "password"
+)
+file_sarah = File.open("db/fixtures/fake24.jpeg")
+sarah.photo.attach(io: file_sarah, filename: 'fake24.jpeg', content_type: 'image/jpeg')
+sarah.save!
+
+josianne = User.new(
+  nick_name: 'jojo',
+  email: "josianne@test.com",
+  password: "password"
+)
+file_josianne = File.open("db/fixtures/fake26.jpeg")
+josianne.photo.attach(io: file_josianne, filename: 'fake26.jpeg', content_type: 'image/jpeg')
+josianne.save!
+
+melanie = User.new(
+  nick_name: 'mel',
+  email: "melanie@test.com",
+  password: "password"
+)
+file_melanie = File.open("db/fixtures/fake27.jpeg")
+melanie.photo.attach(io: file_melanie, filename: 'fake27.jpeg', content_type: 'image/jpeg')
+melanie.save!
+
+jeanne = User.new(
+  nick_name: 'pépétte',
+  email: "jeanne@test.com",
+  password: "password"
+)
+file_jeanne = File.open("db/fixtures/fake28.jpeg")
+jeanne.photo.attach(io: file_jeanne, filename: 'fake28.jpeg', content_type: 'image/jpeg')
+jeanne.save!
+
+thomas = User.new(
+  nick_name: 'dallina',
+  email: "thomas@test.com",
+  password: "password"
+)
+file_thomas = File.open("db/fixtures/fake29.jpeg")
+thomas.photo.attach(io: file_thomas, filename: 'fake29.jpeg', content_type: 'image/jpeg')
+thomas.save!
+
+arianne = User.new(
+  nick_name: 'doudou',
+  email: "arianne@test.com",
+  password: "password"
+)
+file_arianne = File.open("db/fixtures/fake30.jpeg")
+arianne.photo.attach(io: file_arianne, filename: 'fake30.jpeg', content_type: 'image/jpeg')
+arianne.save!
+
+marianne = User.new(
+  nick_name: 'revolutionnaire',
+  email: "marianne@test.com",
+  password: "password"
+)
+file_marianne = File.open("db/fixtures/fake31.jpeg")
+marianne.photo.attach(io: file_marianne, filename: 'fake31.jpeg', content_type: 'image/jpeg')
+marianne.save!
+
+olympe = User.new(
+  nick_name: 'gouges',
+  email: "olympe@test.com",
+  password: "password"
+)
+file_olympe = File.open("db/fixtures/fake32.jpeg")
+olympe.photo.attach(io: file_olympe, filename: 'fake32.jpeg', content_type: 'image/jpeg')
+olympe.save!
+
+louisa = User.new(
+  nick_name: 'délice',
+  email: "louisa@test.com",
+  password: "password"
+)
+file_louisa = File.open("db/fixtures/fake25.jpeg")
+louisa.photo.attach(io: file_louisa, filename: 'fake25.jpeg', content_type: 'image/jpeg')
+louisa.save!
+
+eloise = User.new(
+  nick_name: 'elo',
+  email: "eloise@test.com",
+  password: "password"
+)
+file_eloise = File.open("db/fixtures/fake33.jpeg")
+eloise.photo.attach(io: file_eloise, filename: 'fake33.jpeg', content_type: 'image/jpeg')
+eloise.save!
+
+marc = User.new(
+  nick_name: 'marcus32',
+  email: "marc@test.com",
+  password: "password"
+)
+file_marc = File.open("db/fixtures/fake34.jpeg")
+marc.photo.attach(io: file_marc, filename: 'fake34.jpeg', content_type: 'image/jpeg')
+marc.save!
+
+jean = User.new(
+  nick_name: 'ptit mec',
+  email: "jean@test.com",
+  password: "password"
+)
+file_jean = File.open("db/fixtures/fake36.jpeg")
+jean.photo.attach(io: file_jean, filename: 'fake36.jpeg', content_type: 'image/jpeg')
+jean.save!
+
+claude = User.new(
+  nick_name: 'claudius le best',
+  email: "claude@test.com",
+  password: "password"
+)
+file_claude = File.open("db/fixtures/fake37.jpeg")
+claude.photo.attach(io: file_claude, filename: 'fake37.jpeg', content_type: 'image/jpeg')
+claude.save!
 
 #############################################################################################
 ########################################### SPOTS ###########################################
@@ -296,54 +623,54 @@ comment_to_treb_2 = Comment.create!( user:aurore, spot:evt_treb, content:" une �
 comment_to_treb_3 = Comment.create!( user:shiyun, spot:evt_treb, content:" une plage agréable et proche de tous les commerces nécessaires pour une famille", rating: 5)
 comment_to_treb_4 = Comment.create!( user:valentin, spot:evt_treb, content:" Superbe Plage j'y passerai tout mes été", rating: 5)
 comment_to_treb_5 = Comment.create!( user:corentin, spot:evt_treb, content:" Incroyable sable fin ici, parfait pour les fin de soirées autour du feu", rating: 4)
-comment_to_treb_6 = Comment.create!( user:shiyun, spot:evt_treb, content:" J'ai grandis ici et j'ai vu la plage se dégradée au fur et a mesure du temps.", rating: 1)
+comment_to_treb_6 = Comment.create!( user:emilie, spot:evt_treb, content:" J'ai grandis ici et j'ai vu la plage se dégradée au fur et a mesure du temps.", rating: 1)
 comment_to_treb_7 = Comment.create!( user:wits, spot:evt_treb, content:" Sympathique avec les enfants, mais beaucoup de monde", rating: 2)
-comment_to_treb_8 = Comment.create!( user:valentin, spot:evt_treb, content:" TROP BIEN J'AI PECHO ", rating: 5)
-comment_to_treb_9 = Comment.create!( user:shiyun, spot:evt_treb, content:" pas mal pour un tour en bateau mais les gens la météo n'était pas au rendez-vous", rating: 2)
-comment_to_treb_10 = Comment.create!( user:wits, spot:evt_treb, content:" le parking est sublime, très beau béton", rating: 5)
-comment_to_treb_11 = Comment.create!( user:valentin, spot:evt_treb, content:" il fait froid dans cette région !!!! ", rating: 1)
-comment_to_treb_12 = Comment.create!( user:aurore, spot:evt_treb, content:" hé bé, c'est pas mal hein", rating: 4)
-comment_to_treb_13 = Comment.create!( user:corentin, spot:evt_treb, content:" oui ", rating: 3)
-comment_to_treb_14 = Comment.create!( user:shiyun, spot:evt_treb, content:" comment je fais pour laisser un commentaire? ", rating: 1)
-comment_to_treb_15 = Comment.create!( user:aurore, spot:evt_treb, content:" incroyable plage !!!!! sur la tête de ma mère j'ai même vu une baleine! ", rating: 5)
-comment_to_treb_16 = Comment.create!( user:corentin, spot:evt_treb, content:" un jour j'ai attrapé un pigeon a main nu ici ! ", rating: 4)
-comment_to_treb_17 = Comment.create!( user:shiyun, spot:evt_treb, content:" ok sans plus", rating: 3)
-comment_to_treb_18 = Comment.create!( user:aurore, spot:evt_treb, content:" sérieux je sais pas ce qu'il vous faut mais je trouve ça legit ", rating: 4)
-comment_to_treb_19 = Comment.create!( user:corentin, spot:evt_treb, content:" la meilleure partie du road-trip ici était le trajet ", rating: 1)
-comment_to_treb_20 = Comment.create!( user:shiyun, spot:evt_treb, content:" pas mal si on veut cacher un corps, mais c'est tout ", rating: 2)
-comment_to_treb_21 = Comment.create!( user:aurore, spot:evt_treb, content:" bien amusée ici en famille c'était bath ", rating: 5)
-comment_to_treb_22 = Comment.create!( user:corentin, spot:evt_treb, content:" si vous trouver une montre swatch c'est la mienne merci de me prévenir", rating: 3)
-comment_to_treb_23 = Comment.create!( user:shiyun, spot:evt_treb, content:" je pense que cette plage est trop surcoté, elle est pas si bien que ça ", rating: 2)
-comment_to_treb_24 = Comment.create!( user:aurore, spot:evt_treb, content:" je cherchais l'hopital pour donner naissance a mon premier enfant maps m'a conduit ici ", rating: 1)
-comment_to_treb_25 = Comment.create!( user:valentin, spot:evt_treb, content:" j'ai trouvé une montre swatch ! trop bien ", rating: 5)
-comment_to_treb_26 = Comment.create!( user:shiyun, spot:evt_treb, content:" je crois que c'est ici qu'a été tournée un long dimanche de fiancaille !!!! meilleur film ", rating: 5)
-comment_to_treb_27 = Comment.create!( user:aurore, spot:evt_treb, content:" je crois avoir vu jean yves le drian en maillot de bain mdr", rating: 3)
-comment_to_treb_28 = Comment.create!( user:corentin, spot:evt_treb, content:" vous pensez pas qu'il y a trop de commentaire sur cette page ? ", rating: 5)
-comment_to_treb_29 = Comment.create!( user:wits, spot:evt_treb, content:" nan easy il en faut plein de toute façon tkt", rating: 5)
-comment_to_treb_30 = Comment.create!( user:aurore, spot:evt_treb, content:" Ce serait trop bien qu'il y ai un ciné nocturne ici en été! ", rating: 4)
-comment_to_treb_31 = Comment.create!( user:corentin, spot:evt_treb, content:" le vendeur de glace n'avais plus de vanille :( ", rating: 1)
-comment_to_treb_32 = Comment.create!( user:shiyun, spot:evt_treb, content:" j'aurai du partir en vacances a Seattle, au moins la bas les gens sont sympathiques", rating: 1)
-comment_to_treb_33 = Comment.create!( user:wits, spot:evt_treb, content:" Moi de mon temps on se plaignait pas du monde sur la plage! même s'il y a trop de monde", rating: 3)
-comment_to_treb_34 = Comment.create!( user:corentin, spot:evt_treb, content:" j'ai perdu au concours de création de chateau de sable T.T", rating: 2)
-comment_to_treb_35 = Comment.create!( user:shiyun, spot:evt_treb, content:" belle plage, sable agréable, plein de choses a faire et tres jolie ville!  ", rating: 5)
-comment_to_treb_36 = Comment.create!( user:aurore, spot:evt_treb, content:" vous pensez qu'il y a une vie après la mort?", rating: 4)
-comment_to_treb_37 = Comment.create!( user:corentin, spot:evt_treb, content:" la plage est supposée être surveillé. Ce n'est pas le cas. Mais la plage est belle ", rating: 3)
-comment_to_treb_38 = Comment.create!( user:valentin, spot:evt_treb, content:" l'eau est propre! c'est de plus en plus rare", rating: 5)
-comment_to_treb_39 = Comment.create!( user:aurore, spot:evt_treb, content:" j'ai gagné un concours de chateau de sable mdr !", rating: 5)
-comment_to_treb_40 = Comment.create!( user:corentin, spot:evt_treb, content:" Toujours la détente ici j'adore !!!!", rating: 4)
-comment_to_treb_41 = Comment.create!( user:shiyun, spot:evt_treb, content:" plage plutot sale, je suis sur que c'est a cause de ces fichus touristes ! ", rating: 2)
-comment_to_treb_42 = Comment.create!( user:aurore, spot:evt_treb, content:" j'ouvre mon restaurant de tapas ! n'hésitez pas a passer !!", rating: 5)
-comment_to_treb_43 = Comment.create!( user:valentin, spot:evt_treb, content:" Tellement d'activité ici !!! on ne s'ennuit jamais ! ", rating: 4)
-comment_to_treb_44 = Comment.create!( user:shiyun, spot:evt_treb, content:" y a un mec il m'a venère je lui ai foutu mon poings dans la gueule, ça détends", rating: 3)
+comment_to_treb_8 = Comment.create!( user:aurelie, spot:evt_treb, content:" TROP BIEN J'AI PECHO ", rating: 5)
+comment_to_treb_9 = Comment.create!( user:alicia, spot:evt_treb, content:" pas mal pour un tour en bateau mais les gens la météo n'était pas au rendez-vous", rating: 2)
+comment_to_treb_10 = Comment.create!( user:jean_michou, spot:evt_treb, content:" le parking est sublime, très beau béton", rating: 5)
+comment_to_treb_11 = Comment.create!( user:sylvie, spot:evt_treb, content:" il fait froid dans cette région !!!! ", rating: 1)
+comment_to_treb_12 = Comment.create!( user:morganne, spot:evt_treb, content:" hé bé, c'est pas mal hein", rating: 4)
+comment_to_treb_13 = Comment.create!( user:julio, spot:evt_treb, content:" oui ", rating: 3)
+comment_to_treb_14 = Comment.create!( user:camille, spot:evt_treb, content:" comment je fais pour laisser un commentaire? ", rating: 1)
+comment_to_treb_15 = Comment.create!( user:helene, spot:evt_treb, content:" incroyable plage !!!!! sur la tête de ma mère j'ai même vu une baleine! ", rating: 5)
+comment_to_treb_16 = Comment.create!( user:thomas, spot:evt_treb, content:" un jour j'ai attrapé un pigeon a main nu ici ! ", rating: 4)
+comment_to_treb_17 = Comment.create!( user:olympe, spot:evt_treb, content:" ok sans plus", rating: 3)
+comment_to_treb_18 = Comment.create!( user:marc, spot:evt_treb, content:" sérieux je sais pas ce qu'il vous faut mais je trouve ça legit ", rating: 4)
+comment_to_treb_19 = Comment.create!( user:audrey, spot:evt_treb, content:" la meilleure partie du road-trip ici était le trajet ", rating: 1)
+comment_to_treb_20 = Comment.create!( user:patrick, spot:evt_treb, content:" pas mal si on veut cacher un corps, mais c'est tout ", rating: 2)
+comment_to_treb_21 = Comment.create!( user:elsa, spot:evt_treb, content:" bien amusée ici en famille c'était bath ", rating: 5)
+comment_to_treb_22 = Comment.create!( user:anna, spot:evt_treb, content:" si vous trouver une montre swatch c'est la mienne merci de me prévenir", rating: 3)
+comment_to_treb_23 = Comment.create!( user:zoe, spot:evt_treb, content:" je pense que cette plage est trop surcoté, elle est pas si bien que ça ", rating: 2)
+comment_to_treb_24 = Comment.create!( user:michelle, spot:evt_treb, content:" je cherchais l'hopital pour donner naissance a mon premier enfant maps m'a conduit ici ", rating: 1)
+comment_to_treb_25 = Comment.create!( user:sophie, spot:evt_treb, content:" j'ai trouvé une montre swatch ! trop bien ", rating: 5)
+comment_to_treb_26 = Comment.create!( user:christianne, spot:evt_treb, content:" je crois que c'est ici qu'a été tournée un long dimanche de fiancaille !!!! meilleur film ", rating: 5)
+comment_to_treb_27 = Comment.create!( user:arianne, spot:evt_treb, content:" je crois avoir vu jean yves le drian en maillot de bain mdr", rating: 3)
+comment_to_treb_28 = Comment.create!( user:christine, spot:evt_treb, content:" vous pensez pas qu'il y a trop de commentaire sur cette page ? ", rating: 5)
+comment_to_treb_29 = Comment.create!( user:louisa, spot:evt_treb, content:" nan easy il en faut plein de toute façon tkt", rating: 5)
+comment_to_treb_30 = Comment.create!( user:jean, spot:evt_treb, content:" Ce serait trop bien qu'il y ai un ciné nocturne ici en été! ", rating: 4)
+comment_to_treb_31 = Comment.create!( user:noe, spot:evt_treb, content:" le vendeur de glace n'avais plus de vanille :( ", rating: 1)
+comment_to_treb_32 = Comment.create!( user:maelie, spot:evt_treb, content:" j'aurai du partir en vacances a Seattle, au moins la bas les gens sont sympathiques", rating: 1)
+comment_to_treb_33 = Comment.create!( user:charles, spot:evt_treb, content:" Moi de mon temps on se plaignait pas du monde sur la plage! même s'il y a trop de monde", rating: 3)
+comment_to_treb_34 = Comment.create!( user:francois, spot:evt_treb, content:" j'ai perdu au concours de création de chateau de sable T.T", rating: 2)
+comment_to_treb_35 = Comment.create!( user:sarah, spot:evt_treb, content:" belle plage, sable agréable, plein de choses a faire et tres jolie ville!  ", rating: 5)
+comment_to_treb_36 = Comment.create!( user:josianne, spot:evt_treb, content:" vous pensez qu'il y a une vie après la mort?", rating: 4)
+comment_to_treb_37 = Comment.create!( user:melanie, spot:evt_treb, content:" la plage est supposée être surveillé. Ce n'est pas le cas. Mais la plage est belle ", rating: 3)
+comment_to_treb_38 = Comment.create!( user:marianne, spot:evt_treb, content:" l'eau est propre! c'est de plus en plus rare", rating: 5)
+comment_to_treb_39 = Comment.create!( user:eloise, spot:evt_treb, content:" j'ai gagné un concours de chateau de sable mdr !", rating: 5)
+comment_to_treb_40 = Comment.create!( user:claude, spot:evt_treb, content:" Toujours la détente ici j'adore !!!!", rating: 4)
+comment_to_treb_41 = Comment.create!( user:anna, spot:evt_treb, content:" plage plutot sale, je suis sur que c'est a cause de ces fichus touristes ! ", rating: 2)
+comment_to_treb_42 = Comment.create!( user:michelle, spot:evt_treb, content:" j'ouvre mon restaurant de tapas ! n'hésitez pas a passer !!", rating: 5)
+comment_to_treb_43 = Comment.create!( user:camille, spot:evt_treb, content:" Tellement d'activité ici !!! on ne s'ennuit jamais ! ", rating: 4)
+comment_to_treb_44 = Comment.create!( user:marianne, spot:evt_treb, content:" y a un mec il m'a venère je lui ai foutu mon poings dans la gueule, ça détends", rating: 3)
 comment_to_treb_45 = Comment.create!( user:wits, spot:evt_treb, content:" mon premier spot de surf, c'était chill", rating: 4)
-comment_to_treb_46 = Comment.create!( user:corentin, spot:evt_treb, content:" je ne sais pas si c'est le bonne endroit pour dire ceci mais je crois que le restaurant d'a coté m'a rendu malade ", rating: 2)
-comment_to_treb_47 = Comment.create!( user:shiyun, spot:evt_treb, content:" les mouettes ici sont très sympathique j'adore ! ", rating: 4)
-comment_to_treb_48 = Comment.create!( user:valentin, spot:evt_treb, content:" c'est quoi ces gros pigeon blanc et jaune sur le sable la???? ils mangent mes churros", rating: 2)
-comment_to_treb_49 = Comment.create!( user:corentin, spot:evt_treb, content:" mes parents m'ont forcé a sortir alors que j'étais en plein raid sur WoW", rating: 1)
-comment_to_treb_50 = Comment.create!( user:shiyun, spot:evt_treb, content:" je suis venue en hiver pour éviter la foule, il faisait froid !!!", rating: 2)
+comment_to_treb_46 = Comment.create!( user:charles, spot:evt_treb, content:" je ne sais pas si c'est le bonne endroit pour dire ceci mais je crois que le restaurant d'a coté m'a rendu malade ", rating: 2)
+comment_to_treb_47 = Comment.create!( user:helene, spot:evt_treb, content:" les mouettes ici sont très sympathique j'adore ! ", rating: 4)
+comment_to_treb_48 = Comment.create!( user:eloise, spot:evt_treb, content:" c'est quoi ces gros pigeon blanc et jaune sur le sable la???? ils mangent mes churros", rating: 2)
+comment_to_treb_49 = Comment.create!( user:noe, spot:evt_treb, content:" mes parents m'ont forcé a sortir alors que j'étais en plein raid sur WoW", rating: 1)
+comment_to_treb_50 = Comment.create!( user:josianne, spot:evt_treb, content:" je suis venue en hiver pour éviter la foule, il faisait froid !!!", rating: 2)
 comment_to_treb_51 = Comment.create!( user:wits, spot:evt_treb, content:" jolie petite plage bien sympathique, hate de me faire des ami.e.s pour leur faire découvrir ", rating: 4)
-comment_to_treb_52 = Comment.create!( user:corentin, spot:evt_treb, content:" y a une meuf elle m'a foutue son poing dans ma gueule???? wesh ", rating: 1)
-comment_to_treb_53 = Comment.create!( user:shiyun, spot:evt_treb, content:" Sympathique mais sans plus", rating: 3)
+comment_to_treb_52 = Comment.create!( user:julio, spot:evt_treb, content:" y a une meuf elle m'a foutue son poing dans ma gueule???? wesh ", rating: 1)
+comment_to_treb_53 = Comment.create!( user:arianne, spot:evt_treb, content:" Sympathique mais sans plus", rating: 3)
 
 
 comment_to_ile_grande = Comment.create!( user:corentin, spot:evt_ile_grande, content:" le personnel est agréable et où il est possible de louer facilement des catamarans", rating: 4)

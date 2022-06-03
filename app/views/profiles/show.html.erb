@@ -1,67 +1,87 @@
-<p><%= @user.nick_name %></p>
-<p><%= @user.email %></p>
+<div class="container-fluid bg-white">
+  <%= link_to spots_path do %>
+    <i class="fas fa-chevron-left m-2"></i>
+  <% end %>
 
-<strong>Nom</strong>
-<% if @user.last_name.present? %>
-  <p><%= @user.last_name %></p>
-<% else %>
-  <p>Non renseigné</p>
-<% end %>
+  <div class= "header m-2">
+    <% if @user.photo.present? %>
+      <%= cl_image_tag @user.photo.key, crop: :fill, class: "avatar" %>
+    <% else %>
+      <p>Non renseigné</p>
+    <% end %>
 
-<strong>Prénom</strong>
-<% if @user.first_name.present? %>
-<p><%= @user.first_name %></p>
-<% else %>
-  <p>Non renseigné</p>
-<% end %>
+    <p class="label-bold user-nickname"><%= @user.nick_name %></p>
+    <p class="text-x-small"><%= @user.status %></p>
+  </div>
 
-<strong>Adresse</strong>
-<% if @user.address.present? %>
-<p><%= @user.address %></p>
-<% else %>
-  <p>Non renseigné</p>
-<% end %>
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: <%= @user.next_status[:completion_percent] %>%;" aria-valuenow="<%= @user.profile_exp %>" aria-valuemin="0" aria-valuemax="<%= @user.next_status[:next_status_level] %>"></div>
+  </div>
+  <p class="text-x-small">Plus que <strong><%= @user.next_status[:remaining_points] %></strong> points avant de devenir <%= @user.next_status[:next_status] %></p>
 
-<strong>Ajouter un photo</strong>
-<% if @user.photo.present? %>
-<p><%= cl_image_tag @user.photo.key, crop: :fill, class: "avatar" %></p>
-<% else %>
-  <p>Non renseigné</p>
-<% end %>
+  <div class="show-onglets">
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to profile_path(@profile), class:"nav-link active label-bold nav-left" do %>
+          <i class="far fa-file-alt"></i> Informations
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "#", class:"nav-link label-bold" do %>
+          <i class="fas fa-thermometer-empty"></i> Mes Spots
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "#", class:"nav-link  label-bold nav-right" do %>
+          <i class="far fa-comment-alt"></i> Mes Posts
+        <% end %>
+      </li>
+    </ul>
+  </div>
 
-<strong>Anniversaitre</strong>
-<% if @user.birthday.present? %>
-<p><%= @user.birthday %></p>
-<% else %>
-  <p>Non renseigné</p>
-<% end %>
+  <div class="show-descr-grid">
+    <div class="show-descr-grid-type label-bold txt-primary">
+      Prénom
+      <% if @user.last_name.present? %>
+        <p class="user-text"><%= @user.last_name %></p>
+      <% else %>
+        <p class="user-text user-text-disabled">Non renseigné</p>
+      <% end %>
+    </div>
 
-<strong>Sexe</strong>
-<% if @user.gender.present? %>
-<p><%= @user.gender %></p>
-<% else %>
-  <p>Non renseigné</p>
-<% end %>
+    <div class="show-descr-grid-type label-bold txt-primary">
+      Nom
+      <% if @user.first_name.present? %>
+        <p class="user-text"><%= @user.first_name %></p>
+      <% else %>
+        <p class="user-text user-text-disabled">Non renseigné</p>
+      <% end %>
+    </div>
 
-<strong>Profile_exp</strong>
-<% if @user.profile_exp.present? %>
-<p><%= @user.profile_exp %></p>
-<% else %>
-  <p>Non renseigné</p>
-<% end %>
 
-<strong>Status</strong>
-<% if @user.status.present? %>
-<p><%= @user.status %></p>
-<% else %>
-  <p>Non renseigné</p>
-<% end %>
+    <div class="show-descr-grid-type label-bold txt-primary">
+      Anniversaire
+      <% if @user.birthday.present? %>
+      <p class="user-text"><%= @user.birthday %></p>
+      <% else %>
+        <p class="user-text user-text-disabled">Non renseigné</p>
+      <% end %>
+    </div>
+  </div>
 
-<strong>Favoris</strong>
-<% if @user.favorite_area.present? %>
-<p><%= @user.favorite_area %></p>
-<% else %>
-  <p>Non renseigné</p>
-<% end %>
 
-<%= link_to "Edit", edit_profile_path %>
+
+  <p class="label-bold txt-primary">Sports Favoris</p>
+  <div>
+    <div class="favorite_sport">
+      <%= image_tag "icons/SauteFalaise-small.svg"  %>
+    </div>
+    <div class="favorite_sport">
+      <%= image_tag "icons/Scuba-small.svg" %>
+    </div>
+  </div>
+
+</div>
+
+<%= link_to "Editer mon Profil", edit_profile_path, class:"btn btn-primary w-100 btn-gradient btn-fixed-bottom"%>
+

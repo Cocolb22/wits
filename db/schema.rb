@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2022_06_02_131900) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -146,7 +147,7 @@ ActiveRecord::Schema.define(version: 2022_06_02_131900) do
     t.date "birthday"
     t.string "gender"
     t.integer "profile_exp", default: 10
-    t.string "status"
+    t.string "status", default: "Marin d'eau douce"
     t.string "favorite_area"
     t.boolean "last_name_completed", default: false
     t.boolean "first_name_completed", default: false

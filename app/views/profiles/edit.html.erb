@@ -1,14 +1,22 @@
-<%= simple_form_for @user, url: profile_path do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :last_name %>
-  <%= f.input :nick_name %>
-  <%= f.input :birthday, html5: true %>
-  <%= f.input :photo, as: :file, label: "Ajoutez une photo" %>
-  <%= f.input :address,
-    input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
-            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-  <%= f.input :gender, collection: User::GENDERS %>
-  <%= f.input :favorite_area %>
+<div class="container bg-white">
+  <%= link_to profile_path do %>
+    <i class="fas fa-chevron-left m-2"></i>
+  <% end %>
 
-  <%= f.submit %>
-<% end %>
+
+  <div class= "label-bold txt-primary m-2">
+    <%= simple_form_for @user, url: profile_path do |f| %>
+        <%= f.input :first_name, label:"Nom" %>
+        <%= f.input :last_name, label:"Prénom" %>
+        <%= f.input :nick_name, label: "Surnom" %>
+        <%= f.input :birthday, html5: true, label:"Date de Naissance" %>
+        <%= f.input :photo, as: :file, label: "Ajoutez une photo" %>
+        <%= f.input :address,
+          input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
+                  wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label:"Adresse" %>
+        <%= f.input :gender, collection: User::GENDERS, label: "Genre" %>
+        <%= f.input :favorite_area, label: "Zone Favorite" %>
+     <%= f.submit "Mettre à Jour", class:"btn btn-primary w-100 btn-gradient" %>
+    <% end %>
+  </div>
+</div>

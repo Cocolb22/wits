@@ -1,0 +1,30 @@
+.user-nickname {
+  margin-top: $spacing-s;
+  margin-bottom: $spacing-xs;
+  color:$primary;
+}
+
+.progress {
+  border-radius:50px;
+  background-color: $black-100;
+  margin-bottom:$spacing-xs;
+}
+
+.progress-bar {
+  background-color: $pop;
+  animation: showProgressBar 1s;
+  transform-origin:left;
+}
+
+.user-text {
+  font-size:13px;
+}
+
+@keyframes showProgressBar {
+  0% {
+    transform:scaleX(0)
+  }
+  100% {
+    transform:scaleX(1)
+  }
+}
