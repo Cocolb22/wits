@@ -1,0 +1,13 @@
+.forecast-days {
+  display: flex !important;
+  overflow-x: scroll !important;
+  flex-wrap: nowrap !important;
+  .pills {
+    margin-bottom: 4px;
+    margin-right: 8px;
+  }
+}
+
+.weather-picto {
+  margin: 12px auto;
+}

@@ -1,5 +1,21 @@
 class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
+
+  def new
+    @spot = Spot.new
+  end
+
+  def create
+    @spot = Spot.new(spot_params)
+    @spot.user = current_user
+
+    if @spot.save
+      redirect_to spot_path(@spot)
+    else
+      render :new
+    end
+  end
+
   def index
     if params[:activities]
       @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i))
@@ -33,5 +49,10 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     @comments = @spot.comments.order('id DESC')
     @comment = Comment.new
+  end
+
+  def forecast
+    @spot = Spot.find(params[:id])
+    @weathers = @spot.weathers
   end
 end

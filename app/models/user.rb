@@ -32,4 +32,49 @@ class User < ApplicationRecord
     end
     self.save
   end
+
+  def next_status
+    case profile_exp
+    when 0..19
+      {
+        next_status: "Mousse",
+        next_status_level: 20,
+        remaining_points: 20 - profile_exp,
+        completion_percent: profile_exp * 100 / 20
+      }
+    when 20..49
+      {
+        next_status: "Matelot",
+        next_status_level: 50,
+        remaining_points: 50 - profile_exp,
+        completion_percent: profile_exp * 100 / 50
+      }
+
+    when 50..99
+      {
+        next_status: "Capitaine",
+        next_status_level: 100,
+        remaining_points: 100 - profile_exp,
+        completion_percent: profile_exp * 100 / 100
+      }
+    when 100..249
+      {
+        next_status: "Amiral",
+        next_status_level: 250,
+        remaining_points: 250 - profile_exp,
+        completion_percent: profile_exp * 100 / 250
+      }
+    when 250..499
+      {
+        next_status: "Vieux Briscard",
+        next_status_level: 500,
+        remaining_points: 500 - profile_exp,
+        completion_percent: profile_exp * 100 / 500
+      }
+    else
+      {
+      next_status: "Vieux Briscard"
+      }
+    end
+  end
 end
