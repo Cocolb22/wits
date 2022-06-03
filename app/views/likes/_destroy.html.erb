@@ -1,0 +1,4 @@
+<%= link_to like_path(like), class:"like-action", "data-action": "click->like#like", method: :delete do %>
+  <i class="fas fa-thumbs-up"></i>
+  <span><%= comment.likes.count %></span>
+<% end  %>
