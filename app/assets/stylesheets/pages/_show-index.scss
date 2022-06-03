@@ -1,0 +1,52 @@
+.container-map-box {
+  background-color: white;
+  padding-top: $spacing-xs;
+}
+.map-box-search {
+  display: flex;
+  justify-content: center;
+}
+
+.container-header-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-index {
+  padding-bottom:80px;
+}
+
+.index-sorting {
+  display: flex;
+  align-items: center;
+  margin: $spacing-s auto;
+  overflow-x: scroll;
+  padding: 0 $spacing-s;
+  background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 75%);
+  a {
+    text-decoration: none;
+    font-family: "Gt-Am-cond-reg";
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .pills {
+    white-space: nowrap;
+    margin-right:12px;
+  }
+}
+.index-sorting .pills.active {
+  a{
+    color:white;
+  }
+}
+
+.card-spot {
+  margin-bottom: $spacing-l;
+}
+
+.mapboxgl-control-container {
+  display: none;
+}

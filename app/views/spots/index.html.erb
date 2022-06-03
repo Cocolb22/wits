@@ -1,70 +1,148 @@
-<h1>Spots</h1>
-<%= form_for spots_path, method: :get do %>
-  <div data-controller="geocoder" data-geocoder-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-    <%= text_field_tag :location,
-      params[:location],
-      class: "form-control d-none",
-      data: { geocoder_target: "address" },
-      placeholder: "Where?"
-    %>
+<div class="container-map-box">
+  <%= form_for spots_path, method: :get do %>
+    <div class="map-box-search"data-controller="geocoder" data-geocoder-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      <%= text_field_tag :location,
+        params[:location],
+        class: "form-control d-none",
+        data: { geocoder_target: "address" },
+        placeholder: "Where?"
+      %>
+    </div>
+    <div class="category-spot-search d-none">
+      <%= hidden_field_tag :spot_type, params[:spot_type] %>
+      <%= hidden_field_tag :order, params[:order] %>
+
+      <% Activity.all.each do |activity| %>
+        <%= label_tag "activities_#{activity.id}", activity.name %>
+        <%= check_box_tag "activities[]", activity.id, params[:activities]&.include?(activity.id.to_s), id: "activities_#{activity.id}" %>
+      <% end %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="index-sorting">
+    <div class="pills active">
+      <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order]) do %>
+        Tous
+      <% end %>
+    </div>
+    <div class="pills">
+      <%= link_to spots_path(location: params[:location], activities: params[:activities], order: "desc_moyen_rating", spot_type: params[:spot_type]) do%>
+        Mieux notés
+      <% end %>
+    </div>
+    <div class="pills">
+      <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Plage") do %>
+        Plage
+      <% end %>
+    </div>
+    <div class="pills">
+      <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Spot sauvage") do %>
+        Spot sauvage
+      <% end %>
+    </div>
+    <div class="pills">
+      <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "École") do %>
+        École
+      <% end %>
+    </div>
+    <div class="pills">
+      <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Port") do %>
+        Port
+      <% end %>
+    </div>
   </div>
 
-  <%= hidden_field_tag :spot_type, params[:spot_type] %>
-  <%= hidden_field_tag :order, params[:order] %>
-
-  <% Activity.all.each do |activity| %>
-    <%= label_tag "activities_#{activity.id}", activity.name %>
-    <%= check_box_tag "activities[]", activity.id, params[:activities]&.include?(activity.id.to_s), id: "activities_#{activity.id}" %>
-  <% end %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
-<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order]) do %>
-  <p>Toutes les types</p>
-<% end %>
-<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Plage") do %>
-  <p>Plage</p>
-<% end %>
-<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Spot sauvage") do %>
-  <p>Spot sauvage</p>
-<% end %>
-<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "École") do %>
-  <p>École</p>
-<% end %>
-<%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Port") do %>
-  <p>Port</p>
-<% end %>
-
-<% if params[:spot_type] %>
-    <p>Résultats pour <%= params[:spot_type] %></p>
-<% end %>
-
-<div class="dropdown-sort my-2">
-  <button class="btn btn-ghost btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Trier par
-  </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <%= link_to "Meilleurs notes", spots_path(location: params[:location], activities: params[:activities], order: "desc_moyen_rating", spot_type: params[:spot_type]), class: "dropdown-item"%>
-    </div>
+  <div style="width: 400x; height: 320px;"
+      data-controller="mapbox"
+      data-mapbox-markers-value="<%= @markers.to_json %>"
+      data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  </div>
 </div>
+<div class="container-header container-index">
+  <div class="container-header-results">
+    <h3>3 resultats</h3>
+  </div>
 
-<div style="width: 100%; height: 600px;"
-    data-controller="mapbox"
-    data-mapbox-markers-value="<%= @markers.to_json %>"
-    data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-</div>
-
-<% @spots.each do |spot| %>
-  <div>
+  <% @spots.each do |spot| %>
     <%= link_to spot_path(spot) do %>
-      <div>
-        <% spot.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, crop: :fill, width: 400 %>
-        <% end %>
-        <%= spot.full_name %>
-        <%= spot.address %>
-        <%= spot.avg_rating %>
+      <div class="card-spot">
+        <div class="card-spot-carousel">
+          <div class="card-image-tag pills pop">
+            most popular
+          </div>
+          <% spot.photos.each do |photo| %>
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            </div>
+              <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <%= cl_image_tag photo.key, crop: :fill, width: 400 %>
+                  </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="card-spot-infos">
+          <div class="card-spot-infos-rating">
+            <div class="card-spot-infos-rating-stars">
+              <% spot.avg_rating.floor.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5 - spot.avg_rating.floor).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </div>
+            <div class="pills">
+              <%= spot.spot_type %>
+            </div>
+          </div>
+
+          <div class="card-spot-infos-title">
+            <h2><%= spot.full_name %></h2>
+            <i class="fas fa-cloud"></i>
+          </div>
+
+          <div class="card-spot-infos-localisation">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="card-spot-infos-localisation-city text-x-small-bold">
+              <%= spot.address %> <span class="text-x-small">· à 12km</span>
+            </div>
+          </div>
+
+          <div class="show-activities-content">
+            <% spot.activities.each do |activity| %>
+              <%=  image_tag "icons/#{activity.icon}" %>
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
+<div class="bottom-bar">
+    <%= link_to search_spots_path, class:"bottom-bar-item bottom-nav-link nav-left" do %>
+      <i class="fas fa-search size-font-awesome"></i>
+      <div class="text text-x-small-bold">Présentation</div>
+    <% end %>
+
+    <%= link_to profile_path, class:"bottom-bar-item bottom-nav-link " do %>
+      <i class="fas fa-user size-font-awesome"></i>
+      <div class="text text-x-small-bold">Profil</div>
+    <% end %>
+
+    <%= link_to edit_profile_path, class:"bottom-bar-item bottom-nav-link active nav-right" do %>
+      <i class="fas fa-cog size-font-awesome"></i>
+      <div class="text text-x-small-bold">Paramètres</div>
+    <% end %>
+</div>

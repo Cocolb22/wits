@@ -81,7 +81,7 @@ evt_treb = Spot.new(user: wits, full_name: 'École de voile de Trébeurden', str
                     latitude: 48.768374, longitude: -3.581077,
                     description: 'L’école de voile de Trébeurden est une association labellisée FFVoile et située
                       au cœur de la côte de granit rose en Bretagne dont le but est de rendre
-                      la voile accessible à tous !', spot_type: 'École', verified: true, icon: "school.png")
+                      la voile accessible à tous !', spot_type: 'École', verified: true, icon: "type-sailing.svg")
 file_evt_treb = File.open("db/fixtures/evt_treb.jpeg")
 evt_treb.photos.attach(io: file_evt_treb, filename: 'evt_treb.jpeg', content_type: 'image/jpeg')
 evt_treb.save!
@@ -92,7 +92,7 @@ evt_ile_grande = Spot.new(user: wits, full_name: 'Base Nautique Ile Grande', str
                             ce qui nous confère les labels d'école française de voile, de voile loisir et d'école de sport.
                             Des stages ou locations sont proposés aux particuliers, aux groupes, comités d'entrprises ainsi
                             qu'aux classes sur une flotte variée (dériveurs, catamarans, PAV, kayak, voilier)
-                            pendant les vacances de la Toussaint, Printemps et d'été.", spot_type: 'École', verified: true, icon: "school.png")
+                            pendant les vacances de la Toussaint, Printemps et d'été.", spot_type: 'École', verified: true, icon: "type-sailing.svg")
 file_evt_ile_grande = File.open("db/fixtures/evt_ile_grande.jpeg")
 evt_ile_grande.photos.attach(io: file_evt_ile_grande, filename: 'evt_ile_grande.jpeg', content_type: 'image/jpeg')
 evt_ile_grande.save!
@@ -103,7 +103,7 @@ evt_tregastel = Spot.new(user: wits, full_name: 'Club Nautique de Trégastel', s
                           service : investis dans une démarche qualité, nous vous accueillons toute l'année dans une
                           ambiance familiale. Un matériel récent et entretenu : adaptées à tous les âges et
                           tous les niveaux. Pour votre confort, le portage est facilité.
-                          Agréé Jeunesse et Sport", spot_type: 'École', verified: true, icon: "school.png")
+                          Agréé Jeunesse et Sport", spot_type: 'École', verified: true, icon: "type-sailing.svg")
 file_evt_tregastel = File.open("db/fixtures/evt_tregastel.jpeg")
 evt_tregastel.photos.attach(io: file_evt_tregastel, filename: 'evt_tregastel.jpeg', content_type: 'image/jpeg')
 evt_tregastel.save!
@@ -114,7 +114,7 @@ evt_perros = Spot.new(user: wits, full_name: 'Centre Nautique de Perros-Guirec',
                         guider lors d’une balade nautique : venez profiter d’un espace de navigation unique, le long
                         de la Côte de Granit Rose, au large de l’archipel des 7 îles. Une équipe de professionnels
                         qualifiés et une infrastructure moderne garantissent votre sécurité et votre confort.',
-                      spot_type: 'École', verified: true, icon: "school.png")
+                      spot_type: 'École', verified: true, icon: "type-sailing.svg")
 file_evt_perros = File.open("db/fixtures/evt_perros.jpeg")
 evt_perros.photos.attach(io: file_evt_perros, filename: 'evt_perros.jpeg', content_type: 'image/jpeg')
 evt_perros.save!
@@ -125,7 +125,7 @@ plage_goas_treiz = Spot.new(user: wits, full_name: 'Plage de Goas Treiz', street
                               orientée Nord-Ouest est le spot de glisse prisé des wingfoilers, windsurfeurs et les kitesurfeurs
                               de la région. La navigation se fait vers Port Saint Sauveur à l’Ile Grande.
                               Attention aux ailerons à marée basse, de nombreux cailloux reste immergés.',
-                            spot_type: 'Plage', verified: true, icon: "beach.png")
+                            spot_type: 'Plage', verified: true, icon: "type-beach.svg")
 file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz.jpeg")
 plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz.jpeg', content_type: 'image/jpeg')
 plage_goas_treiz.save!
@@ -137,7 +137,7 @@ plage_tresmeur = Spot.new(user: wits, full_name: 'Plage de Tresmeur', street: "P
                             les conditions de vent. Les jours de pétole, les balades en SUP invitent à la découverte de
                             la côte. A Tresmeur, les bars sont sur la promenade le long de la plage,
                             le petit plus après une bonne nav.',
-                          spot_type: 'Plage', verified: true, icon: "beach.png")
+                          spot_type: 'Plage', verified: true, icon: "type-beach.svg")
 file_plage_tresmeur = File.open("db/fixtures/plage_tresmeur.jpeg")
 plage_tresmeur.photos.attach(io: file_plage_tresmeur, filename: 'plage_tresmeur.jpeg', content_type: 'image/jpeg')
 plage_tresmeur.save!
@@ -148,7 +148,7 @@ plage_toul_gwenn = Spot.new(user: User.first, full_name: 'Plage de Toul Gwenn', 
                               la plage de Toul Gwen. A marée haute, ce véritable lagon de sable blanc à l’eau transparente
                               est idéale pour s’initier aux plaisirs de la glisse : windsurf et stand up paddle.
                               En ayant quasiment toujours pied, les sessions entre l’île Aval et l’île Mouton
-                              sont véritablement sécurisées.', spot_type: 'Plage', verified: true, icon: "beach.png")
+                              sont véritablement sécurisées.', spot_type: 'Plage', verified: true, icon: "type-beach.svg")
 file_plage_toul_gwenn = File.open("db/fixtures/plage_tresmeur.jpeg")
 plage_toul_gwenn.photos.attach(io: file_plage_toul_gwenn, filename: 'plage_tresmeur.jpeg', content_type: 'image/jpeg')
 plage_toul_gwenn.save!

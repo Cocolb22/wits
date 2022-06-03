@@ -1,4 +1,5 @@
 class SpotsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[show index]
   def index
     if params[:activities]
       @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i))
