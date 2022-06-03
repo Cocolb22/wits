@@ -61,7 +61,7 @@
 </div>
 <div class="container-header container-index">
   <div class="container-header-results">
-    <h3>3 resultats</h3>
+    <h3><%= pluralize(@spots.size, "résultat", plural: "résultats") %></h3>
   </div>
 
   <% @spots.each do |spot| %>

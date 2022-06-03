@@ -18,12 +18,12 @@ class SpotsController < ApplicationController
 
   def index
     if params[:activities]
-      @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i))
+      @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i)).distinct
     else
       @spots = Spot.order(id: :desc)
     end
 
-    @spots = @spots.where(spot_type: params[:spot_type]) if params[:spot_type].present?
+    @spots = @spots.where(spot_type: params[:spot_type]).distinct if params[:spot_type].present?
     @spots = @spots.near(params[:location], 3) if params[:location].present?
 
     @spots = @spots.sort_by { |spot| -spot.avg_rating } if params[:order] == "desc_moyen_rating"
