@@ -81,7 +81,14 @@
     </div>
   </div>
 
+  <%# Activity.all.each do |activity| %>
+    <%#= label_tag "activities_#{activity.id}", activity.name %>
+    <%#= check_box_tag "activities[]", activity.id, params[:activities]&.include?(activity.id.to_s), id: "activities_#{activity.id}" %>
+  <%# end %>
+  <%#= submit_tag "Search", class: "btn btn-primary" %>
+<%# end %>
+
+
 </div>
 
 <%= link_to "Editer mon Profil", edit_profile_path, class:"btn btn-primary w-100 btn-gradient btn-fixed-bottom"%>
-

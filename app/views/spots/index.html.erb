@@ -17,7 +17,6 @@
     <%= check_box_tag "activities[]", activity.id, params[:activities]&.include?(activity.id.to_s), id: "activities_#{activity.id}" %>
   <% end %>
   <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
 
 <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order]) do %>
   <p>Toutes les types</p>
