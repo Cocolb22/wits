@@ -10,7 +10,8 @@ class Activity < ApplicationRecord
     "Jetski"
   ]
 
-  has_many :spot_activities, dependent: :destroy
-  validates :name, :icon, :description, presence: true
+  belongs_to :user
+  validates :icon, :description, presence: true
   validates :description, length: { minimum: 100 }
+  validates :name, inclusion: {in: NAMES}, allow_blank: true
 end

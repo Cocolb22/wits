@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/page/component', to: 'pages#component'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resource :profile, only: [:show, :edit, :update]
+  resource :profile, only: [:show, :edit, :update] do
+    resources :favorites_activities, only: [:create]
+  end
 
   resources :spots, only: [:index, :show, :new, :create] do
     member do
@@ -20,13 +22,14 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create]
   end
 
-  resources :favorites, only: [:index, :destroy ]
+  resources :favorites, only: [:index, :destroy]
   resources :likes, only: [:destroy]
+  resources :favorites_activities, only: [:index, :destroy]
 
   resources :comments, only: [] do
     member do
       post :review
     end
-    resources :likes, only: :create
+    resources :likes, only: [:create]
   end
 end
