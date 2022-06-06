@@ -9,6 +9,9 @@ class VotesController < ApplicationController
         format.html { redirect_to vote_path(@vote) }
         format.text { render partial: "spots/vote_header", locals: { spot: @spot }, formats: [:html] }
       end
+      if (@spot.votes.count % 10).zero?
+        @spot.user.add_points_and_update_status(10)
+      end
     end
   end
 
