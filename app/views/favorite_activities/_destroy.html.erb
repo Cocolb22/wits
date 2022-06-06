@@ -1,0 +1,12 @@
+<div class="picto-search active" data-controller="pictosearch favorite-activity" data-favorite-activity-target="button" data-pictosearch-target="picto" data-favorite-activity-url-value="<%= favorite_activity_path(favorite_activity) %>" data-favorite-activity-method-value="DELETE">
+  <%= label_tag "activities_#{activity.id}", activity.name, "data-action": "click->pictosearch#toggle click->favorite-activity#create"  do %>
+    <div class="picto-rectangle">
+      <svg width="86" height="87" style="transform:rotate(<%= rand(1..360) %>deg)" class="blob" viewBox="0 0 86 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.0849 65.0181C31.1999 79.7268 52.4685 90.8148 66.8919 83.907C81.2404 76.9635 88.8907 51.9091 84.1547 33.3467C79.4548 14.7088 62.4796 2.52333 44.6516 0.395515C26.7488 -1.76806 8.02937 6.05067 2.16845 19.087C-3.80333 32.1629 3.04463 50.3452 17.0849 65.0181Z" fill="#D9E3E8"/>
+      </svg>
+      <%= image_tag "big/#{activity.bigicon}", class: "picto-rectangle-sport" %>
+    </div>
+    <p class="picto-description label-bold text-center"><%= activity.name %> </p>
+  <% end %>
+  <%#= check_box_tag "favorites_activities[]", activity.id, params[:favorites_activities]&.include?(activity.id.to_s), id: "favorites_activities_#{activity.name}", class:"sports-check-box" %>
+</div>
