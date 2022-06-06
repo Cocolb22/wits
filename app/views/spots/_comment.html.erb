@@ -9,24 +9,30 @@
           <%= comment.user.nick_name %>
         </div>
         <div class="comment-date label">
-          il y a <%= ((Time.now - comment.created_at)/(3600*24)).floor %> jour(s).
+          <% if ((((Time.now - comment.created_at)/(3600*24)).floor) > 0) %>
+            Il y a <%= ((Time.now - comment.created_at)/(3600*24)).floor %> jour(s).
+          <% else %>
+            Il y a <%= ((Time.now - comment.created_at)/3600).floor %> heure(s).
+          <% end %>
         </div>
       </div>
     </div>
     <div class="comment-header-right">
       <div class="card-spot-infos-rating-stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="far fa-star"></i>
+        <% comment.rating.floor.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - comment.rating.floor).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
       </div>
-      <%= comment.rating %>
     </div>
   </div>
   <% if comment.images.attached? %>
     <% comment.images.each do |image| %>
+    <div class="comments-photos">
       <%= cl_image_tag image.key, width: 400, crop: :fill %>
+    </div>
     <% end %>
   <% end %>
   <p><%= comment.content %></p>

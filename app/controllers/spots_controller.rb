@@ -1,12 +1,29 @@
 class SpotsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[show index]
+
+  def new
+    @spot = Spot.new
+  end
+
+  def create
+    @spot = Spot.new(spot_params)
+    @spot.user = current_user
+
+    if @spot.save
+      redirect_to spot_path(@spot)
+    else
+      render :new
+    end
+  end
+
   def index
     if params[:activities]
-      @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i))
+      @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i)).distinct
     else
       @spots = Spot.order(id: :desc)
     end
 
-    @spots = @spots.where(spot_type: params[:spot_type]) if params[:spot_type].present?
+    @spots = @spots.where(spot_type: params[:spot_type]).distinct if params[:spot_type].present?
     @spots = @spots.near(params[:location], 3) if params[:location].present?
 
     @spots = @spots.sort_by { |spot| -spot.avg_rating } if params[:order] == "desc_moyen_rating"
@@ -32,5 +49,10 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     @comments = @spot.comments.order('id DESC')
     @comment = Comment.new
+  end
+
+  def forecast
+    @spot = Spot.find(params[:id])
+    @weathers = @spot.weathers
   end
 end

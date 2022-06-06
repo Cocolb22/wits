@@ -92,3 +92,19 @@ function setPreview(element, file) {
   imgPrev.setAttribute('src', file.preview)
   imgPreview.appendChild(imgPrev)
 }
+
+
+// masonry carousel pour les photos de commentaires dans la shows description
+
+const grid_masonry = document.querySelector('.grid-masonry');
+
+const msnry = new Masonry( grid_masonry, {
+  itemSelector: '.grid-item-masonry',
+  columnWidth: '.grid-sizer-masonry',
+  percentPosition: true
+});
+
+imagesLoaded( grid_masonry ).on( 'progress', function() {
+  // layout Masonry after each image loads
+  msnry.layout();
+});

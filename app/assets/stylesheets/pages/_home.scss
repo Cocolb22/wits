@@ -1,1 +1,98 @@
-// Specific CSS for your home-page
+.container-home {
+  position: absolute;
+  width: auto;
+  height: 100vh;
+  top: 0px;
+}
+.home_video {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  z-index: -2;
+  background: rgba(0, 0, 0, 0.452);
+  -webkit-filter: brightness(0.5);
+          filter: brightness(0.5);
+ }
+ .home-video-wrapper {
+ height: 100vh;
+ display: flex;
+ }
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gt-Am-comp-bold";
+  font-size: 48px;font-size: 36px;
+  line-height: 43px;
+  letter-spacing: 0.05em;
+  color: $black-50;
+  height: 140px;
+  margin-top: 40px;
+}
+
+.spot-parfait {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Gt-Am-cond-med";
+  font-size: 48px;font-size: 36px;
+  line-height: 52px;
+  letter-spacing: 0.05em;
+  color: $black-100;
+  padding-top: $spacing-m;
+  margin: $spacing-m 32px;
+  text-align: center;
+}
+
+.btn-col-home {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  a {
+    text-decoration: none;
+  }
+}
+
+.btn-connect {
+  width: 196px;
+  height: 54px;
+  border-radius: 60px;
+  padding: $spacing-s 40px;
+  color: $primary;
+  text-align: center;
+  background-color: white;
+  margin-bottom: 24px;
+}
+
+
+.btn-sign-up {
+  width: 196px;
+  height: 54px;
+  border-radius: 60px;
+  text-align: center;
+  padding: $spacing-s 40px;
+  background-color: $primary;
+  a {
+    color: $black-50;
+  }
+}
+
+.btn-without-connect {
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  a {
+    color: $black-300;
+    opacity: 0.8;
+  }
+}

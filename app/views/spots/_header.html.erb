@@ -14,42 +14,45 @@
     <% end %>
   <% end %>
 
+
+
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <% @spot.photos.each do |photo|%>
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      </div>
-      <div class="carousel-inner">
+    <div class="carousel-indicators">
+      <% @spot.photos.each do |photo|%>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <% end %>
+    </div>
+    <div class="carousel-inner">
+      <% @spot.photos.each do |photo|%>
         <div class="carousel-item active">
           <%= cl_image_tag photo.key, crop: :fill %>
         </div>
-      </div>
-    <% end %>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      <% end %>
+    </div>
   </div>
 </div>
 
 <div class="container-header">
   <div class="card-spot-infos">
-
     <div class="card-spot-infos-rating">
       <div class="card-spot-infos-rating-stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="far fa-star"></i>
-      </div>
-      <%= @spot.avg_rating %>
+        <% @spot.avg_rating.floor.times do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+        <% (5 - @spot.avg_rating.floor).times do %>
+          <i class="far fa-star"></i>
+        <% end %>
       <div class="pills pop">
         <%= @spot.spot_type %>
+      </div>
       </div>
     </div>
 
@@ -64,6 +67,5 @@
       </div>
     </div>
     <%= @spot.category %>
-
   </div>
 </div>

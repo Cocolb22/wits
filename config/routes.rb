@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     member do
       get :activities
       get :comments
+      get :forecast
       patch :approve
       patch :unapprove
     end

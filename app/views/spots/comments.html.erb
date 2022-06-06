@@ -8,7 +8,7 @@
         <% end %>
       </li>
       <li class="nav-item">
-        <%= link_to "#", class:"nav-link label" do %>
+        <%= link_to forecast_spot_path(@spot), class:"nav-link label" do %>
           <i class="fas fa-thermometer-empty"></i> Météo
         <% end %>
       </li>
@@ -25,25 +25,59 @@
     <%= render 'comments/rating', spot: @spot%>
 
     <div class="comments-sorting">
-      <div class="comments-sorting-text label-bold">
-        Trier
+      <div class="nav d-flex forecast-days" id="v-pills-tab" role="tablist">
+        <button class="nav-link pills" id="v-pills-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="false">
+          RECENT
+        </button>
+        <button class="nav-link pills active" id="v-pills-0-tab" data-bs-toggle="pill" data-bs-target="#v-pills-0" type="button" role="tab" aria-controls="v-pills-0" aria-selected="true">
+          <%= link_to comments_spot_path(order: :rating) do%>
+            MIEUX NOTÉS
+            <% @comments.sort_by(&:rating).reverse %>
+          <% end %>
+        </button>
+
+        <button class="nav-link pills" id="v-pills-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="false">
+          DEMAIN
+
+          <% @comments.where("rating = 5")%>
+
+        </button>
+        <button class="nav-link pills" id="v-pills-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="false">
+          DEMAIN
+        </button>
       </div>
-      <div class="pills active">
-        Populaires
+    </div>
+
+
+
+
+
+    <div class="comments-sorting">
+      <div class="comments-sorting-text label-bold">
+        Récent
+        <%# c'est classé d'origine par ordre décroissant de temps %>
       </div>
       <div class="pills">
-        Récent
+      </div>
+      <div class="pills active">
+        Mieux notés
+        <% @comments.where("rating = 5")%>
       </div>
       <div class="pills">
         5 étoiles
+        <% @comments.sort_by(&:rating).reverse %>
+      </div>
+      <div class="pills">
+        Populaires
+        <%# Montrer les commentaires avec le plus de like en premier %>
       </div>
     </div>
 
     <div data-spot-comments-target='list'>
       <% @comments.each do |comment| %>
-        <%= render 'spots/comment', comment: comment%>
+        <%= render 'spots/comment', comment: comment %>
       <% end %>
     </div>
 
     <%= render "comments/form", spot: @spot, comment: @comment %>
-</div>
+  </div>

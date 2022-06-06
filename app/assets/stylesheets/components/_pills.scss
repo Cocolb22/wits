@@ -1,24 +1,24 @@
 .pills {
-  font-family: "Gt-Am-cond-reg";
-  line-height: 16px;
-  font-size: 13px;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  border: 1px solid $primary;
-  border-radius: 50px;
-  padding: 4px 8px;
-  color: $primary;
-  width: fit-content;
+  font-family: "Gt-Am-cond-reg" !important;
+  line-height: 16px !important;
+  font-size: 13px !important;
+  letter-spacing: 0.11em !important;
+  text-transform: uppercase !important;
+  border: 1px solid $primary !important;
+  border-radius: 50px !important;
+  padding: 4px 8px !important;
+  color: $primary !important;
+  width: fit-content !important;
 }
 
 .pills.active {
-  background-color: $primary;
-  font-family: "Gt-Am-cond-med";
-  color: white;
+  background-color: $primary !important;
+  font-family: "Gt-Am-cond-med" !important;
+  color: white !important;
 }
 .pills.pop {
-  border: $pop;
-  background-color: $pop;
-  color: white;
-  font-family: "Gt-Am-cond-reg";
+  border: $pop !important;
+  background-color: $pop !important;
+  color: white !important;
+  font-family: "Gt-Am-cond-reg" !important;
 }
