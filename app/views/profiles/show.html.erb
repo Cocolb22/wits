@@ -1,54 +1,56 @@
 <%= render 'profiles/header', user: @user %>
 
-<div class="container-header container-index container-profil">
-  <div class="show-descr-grid user-profile-grid">
-    <div class="show-descr-grid-type label-bold txt-primary">
-      Prénom
-      <% if @user.last_name.present? %>
-        <p class="user-text"><%= @user.last_name %></p>
-      <% else %>
-        <p class="user-text user-text-disabled">Non renseigné</p>
-      <% end %>
-    </div>
-
-    <div class="show-descr-grid-type label-bold txt-primary">
-      Nom
-      <% if @user.first_name.present? %>
-        <p class="user-text"><%= @user.first_name %></p>
-      <% else %>
-        <p class="user-text user-text-disabled">Non renseigné</p>
-      <% end %>
-    </div>
-
-    <div class="show-descr-grid-type label-bold txt-primary">
-      Anniversaire
-      <% if @user.birthday.present? %>
-      <p class="user-text"><%= @user.birthday %></p>
-      <% else %>
-        <p class="user-text user-text-disabled">Non renseigné</p>
-      <% end %>
-    </div>
-
-  </div>
-  <div class="show-descr-grid-type">
-    <span class="label-bold txt-primary">Activités favorites</span>
-    <div class="favorites-spots-wrapper">
-      <% if current_user.favorite_activities.any? %>
-        <% current_user.favorite_activities.each do |favorite_activity| %>
-        <div class="picto-search">
-          <div class="picto-rectangle">
-            <svg width="86" height="87" style="transform:rotate(<%= rand(1..360) %>deg)" class="blob" viewBox="0 0 86 87" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.0849 65.0181C31.1999 79.7268 52.4685 90.8148 66.8919 83.907C81.2404 76.9635 88.8907 51.9091 84.1547 33.3467C79.4548 14.7088 62.4796 2.52333 44.6516 0.395515C26.7488 -1.76806 8.02937 6.05067 2.16845 19.087C-3.80333 32.1629 3.04463 50.3452 17.0849 65.0181Z" fill="#D9E3E8"/>
-            </svg>
-              <%= image_tag "big/#{favorite_activity.activity.bigicon}", class: "picto-rectangle-sport" %>
-          </div>
-          <p class="picto-description label-bold text-center"><%=  favorite_activity.activity.name %></p>
-        </div>
+<div class="container-fluid bg-white">
+  <div class="container-header container-index container-profil">
+    <div class="show-descr-grid user-profile-grid">
+      <div class="show-descr-grid-type label-bold txt-primary">
+        Prénom
+        <% if @user.last_name.present? %>
+          <p class="user-text"><%= @user.last_name %></p>
+        <% else %>
+          <p class="user-text user-text-disabled">Non renseigné</p>
         <% end %>
-      <% else %>
-        <p class="user-text user-text-disabled">Non renseigné</p>
-      <% end %>
+      </div>
+
+      <div class="show-descr-grid-type label-bold txt-primary">
+        Nom
+        <% if @user.first_name.present? %>
+          <p class="user-text"><%= @user.first_name %></p>
+        <% else %>
+          <p class="user-text user-text-disabled">Non renseigné</p>
+        <% end %>
+      </div>
+
+      <div class="show-descr-grid-type label-bold txt-primary">
+        Anniversaire
+        <% if @user.birthday.present? %>
+        <p class="user-text"><%= @user.birthday %></p>
+        <% else %>
+          <p class="user-text user-text-disabled">Non renseigné</p>
+        <% end %>
+      </div>
+
+    </div>
+    <div class="show-descr-grid-type">
+      <span class="label-bold txt-primary">Activités favorites</span>
+      <div class="favorites-spots-wrapper">
+        <% if current_user.favorite_activities.any? %>
+          <% current_user.favorite_activities.each do |favorite_activity| %>
+          <div class="picto-search">
+            <div class="picto-rectangle">
+              <svg width="86" height="87" style="transform:rotate(<%= rand(1..360) %>deg)" class="blob" viewBox="0 0 86 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.0849 65.0181C31.1999 79.7268 52.4685 90.8148 66.8919 83.907C81.2404 76.9635 88.8907 51.9091 84.1547 33.3467C79.4548 14.7088 62.4796 2.52333 44.6516 0.395515C26.7488 -1.76806 8.02937 6.05067 2.16845 19.087C-3.80333 32.1629 3.04463 50.3452 17.0849 65.0181Z" fill="#D9E3E8"/>
+              </svg>
+                <%= image_tag "big/#{favorite_activity.activity.bigicon}", class: "picto-rectangle-sport" %>
+            </div>
+            <p class="picto-description label-bold text-center"><%=  favorite_activity.activity.name %></p>
+          </div>
+          <% end %>
+        <% else %>
+          <p class="user-text user-text-disabled">Non renseigné</p>
+        <% end %>
+      </div>
     </div>
   </div>
+  <%= link_to "Editer mon Profil", edit_profile_path, class:"btn btn-primary w-100 btn-gradient btn-fixed-bottom"%>
 </div>
-<%= link_to "Editer mon Profil", edit_profile_path, class:"btn btn-primary w-100 btn-gradient btn-fixed-bottom"%>

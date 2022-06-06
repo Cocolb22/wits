@@ -14,15 +14,15 @@ Rails.application.routes.draw do
       get :activities
       get :comments
       get :forecast
-      patch :approve
-      patch :unapprove
     end
     collection do
       get :search
     end
     resources :comments, only: [:create]
     resources :favorites, only: [:create]
+    resources :votes, only: [:create]
   end
+
 
   resources :activities, only: [] do
     resources :favorite_activities, only: [:create]
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :favorites, only: [:destroy]
   resources :likes, only: [:destroy]
   resources :favorite_activities, only: [:destroy]
+  resources :votes, only: [:update]
 
   resources :comments, only: [] do
     member do
