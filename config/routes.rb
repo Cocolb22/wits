@@ -11,8 +11,8 @@ Rails.application.routes.draw do
       get :activities
       get :comments
       get :forecast
-      patch :approve
-      patch :unapprove
+      patch :upvote
+      patch :downvote
     end
     collection do
       get :search

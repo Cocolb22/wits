@@ -55,4 +55,16 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     @weathers = @spot.weathers
   end
+
+  def upvote
+    @spot = Spot.find(params[:id])
+    @upvote = @spot.upvote.edit
+    redirect_to spot_path(@spot)
+  end
+
+  def downvote
+    @spot = Spot.find(params[:id])
+    @downvote = @spot.downvote.edit
+    redirect_to spot_path(@spot)
+  end
 end

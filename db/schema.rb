@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_155917) do
+ActiveRecord::Schema.define(version: 2022_06_06_100431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,13 +121,14 @@ ActiveRecord::Schema.define(version: 2022_06_04_155917) do
     t.string "spot_type"
     t.string "icon"
     t.string "category"
-    t.integer "verification_count", default: 0
     t.boolean "verified", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "street"
     t.string "zipcode"
     t.string "city"
+    t.integer "upvote"
+    t.integer "downvote"
     t.index ["user_id"], name: "index_spots_on_user_id"
   end
 

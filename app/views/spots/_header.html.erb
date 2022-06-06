@@ -67,5 +67,13 @@
       </div>
     </div>
     <%= @spot.category %>
+    <!-- upvote & downvote -->
+    <div>
+      <%= pluralize(@upvote.count), 'approuver' %>
+      <%= button_to '+1', upvote_spot_path(@spot), method: :patch %>
+      <%= pluralize(@downvote.count), 'désapprouver' %>
+      <%= button_to '-1', downvote_spot_path(@spot), method: :patch %>
+    </div>
+
   </div>
 </div>
