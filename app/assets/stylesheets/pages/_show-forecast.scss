@@ -21,3 +21,16 @@
   height: 0px;
   width: 0;
 }
+
+#form-comments {
+  background-color: white;
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100vw;
+  padding-bottom: 100px;
+  padding-top: 20px;
+  border-radius: 15px 15px 0 0;
+  border: 1px solid rgb(215, 215, 215);
+  transition: 0.3s ease;
+}
