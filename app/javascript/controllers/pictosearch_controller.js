@@ -4,10 +4,10 @@ export default class extends Controller {
   static targets = [ "picto" ]
 
   connect() {
-    console.log("Hello world")
   }
 
   toggle() {
+    console.log("Hello world")
     this.pictoTarget.classList.toggle("active")
   }
 }
