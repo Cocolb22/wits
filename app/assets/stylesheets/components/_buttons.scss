@@ -21,6 +21,9 @@
   color: white;
   width: 75%;
   border: none;
+  padding: 12px 0;
+  height:auto !important;
+  line-height:initial !important;
 }
 
 .btn-menu {
@@ -46,3 +49,9 @@
 .btn-ghost:hover {
   opacity: 1;
 }
+
+.btn-disabled {
+  background:$black-100;
+  color:$black-700;
+}
+
