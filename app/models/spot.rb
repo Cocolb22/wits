@@ -36,8 +36,19 @@ class Spot < ApplicationRecord
   end
 
   def icon
-    case type
+    case spot_type
     when "Plage"
-    when ""
+      "type-beach.svg"
+    when "Spot sauvage"
+      "type-nature.svg"
+    when "Port"
+      "type-port.svg"
+    when "École"
+      "type-sailing.svg"
+    end
+  end
+
+  def build_address
+    self.address = "#{street}, #{zipcode} #{city}"
   end
 end
