@@ -81,15 +81,21 @@
     <% end %>
   </div>
 
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.js"></script>
+  <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.js"></script>
+
   <div class="show-comments-photos label-bold">
-   Toutes les photos du spots
+    Toutes les photos du spots
   </div>
-  <div class="show-comments-photos-content">
-    <% @spot.comments do |comment| %>
+  <div class="grid-masonry">
+  <div class="grid-sizer-masonry"></div>
+    <% @spot.comments.each do |comment| %>
       <% if comment.images.attached? %>
-        <% comment.images.each do |image| %>
-          <%= cl_image_tag image.key, width: 400, crop: :fill %>
-        <% end %>
+        <div class="grid-item-masonry">
+          <% comment.images.each do |image| %>
+            <%= cl_image_tag image.key, crop: :fill %>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
   </div>

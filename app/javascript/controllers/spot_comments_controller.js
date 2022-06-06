@@ -9,6 +9,10 @@ export default class extends Controller {
     console.log(this.inputTargets)
   }
 
+  display_form(event) {
+    this.formTarget.classList.remove("d-none")
+  }
+
   post(event) {
     event.preventDefault()
     let isValid = true

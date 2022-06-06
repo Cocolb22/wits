@@ -11,3 +11,13 @@
 .weather-picto {
   margin: 12px auto;
 }
+
+.pills.active {
+  color: $primary;
+  position: relative;
+}
+.pills.active::after {
+  content: "";
+  height: 0px;
+  width: 0;
+}

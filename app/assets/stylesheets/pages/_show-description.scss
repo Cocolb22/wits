@@ -19,7 +19,6 @@
   color: $primary;
   position: relative;
 }
-
 .nav-link.active::after {
   position: absolute;
   content: "";
@@ -89,4 +88,37 @@
 
 .show-activities {
   margin-top:$spacing-s;
+}
+
+
+//--------------- masonry-carousel
+
+.grid-masonry {
+  background: white;
+  margin-top: $spacing-s;
+}
+
+/* clear fix */
+.grid-masonry:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .grid-item ---- */
+
+.grid-sizer-masonry,
+.grid-item-masonry {
+  width: 33.333%;
+}
+
+.grid-item-masonry {
+  float: left;
+}
+
+.grid-item-masonry img {
+  display: block;
+  max-width: 98%;
+  margin-bottom: 2px;
+  border-radius: 5px;
 }
