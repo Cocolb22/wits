@@ -3,11 +3,12 @@ class Activity < ApplicationRecord
     "Surf",
     "Kitesurf",
     "Kayak",
-    "Saut depuis une falaise",
+    "Saut de falaise",
     "Planche à voile",
-    "Plongée en apnée",
+    "Apnée",
     "Catamaran",
-    "Jetski"
+    "Jetski",
+    "Char à voile"
   ]
 
   has_many :favorite_activities, dependent: :destroy
