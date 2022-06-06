@@ -49,6 +49,19 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     @comments = @spot.comments.order('id DESC')
     @comment = Comment.new
+    if params[:order] == "recent"
+      @comments = @spot.comments.order('id DESC')
+      @comment = Comment.new
+    elsif params[:order] == "rating"
+      @comments = @spot.comments.sort_by(&:rating).reverse
+      @comment = Comment.new
+    elsif params[:order] == "stars"
+      @comments = @spot.comments.where("rating = 5")
+      @comment = Comment.new
+    elsif params[:order] == "popular"
+      @comments = @spot.comments.where(&:like)
+      @comment = Comment.new
+    end
   end
 
   def forecast
