@@ -21,32 +21,33 @@
   <% end %>
 
   <div class="index-sorting">
+
     <div class="pills active">
-      <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order]) do %>
+      <%= link_to spots_path(location: params[:location], activities: params[:activities]) do %>
         Tous
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:order] == 'desc_moyen_rating'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: "desc_moyen_rating", spot_type: params[:spot_type]) do%>
         Mieux notés
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:spot_type] == 'Plage'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Plage") do %>
         Plage
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:spot_type] == 'Spot sauvage'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Spot sauvage") do %>
         Spot sauvage
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:spot_type] == 'École'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "École") do %>
         École
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:spot_type] == 'Port'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Port") do %>
         Port
       <% end %>
@@ -71,26 +72,28 @@
           <div class="card-image-tag pills pop">
             most popular
           </div>
-          <% spot.photos.each do |photo| %>
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <% spot.photos.each_with_index do |photo, index|%>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>", aria-current="<%= index.zero? %>"  aria-label="Slide 1"></button>
+              <% end %>
             </div>
-              <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <%= cl_image_tag photo.key, crop: :fill, width: 400 %>
-                  </div>
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
+            <div class="carousel-inner">
+              <% spot.photos.each_with_index do |photo, index|%>
+                <div class="carousel-item <%= 'active' if index.zero? %>" data-bs-interval="20000">
+                  <%= cl_image_tag photo.key, crop: :fill, class:"d-block w-100 h-100" %>
+                </div>
+              <% end %>
             </div>
-          <% end %>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </div>
 
         <div class="card-spot-infos">
@@ -129,20 +132,4 @@
       </div>
     <% end %>
   <% end %>
-</div>
-<div class="bottom-bar">
-    <%= link_to search_spots_path, class:"bottom-bar-item bottom-nav-link nav-left" do %>
-      <i class="fas fa-search size-font-awesome"></i>
-      <div class="text text-x-small-bold">Présentation</div>
-    <% end %>
-
-    <%= link_to profile_path, class:"bottom-bar-item bottom-nav-link " do %>
-      <i class="fas fa-user size-font-awesome"></i>
-      <div class="text text-x-small-bold">Profil</div>
-    <% end %>
-
-    <%= link_to edit_profile_path, class:"bottom-bar-item bottom-nav-link active nav-right" do %>
-      <i class="fas fa-cog size-font-awesome"></i>
-      <div class="text text-x-small-bold">Paramètres</div>
-    <% end %>
 </div>

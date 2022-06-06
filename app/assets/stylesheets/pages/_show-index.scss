@@ -18,12 +18,12 @@
 }
 
 .index-sorting {
+  position: relative;
   display: flex;
   align-items: center;
   margin: $spacing-s auto;
   overflow-x: scroll;
   padding: 0 $spacing-s;
-  background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 75%);
   a {
     text-decoration: none;
     font-family: "Gt-Am-cond-reg";
@@ -36,7 +36,37 @@
     white-space: nowrap;
     margin-right:12px;
   }
+  // &::after {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   right: 0;
+  //   height: 100%;
+  //   width: 50px;
+  //   background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.2) 20%);
+  // }
 }
+
+// .index-sorting-after {
+//   position: fixed;
+//     top: 0;
+//     left: 70%;
+//     height: 100%;
+//     width: 30%;
+//     background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.2) 40%);
+//     z-index: 200;
+// }
+
+// .index-sorting-before {
+//   position: absolute;
+//     top: 0;
+//     left: 0;
+//     height: 100%;
+//     width: 50%;
+//     background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.2) 10%);
+//     z-index: 100;
+// }
+
 .index-sorting .pills.active {
   a{
     color:white;

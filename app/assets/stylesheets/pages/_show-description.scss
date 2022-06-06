@@ -4,7 +4,7 @@
   background: rgba(255, 255, 255, 1);
   padding: 0 16px;
   // Pour le bouton fixé en bas
-  padding-bottom:64px;
+  padding-bottom:104px;
 }
 
 .nav {
@@ -95,6 +95,7 @@
 
 .grid-masonry {
   background: white;
+  padding-bottom: 20px;
   margin-top: $spacing-s;
 }
 
