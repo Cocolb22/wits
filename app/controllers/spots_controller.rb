@@ -58,13 +58,15 @@ class SpotsController < ApplicationController
 
   def upvote
     @spot = Spot.find(params[:id])
-    @upvote = @spot.upvote.edit
+    @spot.upvote_spot
+    @spot.save
     redirect_to spot_path(@spot)
   end
 
   def downvote
     @spot = Spot.find(params[:id])
-    @downvote = @spot.downvote.edit
+    @spot.downvote_spot
+    @spot.save
     redirect_to spot_path(@spot)
   end
 end

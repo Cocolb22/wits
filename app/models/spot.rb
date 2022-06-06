@@ -10,6 +10,7 @@ class Spot < ApplicationRecord
   has_many :activities, through: :spot_activities
   has_many :weathers, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :votes, dependent: :destroy
   has_one :service, dependent: :destroy
 
   has_many_attached :photos
@@ -35,5 +36,13 @@ class Spot < ApplicationRecord
 
   def avg_rating
     comments.average(:rating).round(1)
+  end
+
+  def upvote_spot
+    self.upvote += 1
+  end
+
+  def downvote_spot
+    self.downvote += 1
   end
 end

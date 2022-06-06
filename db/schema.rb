@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_100431) do
+ActiveRecord::Schema.define(version: 2022_06_06_122439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,8 +127,8 @@ ActiveRecord::Schema.define(version: 2022_06_06_100431) do
     t.string "street"
     t.string "zipcode"
     t.string "city"
-    t.integer "upvote"
-    t.integer "downvote"
+    t.integer "upvote", default: 0
+    t.integer "downvote", default: 0
     t.index ["user_id"], name: "index_spots_on_user_id"
   end
 
@@ -158,6 +158,16 @@ ActiveRecord::Schema.define(version: 2022_06_06_100431) do
     t.boolean "photo_completed", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "spot_id", null: false
+    t.boolean "upvoted"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["spot_id"], name: "index_votes_on_spot_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
   create_table "weathers", force: :cascade do |t|
@@ -193,5 +203,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_100431) do
   add_foreign_key "spot_activities", "activities"
   add_foreign_key "spot_activities", "spots"
   add_foreign_key "spots", "users"
+  add_foreign_key "votes", "spots"
+  add_foreign_key "votes", "users"
   add_foreign_key "weathers", "spots"
 end
