@@ -6,6 +6,11 @@ class LikesController < ApplicationController
     @like.user = current_user
 
     if @like.save
+      if @comment.likes.count % 10 == 0
+        @comment.user.profile_exp += 2
+        @comment.user.save
+      end
+
       respond_to do |format|
         format.html { redirect_to comments_spot_path(@comment.spot) }
         format.text { render partial: "likes/destroy", locals: { like: @like, comment: @comment }, formats: [:html] }
@@ -23,3 +28,8 @@ class LikesController < ApplicationController
     end
   end
 end
+
+
+
+
+
