@@ -22,31 +22,31 @@
 
   <div class="index-sorting">
     <div class="pills active">
-      <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order]) do %>
+      <%= link_to spots_path(location: params[:location], activities: params[:activities]) do %>
         Tous
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:order] == 'desc_moyen_rating'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: "desc_moyen_rating", spot_type: params[:spot_type]) do%>
         Mieux notés
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:spot_type] == 'Plage'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Plage") do %>
         Plage
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:spot_type] == 'Spot sauvage'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Spot sauvage") do %>
         Spot sauvage
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:spot_type] == 'École'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "École") do %>
         École
       <% end %>
     </div>
-    <div class="pills">
+    <div class="pills <%= 'active' if params[:spot_type] == 'Port'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: params[:order], spot_type: "Port") do %>
         Port
       <% end %>
