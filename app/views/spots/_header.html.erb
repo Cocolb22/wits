@@ -4,15 +4,15 @@
     <i class="fas fa-angle-left card-image-tag"></i>
   <% end %>
 
-  <% if @user_favorite %>
-    <%= button_to favorite_path(@user_favorite), method: :delete, class:"favorites-button" do %>
-      <i class="far fa-heart"></i>
-    <% end %>
-  <% else %>
-    <%= button_to spot_favorites_path(@spot), class:"favorites-button", method: :post do %>
-      <i class="fas fa-heart"></i>
-    <% end %>
-  <% end %>
+  <div data-controller="favorite" class="favorite-controls">
+    <div data-favorite-target="button">
+      <% if @user_favorite %>
+        <%= render "favorites/destroy", favorite: @user_favorite, spot: @spot %>
+      <% else %>
+        <%= render "favorites/create", spot: @spot %>
+      <% end %>
+    </div>
+  </div>
 
 
 

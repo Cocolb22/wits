@@ -1,0 +1,7 @@
+<%= link_to spot_favorites_path(spot),
+    class: "favorites-button",
+    "data-action": "click->favorite#create",
+    method: :post do %>
+  <i class="far fa-heart">
+  </i>
+<% end %>

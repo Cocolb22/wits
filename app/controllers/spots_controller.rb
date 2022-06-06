@@ -52,11 +52,13 @@ class SpotsController < ApplicationController
   def comments
     @spot = Spot.find(params[:id])
     @comments = @spot.comments.order('id DESC')
+    @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @comment = Comment.new
   end
 
   def forecast
     @spot = Spot.find(params[:id])
+    @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @weathers = @spot.weathers
   end
 
@@ -72,6 +74,7 @@ class SpotsController < ApplicationController
     @spot.downvote_spot
     @spot.save
     redirect_to spot_path(@spot)
+  end
 
   private
 
@@ -84,6 +87,5 @@ class SpotsController < ApplicationController
       redirect_to profile_path
       flash[:alert] = "Vous n'avez pas assez de points pour créer un spot."
     end
-
   end
 end

@@ -1,0 +1,7 @@
+<%= link_to favorite_path(favorite),
+    class: "favorites-button",
+    "data-action": "click->favorite#create",
+    method: :delete do %>
+  <i class="fas fa-heart">
+  </i>
+<% end %>

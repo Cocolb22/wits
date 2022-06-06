@@ -1,0 +1,7 @@
+<%= render 'profiles/header', user: @user %>
+
+<div class="container-header container-index container-profil">
+  <% @comments.each do |comment| %>
+    <%= render 'spots/comment', comment: comment %>
+  <% end %>
+</div>
