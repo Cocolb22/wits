@@ -1,11 +1,15 @@
 class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
+  before_action :verifiy_user_exp, only: %i[new create]
 
   def new
+    verifiy_user_exp
     @spot = Spot.new
+    @spot.spot_activities.build
   end
 
   def create
+    verifiy_user_exp
     @spot = Spot.new(spot_params)
     @spot.user = current_user
 
@@ -68,5 +72,18 @@ class SpotsController < ApplicationController
     @spot.downvote_spot
     @spot.save
     redirect_to spot_path(@spot)
+
+  private
+
+  def spot_params
+    params.require(:spot).permit(:full_name, :description, :category, :spot_type, :address, icon: [], activity_ids: [])
+  end
+
+  def verifiy_user_exp
+    if current_user.profile_exp < 500
+      redirect_to profile_path
+      flash[:alert] = "Vous n'avez pas assez de points pour créer un spot."
+    end
+
   end
 end

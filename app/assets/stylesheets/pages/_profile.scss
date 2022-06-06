@@ -20,6 +20,19 @@
   font-size:13px;
 }
 
+.user-profile-grid {
+  grid-template-rows: 1fr !important;
+}
+
+.favorites-spots-wrapper {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  .picto-rectangle {
+    width: 100px;
+    transform: scale(0.7);
+  }
+}
+
 @keyframes showProgressBar {
   0% {
     transform:scaleX(0)

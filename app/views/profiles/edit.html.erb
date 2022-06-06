@@ -15,24 +15,20 @@
           input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
             wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label:"Adresse" %>
         <%= f.input :gender, collection: User::GENDERS, label: "Genre" %>
-        <%= f.input :favorite_area, label: "Zone Favorite" %>
+        <%= f.input :favorite_area,
+          input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
+            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label: "Zone Favorite"  %>
         <%#= f.submit "Mettre à Jour", class:"btn btn-primary w-100 btn-gradient" %>
 
-        <div class="search-sports-grid">
+        <p class="label-bold txt-primary">Activités favorites</p>
+        <div class="search-sports-grid favorites-spots-wrapper">
           <% Activity.all.each do |activity| %>
             <div class="search-sport">
-              <div class="picto-search" data-pictosearch-target="picto" data-controller="pictosearch favorite-activity">
-                <%= label_tag "activities_#{activity.id}", activity.name, "data-action": "click->pictosearch#toggle"  do %>
-                  <div class="picto-rectangle">
-                    <svg width="86" height="87" style="transform:rotate(<%= rand(1..360) %>deg)" class="blob" viewBox="0 0 86 87" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M17.0849 65.0181C31.1999 79.7268 52.4685 90.8148 66.8919 83.907C81.2404 76.9635 88.8907 51.9091 84.1547 33.3467C79.4548 14.7088 62.4796 2.52333 44.6516 0.395515C26.7488 -1.76806 8.02937 6.05067 2.16845 19.087C-3.80333 32.1629 3.04463 50.3452 17.0849 65.0181Z" fill="#D9E3E8"/>
-                    </svg>
-                    <%#= image_tag "big/#{activity.bigicon}", class: "picto-rectangle-sport" %>
-                  </div>
-                  <p class="picto-description label-bold text-center"><%= activity.name %> </p>
-                <% end %>
-                <%#= check_box_tag "favorites_activities[]", activity.id, params[:favorites_activities]&.include?(activity.id.to_s), id: "favorites_activities_#{activity.name}", class:"sports-check-box" %>
-              </div>
+              <% if fav_act = FavoriteActivity.find_by(user: current_user, activity: activity) %>
+                <%= render "favorite_activities/destroy", activity: activity, favorite_activity: fav_act %>
+              <% else %>
+                <%= render "favorite_activities/create", activity: activity %>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -40,12 +36,6 @@
         <div class="btn-discover-spots">
           <%= submit_tag "Mettre à Jour", class: "btn-cta-rounded call-to-action" %>
         </div>
-
-        <%#= f.input :favorite_activity, as: :check_boxes, collection: Activity::NAMES, wrapper: :vertical_collection_inline %>
-        <%#= f.collection_check_boxes :activity_ids, Activity.all, :name,
-            {:item_wrapper_class => 'checkbox_container'} %>
-
-
     <% end %>
   </div>
 </div>
