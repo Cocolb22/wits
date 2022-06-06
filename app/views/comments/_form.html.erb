@@ -1,13 +1,18 @@
-  <%= simple_form_for [ spot, comment ], html: { data: {spot_comments_target: 'form', action: 'submit->spot-comments#post', uppy:'comment[images][]'}} do |f| %>
-    <%= f.input :content, input_html: { data: { spot_comments_target: "input" } } %>
-    <%= f.input :rating, input_html: { data: { spot_comments_target: "input" } } %>
-    <% if comment.images.attached? %>
-      <% comment.images.each do |image| %>
-        <%= cl_image_tag image.key, width: 280, data: { behavior: 'uppy-preview'} %>
-      <% end %>
-    <% else%>
-      <div id="imgPreview"></div>
+
+<%= simple_form_for [ spot, comment ], html: { data: {spot_comments_target: 'form', action: 'submit->spot-comments#post', uppy:'comment[images][]'}, class:"d-none", id:"form-comments"} do |f| %>
+  <%= f.input :content, input_html: { data: { spot_comments_target: "input" } }, class:"input-content " %>
+  <%= f.input :rating, input_html: { data: { spot_comments_target: "input" } }, class:"input-rating label" %>
+  <% if comment.images.attached? %>
+    <% comment.images.each do |image| %>
+      <%= cl_image_tag image.key, width: 280, data: { behavior: 'uppy-preview'} %>
     <% end %>
-    <%= link_to 'Upload', '#', data: {behavior: 'uppy-trigger'} %>
-    <%= f.button :button, "Ajouter un commentaire", class: "btn-cta btn-submit-form-comment call-to-action", data: {spot_comments_target: 'btn'} %>
+  <% else%>
+    <div id="imgPreview"></div>
   <% end %>
+  <%= link_to 'Télécharger une photo', '#', data: {behavior: 'uppy-trigger'}, class:"input-upload label-bold" %>
+  <%= f.button :button, "Ajouter un commentaire", class: "btn-submit-form-comment btn-cta btn-fixed call-to-action", data: {spot_comments_target: 'btn'} %>
+<% end %>
+
+<div class = "gps-container btn-cta btn-fixed call-to-action", data-spot-comments-target="addcomment", data-action = "click->spot-comments#display_form">
+  Laisser un commentaire
+</div>
