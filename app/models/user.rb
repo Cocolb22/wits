@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :favorite_spots, through: :favorites, source: :spot
   has_many :favorite_activities
   has_many :favorite_activity_activities, through: :favorite_activities, source: :activity
+  has_many :votes, dependent: :destroy
 
   has_one_attached :photo
 
