@@ -74,6 +74,7 @@ class SpotsController < ApplicationController
     @spot.downvote_spot
     @spot.save
     redirect_to spot_path(@spot)
+  end
 
   private
 
@@ -86,6 +87,5 @@ class SpotsController < ApplicationController
       redirect_to profile_path
       flash[:alert] = "Vous n'avez pas assez de points pour créer un spot."
     end
-
   end
 end
