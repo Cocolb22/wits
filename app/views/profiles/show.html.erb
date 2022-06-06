@@ -68,18 +68,17 @@
         <p class="user-text user-text-disabled">Non renseigné</p>
       <% end %>
     </div>
-  </div>
 
-  <p class="label-bold txt-primary">Sports Favoris</p>
-  <div>
-    <div class="favorite_sport">
-      <%= image_tag "icons/SauteFalaise-small.svg"  %>
-    </div>
-    <div class="favorite_sport">
-      <%= image_tag "icons/Scuba-small.svg" %>
+
+
+    <div class="show-descr-grid-type label-bold txt-primary">
+      Activités favorites
+      <% if @favorite_activity.present? %>
+        <p class="user-text"><%=  @activity.name %></p>
+      <% else %>
+        <p class="user-text user-text-disabled">Non renseigné</p>
+      <% end %>
     </div>
   </div>
-
-</div>
 
 <%= link_to "Editer mon Profil", edit_profile_path, class:"btn btn-primary w-100 btn-gradient btn-fixed-bottom"%>

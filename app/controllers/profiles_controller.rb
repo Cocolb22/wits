@@ -10,9 +10,6 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     if @user.update(profile_params)
-
-    check_profile_point(@user)
-
       redirect_to profile_path
       flash[:notice] = "Profil modifié !"
     else
@@ -23,7 +20,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:user).permit(:last_name, :first_name, :nick_name, :address, :photo, :birthday, :gender, :favorite_area)
+    params.require(:user).permit(:last_name, :first_name, :nick_name, :address, :photo, :birthday, :gender, :favorite_area, :favorite_activity)
   end
 
   def check_profile_point(user)

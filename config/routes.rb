@@ -21,13 +21,18 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create]
   end
 
-  resources :favorites, only: [:index, :destroy ]
+  resources :activities, only: [] do
+    resources :favorite_activities, only: [:create]
+  end
+
+  resources :favorites, only: [:index, :destroy]
   resources :likes, only: [:destroy]
+  resources :favorite_activities, only: [:destroy]
 
   resources :comments, only: [] do
     member do
       post :review
     end
-    resources :likes, only: :create
+    resources :likes, only: [:create]
   end
 end
