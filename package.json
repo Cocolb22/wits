@@ -2,7 +2,7 @@
   "name": "wits",
   "private": true,
   "dependencies": {
-    "@excid3/uppy-activestorage-upload": "https://github.com/excid3/uppy-activestorage-upload.git",
+    "@excid3/uppy-activestorage-upload": "https://github.com/excid3/uppy-activestorage-upload",
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@popperjs/core": "^2.11.5",
     "@rails/actioncable": "^6.0.0",
