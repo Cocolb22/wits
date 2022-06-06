@@ -60,7 +60,6 @@ class SpotsController < ApplicationController
     @weathers = @spot.weathers
   end
 
-
   private
 
   def spot_params
@@ -73,5 +72,4 @@ class SpotsController < ApplicationController
       flash[:alert] = "Vous n'avez pas assez de points pour créer un spot."
     end
   end
-
 end
