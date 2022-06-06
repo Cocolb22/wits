@@ -1,8 +1,8 @@
-class FavoritesActivitiesController < ApplicationController
+class FavoriteActivitiesController < ApplicationController
   def create
 
     if params[:favorites_activities]
-      @favorites_activities = Favorite_activity.joins(:favorites_activities).where("activities.id IN (?)", params[:favorites_activities].reject(&:blank?).map(&:to_i))
+      @favorites_activities = FavoriteActivity.joins(:favorites_activities).where("activities.id IN (?)", params[:favorites_activities].reject(&:blank?).map(&:to_i))
     end
 
     @favorite_activity = Favorite_activity.new
@@ -16,7 +16,7 @@ class FavoritesActivitiesController < ApplicationController
   end
 
   def destroy
-    @favorite_activity = Favorite_activity.find(params[:id])
+    @favorite_activity = FavoriteActivity.find(params[:id])
 
     @favorite_activity.destroy
     redirect_to profile_path

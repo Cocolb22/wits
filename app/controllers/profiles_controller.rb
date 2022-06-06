@@ -9,12 +9,12 @@ class ProfilesController < ApplicationController
 
   def update
     @user = current_user
-      if @user.update(profile_params)
-        redirect_to profile_path
-        flash[:notice] = "Profil modifié !"
-      else
-        render :edit
-      end
+    if @user.update(profile_params)
+      redirect_to profile_path
+      flash[:notice] = "Profil modifié !"
+    else
+      render :edit
+    end
   end
 
   private

@@ -21,7 +21,7 @@
         <div class="search-sports-grid">
           <% Activity.all.each do |activity| %>
             <div class="search-sport">
-              <div class="picto-search" data-pictosearch-target="picto" data-controller="pictosearch">
+              <div class="picto-search" data-pictosearch-target="picto" data-controller="pictosearch favorite-activity">
                 <%= label_tag "activities_#{activity.id}", activity.name, "data-action": "click->pictosearch#toggle"  do %>
                   <div class="picto-rectangle">
                     <svg width="86" height="87" style="transform:rotate(<%= rand(1..360) %>deg)" class="blob" viewBox="0 0 86 87" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +31,7 @@
                   </div>
                   <p class="picto-description label-bold text-center"><%= activity.name %> </p>
                 <% end %>
-                <%= check_box_tag "favorites_activities[]", activity.id, params[:favorites_activities]&.include?(activity.id.to_s), id: "favorites_activities_#{activity.name}", class:"sports-check-box" %>
+                <%#= check_box_tag "favorites_activities[]", activity.id, params[:favorites_activities]&.include?(activity.id.to_s), id: "favorites_activities_#{activity.name}", class:"sports-check-box" %>
               </div>
             </div>
           <% end %>
