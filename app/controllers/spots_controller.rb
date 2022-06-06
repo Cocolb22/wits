@@ -60,6 +60,19 @@ class SpotsController < ApplicationController
     @weathers = @spot.weathers
   end
 
+  def upvote
+    @spot = Spot.find(params[:id])
+    @spot.upvote_spot
+    @spot.save
+    redirect_to spot_path(@spot)
+  end
+
+  def downvote
+    @spot = Spot.find(params[:id])
+    @spot.downvote_spot
+    @spot.save
+    redirect_to spot_path(@spot)
+
   private
 
   def spot_params
@@ -71,5 +84,6 @@ class SpotsController < ApplicationController
       redirect_to profile_path
       flash[:alert] = "Vous n'avez pas assez de points pour créer un spot."
     end
+
   end
 end

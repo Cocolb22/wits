@@ -1,0 +1,12 @@
+.upvote-container {
+  display: flex;
+  justify-content: end;
+}
+
+.voted {
+  color: $primary;
+}
+
+.to-vote {
+  color: $black-300;
+}
