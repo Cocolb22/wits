@@ -3,6 +3,7 @@ class SpotsController < ApplicationController
 
   def new
     @spot = Spot.new
+    @spot.spot_activities.build
   end
 
   def create
@@ -55,4 +56,12 @@ class SpotsController < ApplicationController
     @spot = Spot.find(params[:id])
     @weathers = @spot.weathers
   end
+
+
+  private
+
+  def spot_params
+    params.require(:spot).permit(:full_name, :description, :category, :spot_type, :address, icon: [], activity_ids: [])
+  end
+
 end
