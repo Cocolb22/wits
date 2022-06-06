@@ -1,26 +1,42 @@
-<div class="container d-flex justify-content-center">
-  <div class="bg-white my-4 rounded py-4 px-4 w-75">
-    <h2 class="mb-4 text-center">Ajoutez votre spot !</h2>
-    <%= simple_form_for @spot do |f| %>
-      <%= f.input :full_name,
-            label: "Nom",
-            required: false,
-            placeholder: "Nommez votre spot" %>
-      <%= f.input :description,
-            label: "Description",
-            required: false,
-            placeholder: "Décrivez votre spot" %>
-      <%= f.input :category, label: "Catégorie", required: false, collection: Spot::CATEGORIES %>
-      <%= f.input :spot_type, label: "Indiquez le type de votre spot", required: false, collection: Spot::TYPES %>
-      <%= f.collection_check_boxes :activity_ids, Activity.all, :id, :name %>
+<div class="container bg-white label-bold txt-primary m-2 p-3 ">
+  <h2 class="mb-4 text-center">Ajoutez votre spot !</h2>
+  <%= simple_form_for @spot do |f| %>
+    <%= f.input :full_name,
+          label: "Nom",
+          required: false,
+          placeholder: "Nommez votre spot" %>
+    <%= f.input :description,
+          label: "Description",
+          required: false,
+          placeholder: "Décrivez votre spot" %>
+    <%= f.input :category, label: "Catégorie", required: false, collection: Spot::CATEGORIES %>
+    <%= f.input :spot_type, label: "Indiquez le type de votre spot", required: false, collection: Spot::TYPES %>
 
-      <%= f.input :address, label: "Adresse", required: false,
-            input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
-            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
-       <%= f.input :photos, as: :file, label: "Ajoutez une photo" %>
+    <div class=" search-sports-grid">
+      <% Activity.all.each do |activity| %>
+        <div class="search-sport">
+          <div class="picto-search" data-pictosearch-target="picto" data-controller="pictosearch">
+            <%= label_tag "activities_#{activity.id}", activity.name, "data-action": "click->pictosearch#toggle"  do %>
+              <div class="picto-rectangle picto-rectangle-sm">
+                <svg width="86" height="87" style="transform:rotate(<%= rand(1..360) %>deg)" class="blob" viewBox="0 0 86 87" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.0849 65.0181C31.1999 79.7268 52.4685 90.8148 66.8919 83.907C81.2404 76.9635 88.8907 51.9091 84.1547 33.3467C79.4548 14.7088 62.4796 2.52333 44.6516 0.395515C26.7488 -1.76806 8.02937 6.05067 2.16845 19.087C-3.80333 32.1629 3.04463 50.3452 17.0849 65.0181Z" fill="#D9E3E8"/>
+                </svg>
+                <%= image_tag "big/#{activity.bigicon}", class: "picto-rectangle-sport" %>
+              </div>
+              <p class="picto-description label-bold text-center"><%= activity.name %> </p>
+            <% end %>
+            <%= check_box_tag "spot[activity_ids][]", activity.id, params[:activities]&.include?(activity.id.to_s), id: "activities_#{activity.id}", class:"sports-check-box" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
-        <%= f.submit "Enregister", class: "btn btn-outline-primary" %>
-      </div>
-    <% end %>
-  </div>
+    <%= f.input :address, label: "Adresse", required: false,
+          input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
+          wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+      <%= f.input :photos, as: :file, label: "Ajoutez une photo" %>
+
+      <%= f.submit "Enregister", class: "btn btn-primary w-100 btn-gradient" %>
+    </div>
+  <% end %>
 </div>
