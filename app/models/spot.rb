@@ -34,6 +34,8 @@ class Spot < ApplicationRecord
   end
 
   def avg_rating
+    return 0 if comments.empty?
+
     comments.average(:rating).round(1)
   end
 end

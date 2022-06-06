@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :favorite_activities, only: [:create]
   end
 
-  resources :favorites, only: [:index, :destroy]
+  resources :favorites, only: [:destroy]
   resources :likes, only: [:destroy]
   resources :favorite_activities, only: [:destroy]
 
