@@ -24,6 +24,9 @@ class SpotsController < ApplicationController
   def search; end
 
   def index
+
+    session[:query_search] = request.query_string
+
     if params[:activities]
       @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i)).distinct
     else
