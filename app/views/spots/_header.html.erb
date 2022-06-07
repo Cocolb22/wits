@@ -1,6 +1,6 @@
 <!--Image du spot-->
 <div class="card-spot-carousel-show">
-  <%= link_to spots_path do %>
+  <%= link_to "/spots?#{session[:query_search]}" do %>
     <i class="fas fa-angle-left card-image-tag"></i>
   <% end %>
 
