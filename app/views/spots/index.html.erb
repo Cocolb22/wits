@@ -70,7 +70,7 @@
 
   <% @spots.each do |spot| %>
     <%= link_to spot_path(spot) do %>
-      <div class="card-spot">
+      <div class="card-spot" id="spot-<%= spot.id %>">
         <div class="card-spot-carousel">
           <div class="card-image-tag pills pop">
             most popular
