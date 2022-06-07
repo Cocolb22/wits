@@ -1,0 +1,144 @@
+.container-level-up {
+  position: absolute;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  left: 0;
+  top: 0;
+  z-index: 20000;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(201,235,255,1) 0%, rgba(255,255,255,1) 50%, rgba(201,235,255,1) 100%);
+  padding: $spacing-s 0px;
+}
+
+canvas {
+  z-index:20002 !important;
+}
+
+.wrapper {
+  margin-top: $spacing-s;
+  width: 100%;
+  height: 100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding: $spacing-s;
+}
+
+.container-logo-level-up {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: $spacing-s;
+  padding-bottom: $spacing-m;
+}
+
+.level-up-level-subtitle {
+  margin-top: $spacing-xs;
+  margin-bottom: $spacing-s;
+  animation-iteration-count: 2;
+}
+
+.medal {
+  position: relative;
+  width:170px;
+  height:170px;
+  background-color:$pop;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  animation: showMedal .3s ease-in-out;
+  margin-top: $spacing-m;
+  &::after {
+    content:"";
+    top: 5px;
+    left: 5px;
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    background-color:rgba(255, 255, 255, 0.9);
+    position: absolute;
+
+  }
+}
+
+.hat-class {
+  z-index: 20001;
+  animation-iteration-count: 2;
+}
+
+.medal-class {
+  font-size: $spacing-m;
+  color: $pop;
+}
+
+.level-up-content {
+  text-align:center;
+  opacity:0;
+  animation:fadeInLevel .5s;
+  animation-delay: .5s;
+  animation-fill-mode: forwards;
+  margin-top: $spacing-l;
+}
+
+.level-up-content-subtitle {
+  font-size:20px;
+  margin-top: $spacing-l;
+
+  span {
+    font-weight:bold;
+  }
+}
+
+.total-points-counter {
+  margin-top: 32px;
+  text-align:center;
+  animation:fadeInLevel .5s;
+  opacity:0;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  span {
+    color: $primary;
+  }
+}
+
+.cta {
+  width:100%;
+  background-color: #5FC1FA;
+  text-align:center;
+  height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  margin-top:32px;
+  border-radius:50px;
+  opacity:0;
+  animation:fadeInLevel .5s;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInLevel {
+  0% {
+    opacity:0;
+  }
+
+  100% {
+    opacity:1;
+  }
+}
+
+@keyframes showMedal {
+  0% {
+    transform:scale(0.7);
+    opacity:0;
+  }
+  100% {
+    transform:scale(1);
+    opacity:1;
+  }
+}

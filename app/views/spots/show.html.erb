@@ -86,7 +86,7 @@
   </div>
   <div class="grid-masonry">
   <div class="grid-sizer-masonry"></div>
-    <% @spot.comments.each do |comment| %>
+    <% @comments.each do |comment| %>
       <% if comment.images.attached? %>
         <div class="grid-item-masonry">
           <% comment.images.each do |image| %>
