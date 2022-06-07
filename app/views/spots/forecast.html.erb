@@ -151,7 +151,11 @@
               <div class="weather-picto-right-title text-x-small">
                 marée basse
               </div>
-              <h3>16h32</h3>
+              <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "low") %>
+                <h3><%= tide.time.strftime("%Hh%M") %></h3>
+              <% else %>
+                <h3><%= weather.tides.where(tide_type: "low").last.time.strftime("%Hh%M") %></h3>
+              <% end %>
             </div>
           </div>
 
@@ -163,7 +167,11 @@
               <div class="weather-picto-right-title text-x-small">
                 marée haute
               </div>
-              <h3>23h32</h3>
+              <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "high") %>
+                <h3><%= tide.time.strftime("%Hh%M") %></h3>
+              <% else %>
+                <h3><%= weather.tides.where(tide_type: "high").last.time.strftime("%Hh%M") %></h3>
+              <% end %>
             </div>
           </div>
         </div>
