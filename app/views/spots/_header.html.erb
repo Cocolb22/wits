@@ -4,39 +4,37 @@
     <i class="fas fa-angle-left card-image-tag"></i>
   <% end %>
 
-  <% if @user_favorite %>
-    <%= button_to favorite_path(@user_favorite), method: :delete, class:"favorites-button" do %>
-      <i class="far fa-heart"></i>
-    <% end %>
-  <% else %>
-    <%= button_to spot_favorites_path(@spot), class:"favorites-button", method: :post do %>
-      <i class="fas fa-heart"></i>
-    <% end %>
-  <% end %>
-
-
+  <div data-controller="favorite" class="favorite-controls">
+    <div data-favorite-target="button">
+      <% if @user_favorite %>
+        <%= render "favorites/destroy", favorite: @user_favorite, spot: @spot %>
+      <% else %>
+        <%= render "favorites/create", spot: @spot %>
+      <% end %>
+    </div>
+  </div>
 
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-      <% @spot.photos.each do |photo|%>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <% @spot.photos.each_with_index do |photo, index|%>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>", aria-current="<%= index.zero? %>"  aria-label="Slide 1"></button>
       <% end %>
     </div>
     <div class="carousel-inner">
-      <% @spot.photos.each do |photo|%>
-        <div class="carousel-item active">
-          <%= cl_image_tag photo.key, crop: :fill %>
+      <% @spot.photos.each_with_index do |photo, index|%>
+        <div class="carousel-item <%= 'active' if index.zero? %>">
+          <%= cl_image_tag photo.key, crop: :fill, class:"d-block w-100" %>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
       <% end %>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 </div>
 

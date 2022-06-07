@@ -1,7 +1,7 @@
-
-<%= simple_form_for [ spot, comment ], html: { data: {spot_comments_target: 'form', action: 'submit->spot-comments#post', uppy:'comment[images][]'}, class:"d-none", id:"form-comments"} do |f| %>
-  <%= f.input :content, input_html: { data: { spot_comments_target: "input" } }, class:"input-content " %>
-  <%= f.input :rating, input_html: { data: { spot_comments_target: "input" } }, class:"input-rating label" %>
+<%= simple_form_for [ spot, comment ], html: { data: {spot_comments_target: 'form', action: 'submit->spot-comments#post', uppy:'comment[images][]'}, class:"d-none px-3", id:"form-comments"} do |f| %>
+  <div class="form-exit text-x-small-bold", data-spot-comments-target= "exit", data-action = "click->spot-comments#exit">Quitter</div>
+  <%= f.input :content, label:"Commentaire", input_html: { data: { spot_comments_target: "input" } }, class:"input-content" %>
+  <%= f.input :rating, label:"note", input_html: { data: { spot_comments_target: "input" } }, class:"input-rating label" %>
   <% if comment.images.attached? %>
     <% comment.images.each do |image| %>
       <%= cl_image_tag image.key, width: 280, data: { behavior: 'uppy-preview'} %>

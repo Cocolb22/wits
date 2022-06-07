@@ -53,11 +53,26 @@ class SpotsController < ApplicationController
   def comments
     @spot = Spot.find(params[:id])
     @comments = @spot.comments.order('id DESC')
+    @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @comment = Comment.new
+    if params[:order] == "recent"
+      @comments = @spot.comments.order('id DESC')
+      @comment = Comment.new
+    elsif params[:order] == "rating"
+      @comments = @spot.comments.sort_by(&:rating).reverse
+      @comment = Comment.new
+    elsif params[:order] == "stars"
+      @comments = @spot.comments.where("rating = 5")
+      @comment = Comment.new
+    elsif params[:order] == "popular"
+      @comments = @spot.comments.where(&:like)
+      @comment = Comment.new
+    end
   end
 
   def forecast
     @spot = Spot.find(params[:id])
+    @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @weathers = @spot.weathers
   end
 
@@ -86,6 +101,5 @@ class SpotsController < ApplicationController
       redirect_to profile_path
       flash[:alert] = "Vous n'avez pas assez de points pour créer un spot."
     end
-
   end
 end

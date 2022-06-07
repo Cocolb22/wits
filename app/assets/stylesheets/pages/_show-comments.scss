@@ -25,6 +25,14 @@
   align-items: flex-start;
 }
 
+.image-rounded {
+  height: 300px;
+  width:90% !important;
+  border-radius: 15px;
+  margin-bottom: $spacing-xs;
+  object-fit: cover;
+}
+
 // Select each individual line
 .comment-rating-line {
   background-color:$black-100;
@@ -75,7 +83,7 @@
 
 .comments-sorting {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: $spacing-s 0;
   a {
@@ -141,16 +149,4 @@
 
 .comment-date {
   color:$black-300;
-}
-
-.comments-photos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  img {
-    width: 90%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
 }

@@ -6,8 +6,6 @@ class CommentsController < ApplicationController
     @comment.spot = @spot
     @comment.user = current_user
 
-
-
     if @comment.save
       respond_to do |format|
         format.html { redirect_to comments_spot_path(@spot) }

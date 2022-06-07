@@ -1,15 +1,19 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["form", "list", "btn", "rating", "input", "addcomment"]
+  static targets = ["form", "list", "btn", "rating", "input", "addcomment", "exit"]
 
   connect() {
   }
 
   display_form(event) {
     this.formTarget.classList.remove("d-none")
-    console.log(this.addcommentTarget);
     this.addcommentTarget.classList.add("d-none")
+  }
+
+  exit(event) {
+    this.formTarget.classList.add("d-none")
+    this.addcommentTarget.classList.remove("d-none")
   }
 
   post(event) {

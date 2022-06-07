@@ -29,11 +29,28 @@
     </div>
   </div>
   <% if comment.images.attached? %>
-    <% comment.images.each do |image| %>
-    <div class="comments-photos">
-      <%= cl_image_tag image.key, width: 400, crop: :fill %>
+    <div id="comment-images" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <% comment.images.each_with_index do |photo, index|%>
+          <button type="button" data-bs-target="#comment-images" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>", aria-current="<%= index.zero? %>"  aria-label="Slide 1"></button>
+      <% end %>
     </div>
-    <% end %>
+    <div class="carousel-inner">
+      <% comment.images.each_with_index do |photo, index|%>
+        <div class="carousel-item <%= 'active' if index.zero? %>" data-bs-interval= '18000'>
+          <%= cl_image_tag photo.key, crop: :fill, class:"d-block image-rounded" %>
+        </div>
+      <% end %>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#comment-images" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#comment-images" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
   <% end %>
   <p><%= comment.content %></p>
 
