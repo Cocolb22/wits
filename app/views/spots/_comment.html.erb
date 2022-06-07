@@ -29,10 +29,10 @@
     </div>
   </div>
   <% if comment.images.attached? %>
-    <div id="comment-images" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div id="comment-images_<%= comment.id %>" class="carousel slide carousel-fade carousel-height" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <% comment.images.each_with_index do |photo, index|%>
-          <button type="button" data-bs-target="#comment-images" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>", aria-current="<%= index.zero? %>"  aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#comment-images_<%= comment.id %>" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>", aria-current="<%= index.zero? %>"  aria-label="Slide 1"></button>
       <% end %>
     </div>
     <div class="carousel-inner">
@@ -42,17 +42,17 @@
         </div>
       <% end %>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#comment-images" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#comment-images_<%= comment.id %>" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#comment-images" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#comment-images_<%= comment.id %>" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
   <% end %>
-  <p><%= comment.content %></p>
+  <p class="mt-2"><%= comment.content %></p>
 
   <div data-controller="like" class="like-controls">
     <div data-like-target="button">

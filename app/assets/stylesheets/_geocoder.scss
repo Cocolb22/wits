@@ -11,6 +11,14 @@
     padding-left: 24px;
   }
 }
+
+.mapboxgl-ctrl-geocoder--input:focus {
+  color: rgba(0,0,0,0.75);
+  outline: 0;
+  box-shadow: none;
+  outline: thin solid rgba(0,0,0,0.75);
+  border-radius: 50px;
+}
 .mapboxgl-ctrl input {
   padding-right:46px;
 }
@@ -29,7 +37,6 @@
 }
 
 .btn:focus {
-
     box-shadow: none;
     i {
       color:$black;

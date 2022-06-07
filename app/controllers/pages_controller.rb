@@ -3,8 +3,4 @@ class PagesController < ApplicationController
 
   def home
   end
-
-  def component
-    @spot = Spot.find_by(id: 15)
-  end
 end
