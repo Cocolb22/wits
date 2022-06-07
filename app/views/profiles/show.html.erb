@@ -29,6 +29,29 @@
         <% end %>
       </div>
     </div>
+
+    <div class="show-comments-photos label-bold">
+      Vos photos
+    </div>
+    <div class="grid-masonry">
+    <div class="grid-sizer-masonry"></div>
+      <% current_user.comments.each do |comment| %>
+        <% if comment.images.attached? %>
+          <div class="grid-item-masonry">
+            <% comment.images.each do |image| %>
+              <%= cl_image_tag image.key, crop: :fill %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+     <% if @user.favorite_area.present? %>
+        <p class="user-text"><%= @user.favorite_area %></p>
+        <% else %>
+          <p class="user-text user-text-disabled">Non renseigné</p>
+        <% end %>
+
     <div class="show-descr-grid-type">
       <span class="label-bold txt-primary">Activités favorites</span>
       <div class="favorites-spots-wrapper">

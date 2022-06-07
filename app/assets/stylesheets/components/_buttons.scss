@@ -12,6 +12,7 @@
   bottom:40px;
   left:0;
   width:100vw;
+  z-index: 9999;
 }
 
 .btn-cta-rounded {
@@ -54,4 +55,3 @@
   background:$black-100;
   color:$black-700;
 }
-
