@@ -12,6 +12,7 @@ class SpotsController < ApplicationController
     verifiy_user_exp
     @spot = Spot.new(spot_params)
     @spot.user = current_user
+    @spot.weathers
 
     if @spot.save
       redirect_to spot_path(@spot)
