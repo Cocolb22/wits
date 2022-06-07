@@ -29,6 +29,7 @@ export default class extends Controller {
         customMarker.style.width = "50px"
         customMarker.style.height = "50px"
         customMarker.setAttribute("data-controller", "scroll-to")
+        customMarker.setAttribute("data-scroll-to-offset-value", "430")
         customMarker.setAttribute("href", `#spot-${marker.id}`)
 
         new mapboxgl.Marker(customMarker)
