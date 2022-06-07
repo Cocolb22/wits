@@ -10,3 +10,11 @@
     margin-bottom: 0 !important;
   }
 }
+.mapboxgl-ctrl-geocoder--input:focus {
+  color: $primary;
+  color: rgba(0,0,0,0.75);
+  outline: 0;
+  box-shadow: none;
+  outline: thin solid $primary;
+  border-radius: 50px;
+}

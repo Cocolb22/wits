@@ -22,7 +22,11 @@
   padding: $spacing-s;
 }
 
-
 .button_to {
   height:0;
+}
+
+.image-size {
+  height: 270px;
+  object-fit: cover;
 }

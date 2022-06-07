@@ -1,5 +1,5 @@
 class SpotsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_user!, only: %i[show index search]
   before_action :verifiy_user_exp, only: %i[new create]
 
   def new
@@ -19,6 +19,8 @@ class SpotsController < ApplicationController
       render :new
     end
   end
+
+  def search; end
 
   def index
     if params[:activities]
