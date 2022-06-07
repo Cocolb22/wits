@@ -8,12 +8,37 @@
     font-size: 16px;
     line-height: 24px;
     margin-bottom: 0 !important;
+    padding-left: 24px;
   }
 }
+
 .mapboxgl-ctrl-geocoder--input:focus {
   color: rgba(0,0,0,0.75);
   outline: 0;
   box-shadow: none;
   outline: thin solid rgba(0,0,0,0.75);
   border-radius: 50px;
+}
+.mapboxgl-ctrl input {
+  padding-right:46px;
+}
+.mapboxgl-ctrl-geocoder--icon {
+  display:none;
+}
+.custom-icon-search {
+  position: absolute;
+  right: 40px;
+  z-index: 999;
+  top: 3px;
+  i {
+    font-size:20px;
+    color:$black-300;
+  }
+}
+
+.btn:focus {
+    box-shadow: none;
+    i {
+      color:$black;
+    }
 }

@@ -7,7 +7,11 @@
         data: { geocoder_target: "address" },
         placeholder: "Where?"
       %>
+      <%= button_tag type:"submit", class:"btn custom-icon-search" do %>
+        <i class="fas fa-search"></i>
+      <% end %>
     </div>
+
     <div class="category-spot-search d-none">
       <%= hidden_field_tag :spot_type, params[:spot_type] %>
       <%= hidden_field_tag :order, params[:order] %>
