@@ -1,0 +1,19 @@
+{
+  "background_color": "#5FC1FA",
+  "description": "Le spot parfait pour ton sport nautique préféré.",
+  "display": "standalone",
+  "name": "WITS",
+  "scope": "<%= root_path %>",
+  "start_url": "<%= root_path %>",
+  "icons": [
+    <% files = Dir.entries(Rails.root.join("app/assets/images/favicons/")).select {|f| !File.directory? f} %>
+    <% files.each_with_index do |file, index| %>
+      <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
+      {
+        "src": "<%= image_path "favicons/#{file}" %>",
+        "sizes": "<%= match && match[:size] %>",
+        "type": "image/png"
+      }<%= "," unless (files.size - 1) == index %>
+    <% end %>
+  ]
+}
