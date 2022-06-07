@@ -1,29 +1,25 @@
 .container-logo {
   width: 100%;
-  position: absolute;
-  top: 0;
-  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: $spacing-l;
 }
 
 .logo-wits {
-  width: 40%;
+  width: 25%;
+  color: $black-700;
 }
 
 .container-header-search {
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  height: 85vh;
   background: rgba(255, 255, 255, .8);
   border-radius: 24px 24px 0px 0px;
   padding: $spacing-s 0px;
 }
 
 .search-title-place {
-  margin-top: $spacing-m;
+  margin-top: $spacing-xs;
   h3 {
     margin-bottom: $spacing-s;
   }

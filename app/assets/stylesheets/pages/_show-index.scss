@@ -17,6 +17,16 @@
   padding-bottom:80px;
 }
 
+/* Hiding scrollbar */
+.index-sorting::-webkit-scrollbar {
+  display:none;
+}
+
+.index-sorting {
+  -ms-overflow-style:none;
+  scrollbar-width:none;
+}
+
 .index-sorting {
   position: relative;
   display: flex;
@@ -36,36 +46,31 @@
     white-space: nowrap;
     margin-right:12px;
   }
-  // &::after {
-  //   content: "";
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   height: 100%;
-  //   width: 50px;
-  //   background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.2) 20%);
-  // }
+  &::after {
+    content: "";
+    position: fixed;
+    top: 60px;
+    right: -1px;
+    height: 50px;
+    width: 50px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  }
+  &::before {
+    content: "";
+    position: fixed;
+    top: 60px;
+    left: -1px;
+    height: 50px;
+    z-index: 999;
+    width: 20px;
+    background: linear-gradient(-90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+  }
 }
 
-// .index-sorting-after {
-//   position: fixed;
-//     top: 0;
-//     left: 70%;
-//     height: 100%;
-//     width: 30%;
-//     background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.2) 40%);
-//     z-index: 200;
-// }
-
-// .index-sorting-before {
-//   position: absolute;
-//     top: 0;
-//     left: 0;
-//     height: 100%;
-//     width: 50%;
-//     background: linear-gradient(90deg, #FFFFFF 0%, rgba(255, 255, 255, 0.2) 10%);
-//     z-index: 100;
-// }
+.image-size-index {
+  height: 220px;
+  object-fit: cover;
+}
 
 .index-sorting .pills.active {
   a{

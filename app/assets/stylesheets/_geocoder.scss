@@ -11,10 +11,9 @@
   }
 }
 .mapboxgl-ctrl-geocoder--input:focus {
-  color: $primary;
   color: rgba(0,0,0,0.75);
   outline: 0;
   box-shadow: none;
-  outline: thin solid $primary;
+  outline: thin solid rgba(0,0,0,0.75);
   border-radius: 50px;
 }
