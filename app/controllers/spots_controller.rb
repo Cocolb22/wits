@@ -25,13 +25,16 @@ class SpotsController < ApplicationController
   def search; end
 
   def index
-
     session[:query_search] = request.query_string
 
     if params[:activities]
-      @spots = Spot.joins(:activities).where("activities.id IN (?)", params[:activities].reject(&:blank?).map(&:to_i)).distinct
+      @spots = Spot.joins(:activities)
+                   .includes(:comments, :spot_activities, :activities, photos_attachments: [:blob])
+                   .where("activities.id IN (?)", params[:activities]
+                   .reject(&:blank?).map(&:to_i)).distinct
     else
       @spots = Spot.order(id: :desc)
+                   .includes(:comments, :spot_activities, :activities, photos_attachments: [:blob])
     end
 
     @spots = @spots.where(spot_type: params[:spot_type]).distinct if params[:spot_type].present?
@@ -50,34 +53,32 @@ class SpotsController < ApplicationController
   end
 
   def show
-    @spot = Spot.find(params[:id])
+    @spot = Spot.includes(photos_attachments: [:blob]).find(params[:id])
+    @comments = @spot.comments.includes(images_attachments: [:blob])
     @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @services = @spot.service
     @activities = @spot.activities
   end
 
   def comments
-    @spot = Spot.find(params[:id])
-    @comments = @spot.comments.order('id DESC')
+    @spot = Spot.includes(photos_attachments: [:blob]).find(params[:id])
+
+    @comments = @spot.comments.order('id DESC').includes(user: [photo_attachment: [:blob]], images_attachments: [:blob])
     @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @comment = Comment.new
     if params[:order] == "recent"
-      @comments = @spot.comments.order('id DESC')
-      @comment = Comment.new
+      @comments = @comments.order('id DESC')
     elsif params[:order] == "rating"
-      @comments = @spot.comments.sort_by(&:rating).reverse
-      @comment = Comment.new
+      @comments = @comments.order("rating DESC")
     elsif params[:order] == "stars"
-      @comments = @spot.comments.where("rating = 5")
-      @comment = Comment.new
+      @comments = @comments.where("rating = 5")
     elsif params[:order] == "popular"
-      @comments = @spot.comments.where(&:like)
-      @comment = Comment.new
+      @comments = @comments.sort_by { |comment| -comment.likes.count }
     end
   end
 
   def forecast
-    @spot = Spot.find(params[:id])
+    @spot = Spot.includes(photos_attachments: [:blob]).find(params[:id])
     @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @weathers = @spot.weathers
   end
