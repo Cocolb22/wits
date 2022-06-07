@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2022_06_06_100431) do
-=======
 ActiveRecord::Schema.define(version: 2022_06_06_122439) do
->>>>>>> 69377b81b17403cc9428b0a6832fc31d0073c491
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,13 +127,8 @@ ActiveRecord::Schema.define(version: 2022_06_06_122439) do
     t.string "street"
     t.string "zipcode"
     t.string "city"
-<<<<<<< HEAD
-    t.integer "upvote"
-    t.integer "downvote"
-=======
     t.integer "upvote", default: 0
     t.integer "downvote", default: 0
->>>>>>> 69377b81b17403cc9428b0a6832fc31d0073c491
     t.index ["user_id"], name: "index_spots_on_user_id"
   end
 
