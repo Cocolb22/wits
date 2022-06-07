@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_122439) do
+ActiveRecord::Schema.define(version: 2022_06_07_152131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,15 +90,6 @@ ActiveRecord::Schema.define(version: 2022_06_06_122439) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "pg_search_documents", force: :cascade do |t|
-    t.text "content"
-    t.string "searchable_type"
-    t.bigint "searchable_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
-  end
-
   create_table "services", force: :cascade do |t|
     t.bigint "spot_id", null: false
     t.boolean "parking", default: false
@@ -139,6 +130,15 @@ ActiveRecord::Schema.define(version: 2022_06_06_122439) do
     t.integer "upvote", default: 0
     t.integer "downvote", default: 0
     t.index ["user_id"], name: "index_spots_on_user_id"
+  end
+
+  create_table "tides", force: :cascade do |t|
+    t.datetime "time"
+    t.string "tide_type"
+    t.bigint "weather_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["weather_id"], name: "index_tides_on_weather_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_122439) do
   add_foreign_key "spot_activities", "activities"
   add_foreign_key "spot_activities", "spots"
   add_foreign_key "spots", "users"
+  add_foreign_key "tides", "weathers"
   add_foreign_key "votes", "spots"
   add_foreign_key "votes", "users"
   add_foreign_key "weathers", "spots"
