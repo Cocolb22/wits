@@ -27,7 +27,7 @@
 
 .image-rounded {
   height: 300px;
-  width:90% !important;
+  width:100% !important;
   border-radius: 15px;
   margin-bottom: $spacing-xs;
   object-fit: cover;
@@ -149,4 +149,23 @@
 
 .comment-date {
   color:$black-300;
+}
+
+/* ADD A COMMENT & IMAGE PREVIEW */
+
+#imgPreview {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  margin-bottom:$spacing-xs;
+
+  img {
+    object-fit:cover;
+    width:33%;
+    height: 160px;
+  }
+}
+
+#form-comments {
+  z-index: 999;
 }
