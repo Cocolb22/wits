@@ -46,7 +46,7 @@
               <div class="weather-picto-right-title text-x-small">
                 temp. min.
               </div>
-              <h3><%= weather.tmin%></h3>
+              <h3><%= weather.tmin%> °C</h3>
             </div>
           </div>
 
@@ -58,7 +58,7 @@
               <div class="weather-picto-right-title text-x-small">
                 temp. max.
               </div>
-              <h3><%= weather.tmax %></h3>
+              <h3><%= weather.tmax %> °C</h3>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@
         <div class="row">
           <div class="weather-picto col">
             <div class="weather-picto-left">
-              <%= image_tag 'icons/cloud.svg'%>
+              <%= get_picto_for(weather.weather) %>
             </div>
             <div class="weather-picto-right">
               <div class="weather-picto-right-title text-x-small">
@@ -98,7 +98,7 @@
               <div class="weather-picto-right-title text-x-small">
                 vent
               </div>
-              <h3><%= weather.wind %></h3>
+              <h3><%= weather.wind %> km/h</h3>
             </div>
           </div>
 
@@ -110,7 +110,7 @@
               <div class="weather-picto-right-title text-x-small">
                 rafales
               </div>
-              <h3><%= weather.gust %></h3>
+              <h3><%= weather.gust %> km/h</h3>
             </div>
           </div>
         </div>
@@ -124,7 +124,7 @@
               <div class="weather-picto-right-title text-x-small">
                 dir. du vent
               </div>
-              <h3><%= weather.wind_direction %></h3>
+              <h3><%= weather.wind_direction %>°</h3>
             </div>
           </div>
 

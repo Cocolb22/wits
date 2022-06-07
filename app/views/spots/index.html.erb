@@ -113,7 +113,7 @@
 
           <div class="card-spot-infos-title">
             <h2><%= spot.full_name %></h2>
-            <i class="fas fa-cloud"></i>
+            <%= get_picto_for(spot.weathers.first.weather) %>
           </div>
 
           <div class="card-spot-infos-localisation">
