@@ -1,16 +1,37 @@
 .container-map-box {
   background-color: white;
   padding-top: $spacing-xs;
+  z-index: 9999;
+  background: white;
+  position: sticky !important;
+  top: 0;
+  left: 0px;
 }
 .map-box-search {
   display: flex;
   justify-content: center;
 }
 
+.container-spots {
+  margin-top: 32px;
+
+}
+
 .container-header-results {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.container-spots-results {
+  z-index: 99999;
+  background: white;
+  margin-top: -20px;
+  position: fixed;
+  width: 100vw;
+  border-radius: 16px 16px 0 0;
+  h3 {
+    margin-top:8px;
+  }
 }
 
 .container-index {

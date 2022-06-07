@@ -12,7 +12,10 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10"
+      style: "mapbox://styles/lapin0521/cl44aq76i000d14ql35a9qkmo",
+      pitch: 30, // pitch in degrees
+      bearing: 5, // bearing in degrees
+      zoom: 10
     })
 
     this.#addMarkersToMap()
@@ -21,13 +24,16 @@ export default class extends Controller {
 
     #addMarkersToMap() {
       this.markersValue.forEach((marker) => {
-        const customMarker = document.createElement("div")
+        const customMarker = document.createElement("a")
         customMarker.className = "marker"
-        // customMarker.id = `marker-${marker.spot_id}`
+        // customMarker.id = `spot-${marker.id}`
         customMarker.style.backgroundImage = `url('${marker.image_url}')`
         customMarker.style.backgroundSize = "contain"
         customMarker.style.width = "50px"
         customMarker.style.height = "50px"
+        customMarker.setAttribute("data-controller", "scroll-to")
+        customMarker.setAttribute("data-scroll-to-offset-value", "430")
+        customMarker.setAttribute("href", `#spot-${marker.id}`)
 
         new mapboxgl.Marker(customMarker)
           .setLngLat([ marker.lng, marker.lat ])

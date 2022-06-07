@@ -11,9 +11,20 @@
   justify-content: space-between;
 }
 
+.nav::-webkit-scrollbar {
+  display:none;
+}
+
+.nav {
+  -ms-overflow-style:none;
+  scrollbar-width:none;
+}
+
+
 .nav-link {
   color: $black-300;
   padding: $spacing-s 0;
+  white-space: nowrap;
 }
 .nav-link.active {
   color: $primary;
