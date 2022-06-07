@@ -29,3 +29,11 @@
     color: $primary;
   }
 }
+
+.forecast-weather-text{
+  display: flex;
+  align-items: flex-end;
+  p {
+    margin-left: 4px;
+  }
+}

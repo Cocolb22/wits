@@ -504,44 +504,8 @@ file_plage_toul_gwenn = File.open("db/fixtures/plage_toul_gwen_2.jpeg")
 plage_toul_gwenn.photos.attach(io: file_plage_toul_gwenn, filename: 'plage_toul_gwen_2.jpeg', content_type: 'image/jpeg')
 plage_toul_gwenn.save!
 
-
-TOKEN = "d94e51c82dfac84ee6e9e938fd9b66dd18dcddeab62d0eda61cd3ca9e99842a0"
-
-CODES_TEMPS = ["Soleil", "Peu nuageux", "Ciel voilé", "Nuageux", "Très nuageux", "Couvert", "Brouillard", "Brouillard", "Pluie faible", "Pluie modérée", "Pluie forte", "Pluie faible", "Pluie modérée",
-                  "Pluie forte", "Bruine", "Neige faible", "Neige modérée", "Neige forte", "Pluie", "Pluie", "Pluie", "Averses",
-                  "Averses", "Averses", "Averses", "Averses", "Averses", "Averses", "Averses",
-                  "Averses", "Averses", "Averses", "Averses", "Averses", "Averses", "Averses",
-                  "Averses", "Averses", "Averses", "Averses", "Averses",
-                  "Averses", "Averses", "Averses", "Averses", "Averses",
-                  "Averses", "Averses", "Orages", "Orages", "Orages fort", "Orages", "Orages", "Orages", "Orages",
-                  "Orages", "Orages", "Orages", "Orages", "Orages", "Orages", "Orages", "Orages",
-                  "Orages", "Orages", "Orages", "Orages", "Orages",
-                  "Orages", "Orages", "Orages", "Orages", "Orages",
-                  "Orages", "Orages", "Pluies orageuses", "Pluie orageuses", "Neige orageuse", "Pluie faible", "Pluie modérée",
-                  "Pluie forte", "Neige faible", "Neige modérée", "Neige forte", "Pluie", "Pluie", "Pluie", "Averses"]
-
-
 Spot.all.each do |spot|
-  latlngt = [spot.latitude, spot.longitude].join(",")
-
-  URI.open("http://api.meteo-concept.com/api/forecast/daily?latlng=#{latlngt}&token=#{TOKEN}") do |stream|
-    city, forecasts = JSON.parse(stream.read).values_at('city','forecast')
-
-    forecasts.each do |forecast|
-      Weather.create!(
-        spot: spot,
-        day: forecast["day"],
-        datetime: Time.parse(forecast['datetime']),
-        wind_direction: (forecast["dirwind10m"]),
-        tmin: forecast["tmin"],
-        tmax: forecast["tmax"],
-        wind: forecast["wind10m"],
-        gust: forecast["gust10m"],
-        probarain:forecast["probarain"],
-        weather: CODES_TEMPS[forecast["weather"].to_i]
-      )
-    end
-  end
+  WeatherService.new(spot).call
 end
 
 ##################################################################################################
