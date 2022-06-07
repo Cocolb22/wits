@@ -8,5 +8,9 @@ class ApplicationController < ActionController::Base
 
   def disable_nav?
     @disable_nav = devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || search_spots_path
+
   end
 end

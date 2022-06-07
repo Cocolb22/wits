@@ -154,7 +154,26 @@
   color:$black-300;
 }
 
+
 .carousel-height {
   height: 200px;
   padding-bottom: $spacing-xs;
+
+/* ADD A COMMENT & IMAGE PREVIEW */
+
+#imgPreview {
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  margin-bottom:$spacing-xs;
+
+  img {
+    object-fit:cover;
+    width:33%;
+    height: 160px;
+  }
+}
+
+#form-comments {
+  z-index: 999;
 }
