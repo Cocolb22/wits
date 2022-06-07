@@ -118,7 +118,8 @@
         <div class="row">
           <div class="weather-picto col">
             <div class="weather-picto-left">
-              <%= image_tag 'icons/windDir.svg'%>
+              <i class="fas fa-arrow-down" style="transform:rotate(<%= weather.wind_direction %>deg)"></i>
+
             </div>
             <div class="weather-picto-right">
               <div class="weather-picto-right-title text-x-small">
@@ -136,7 +137,7 @@
               <div class="weather-picto-right-title text-x-small">
                 pluie
               </div>
-              <h3><%= weather.probarain%></h3>
+              <div class='forecast-weather-text'><h3><%= weather.probarain%></h3><p>%</p></div>
             </div>
           </div>
         </div>

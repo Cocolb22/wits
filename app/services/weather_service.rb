@@ -1,4 +1,4 @@
-require 'open-uri'
+  require 'open-uri'
 
 class WeatherService
   CODES_TEMPS = ["Soleil", "Peu nuageux", "Ciel voilé", "Nuageux", "Très nuageux", "Couvert", "Brouillard", "Brouillard", "Pluie faible", "Pluie modérée", "Pluie forte", "Pluie faible", "Pluie modérée",
