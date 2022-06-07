@@ -40,5 +40,24 @@ class WeatherService
         )
       end
     end
-  end
+
+    URI.open("https://api.stormglass.io/v2/tide/sea-level/point?latlng=#{latlngt}&token=#{ENV['WEATHER_TOKEN']}") do |stream|
+      city, forecasts = JSON.parse(stream.read).values_at('city','forecast')
+
+      forecasts.each do |forecast|
+        Weather.create!(
+          spot: @spot,
+          day: forecast["day"],
+          datetime: Time.parse(forecast['datetime']),
+          wind_direction: (forecast["dirwind10m"]),
+          tmin: forecast["tmin"],
+          tmax: forecast["tmax"],
+          wind: forecast["wind10m"],
+          gust: forecast["gust10m"],
+          probarain:forecast["probarain"],
+          weather: CODES_TEMPS[forecast["weather"].to_i]
+        )
+      end
+    end
+
 end
