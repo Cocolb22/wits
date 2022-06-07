@@ -21,13 +21,16 @@ export default class extends Controller {
 
     #addMarkersToMap() {
       this.markersValue.forEach((marker) => {
-        const customMarker = document.createElement("div")
+        const customMarker = document.createElement("a")
         customMarker.className = "marker"
-        // customMarker.id = `marker-${marker.spot_id}`
+        // customMarker.id = `spot-${marker.id}`
         customMarker.style.backgroundImage = `url('${marker.image_url}')`
         customMarker.style.backgroundSize = "contain"
         customMarker.style.width = "50px"
         customMarker.style.height = "50px"
+        customMarker.setAttribute("data-controller", "scroll-to")
+        customMarker.setAttribute("data-scroll-to-offset-value", "430")
+        customMarker.setAttribute("href", `#spot-${marker.id}`)
 
         new mapboxgl.Marker(customMarker)
           .setLngLat([ marker.lng, marker.lat ])
