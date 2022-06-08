@@ -25,11 +25,11 @@
   <% end %>
 
   <div class="index-sorting">
-    <div class="pills active">
-      <%= link_to spots_path(location: params[:location], activities: params[:activities]) do %>
+
+      <%= link_to spots_path(location: params[:location], activities: params[:activities]), class: "pills #{'active' unless params[:spot_type].present?}" do %>
         Tous
       <% end %>
-    </div>
+
     <div class="pills <%= 'active' if params[:order] == 'desc_moyen_rating'%>">
       <%= link_to spots_path(location: params[:location], activities: params[:activities], order: "desc_moyen_rating", spot_type: params[:spot_type]) do%>
         Mieux notés
@@ -73,9 +73,9 @@
       <div class="card-spot" id="spot-<%= spot.id %>">
         <div class="card-spot-carousel">
           <div class="card-image-tag pills pop">
-            most popular
+            Populaire
           </div>
-           <div id="carouselExampleIndicators_<%= spot.id %>" class="carousel slide" data-bs-ride="carousel">
+          <div id="carouselExampleIndicators_<%= spot.id %>" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <% spot.photos.each_with_index do |photo, index|%>
                   <button type="button" data-bs-target="#carouselExampleIndicators_<%= spot.id %>" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>", aria-current="<%= index.zero? %>"  aria-label="Slide 1"></button>
@@ -84,7 +84,7 @@
             <div class="carousel-inner">
               <% spot.photos.each_with_index do |photo, index|%>
                 <div class="carousel-item <%= 'active' if index.zero? %> "data-bs-interval="20000">
-                  <%= cl_image_tag photo.key, crop: :fill, class:"d-block w-100 image-size-index" %>
+                  <%= cl_image_tag photo.key, crop: :fill, width: 1200, class:"d-block w-100 image-size-index" %>
                 </div>
               <% end %>
             </div>

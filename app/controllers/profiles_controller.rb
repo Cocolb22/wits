@@ -44,7 +44,7 @@ class ProfilesController < ApplicationController
 
   def comments
     @user = current_user
-    @comments = @user.comments
+    @comments = @user.comments.order("id DESC")
   end
 
   private

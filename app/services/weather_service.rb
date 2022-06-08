@@ -50,12 +50,12 @@ class WeatherService
         weather_date = Date.parse(weather_data["date"])
         weather = Weather.all.find { |weather| weather_date == weather.datetime.to_date && weather.spot == @spot }
 
-        weather.uv = weather_data["uv"]
+        weather.uv = weather_data["uvIndex"]
 
         weather_data["tides"].first["tide_data"].each do |tide_data|
           tide = Tide.new(
             tide_type: tide_data["tide_type"].downcase,
-            time: Time.parse(tide_data["tideDateTime"])
+            time: Time.parse(tide_data["tideDateTime"]) + 2.hours
           )
 
           tide.weather = weather

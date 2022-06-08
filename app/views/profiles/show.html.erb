@@ -23,7 +23,7 @@
       <div class="show-descr-grid-type label-bold txt-primary">
         Anniversaire
         <% if @user.birthday.present? %>
-        <p class="user-text"><%= @user.birthday %></p>
+        <p class="user-text"><%= @user.birthday.to_time.strftime("%d/%m/%Y") %></p>
         <% else %>
           <p class="user-text user-text-disabled">Non renseigné</p>
         <% end %>
@@ -46,11 +46,14 @@
       <% end %>
     </div>
 
+    <div class="show-descr-grid-type">
+      <span class="label-bold txt-primary">Zones favorites</span>
      <% if @user.favorite_area.present? %>
         <p class="user-text"><%= @user.favorite_area %></p>
         <% else %>
           <p class="user-text user-text-disabled">Non renseigné</p>
         <% end %>
+    </div>
 
     <div class="show-descr-grid-type">
       <span class="label-bold txt-primary">Activités favorites</span>
