@@ -42,3 +42,17 @@
       color:$black;
     }
 }
+
+
+.toogle-map-add-spot {
+  .mapboxgl-canvas {
+    width:100%;
+    height:100%;
+  }
+  .mapboxgl-ctrl input {
+    display: none !important;
+  }
+  .mapboxgl-ctrl-geocoder {
+    border:none;
+  }
+}
