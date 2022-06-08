@@ -151,11 +151,11 @@
               <div class="weather-picto-right-title text-x-small">
                 marée basse
               </div>
-              <%# <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "low") %> %>
-                <%# <h3><%= tide.time.strftime("%Hh%M") %></h3> %>
-              <%# <% else %> %>
-                <%# <h3><%= weather.tides.where(tide_type: "low").last.time.strftime("%Hh%M") %></h3> %>
-              <%# <% end %> %>
+              <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "low") %>
+                <h3><%= tide.time.strftime("%Hh%M") %></h3>
+              <% else %>
+                <h3><%= weather.tides.where(tide_type: "low").last.time.strftime("%Hh%M") %></h3>
+              <% end %>
             </div>
           </div>
 
@@ -167,11 +167,11 @@
               <div class="weather-picto-right-title text-x-small">
                 marée haute
               </div>
-        <%#      <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "high") %>
-          <%#      <h3><%= tide.time.strftime("%Hh%M") %></h3>
-         <%#     <% else %>
-           <%#     <h3><%= weather.tides.where(tide_type: "high").last.time.strftime("%Hh%M") %></h3>
-           <%#   <% end %>
+              <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "high") %>
+                <h3><%= tide.time.strftime("%Hh%M") %></h3>
+              <% else %>
+                <h3><%= weather.tides.where(tide_type: "high").last.time.strftime("%Hh%M") %></h3>
+              <% end %>
             </div>
           </div>
         </div>
@@ -182,5 +182,4 @@
   <div class="gps-container btn-cta btn-fixed call-to-action">
     <%= link_to "Plus d'infos météo", "https://www.windy.com/#{@spot.latitude}/#{@spot.longitude}", target:"_blank" %>
   </div>
-
 </div>
