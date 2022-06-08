@@ -9,6 +9,7 @@ export default class extends Controller {
   like(event) {
     event.preventDefault()
     event.stopPropagation()
+    event.currentTarget.setAttribute('disabled', true)
     if (event.currentTarget.querySelector('.far')) {
       const burst = new mojs.Burst({
         left: -10, top: 0,

@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     @like.user = current_user
 
     if @like.save
-      if @comment.likes.count % 10 == 0
+      if @comment.likes.count % 10 ==
         @comment.user.profile_exp += 2
         @comment.user.save
       end
@@ -28,8 +28,3 @@ class LikesController < ApplicationController
     end
   end
 end
-
-
-
-
-
