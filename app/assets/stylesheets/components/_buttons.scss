@@ -57,12 +57,25 @@
   color:$black-700;
 }
 
+.connect {
+  border-radius: 50px;
+  .input-connect {
+    color: $white !important;
+  }
+}
+
 .btn-edit-create {
   display: flex;
   flex-direction: column;
   margin: -70px;
+  position: relative;
   a {
     width:60%;
+  }
+  span {
+    width: 60%;
+    position: inherit;
+    bottom: 9px;
   }
 }
 

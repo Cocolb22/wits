@@ -12,12 +12,12 @@
         <%= f.input :birthday, html5: true, label:"Date de Naissance" %>
         <%= f.input :photo, as: :file, label: "Ajoutez une photo" %>
         <%= f.input :address,
-          input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
-            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label:"Adresse" %>
+          input_html: { data: { geocoder_target: "address" }, class: 'd-none'  },
+            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label:"Adresse", id: 'test' %>
         <%= f.input :gender, collection: User::GENDERS, label: "Genre" %>
         <%= f.input :favorite_area,
           input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
-            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label: "Zone Favorite"  %>
+            wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }, label: "Zone Favorite" %>
         <%#= f.submit "Mettre à Jour", class:"btn btn-primary w-100 btn-gradient" %>
 
         <p class="label-bold txt-primary">Activités favorites</p>
@@ -34,7 +34,7 @@
         </div>
 
         <div class="btn-discover-spots">
-          <%= submit_tag "Mettre à Jour", class: "btn-cta-rounded call-to-action" %>
+          <%= submit_tag "Mettre à Jour", class: " w-60 btn-cta-rounded call-to-action form-edit" %>
         </div>
     <% end %>
   </div>

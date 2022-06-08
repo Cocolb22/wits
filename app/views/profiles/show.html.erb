@@ -83,7 +83,7 @@
     <% if @user.profile_exp > 500 %>
       <%= link_to "Créer un spot", new_spot_path, class:"btn btn-cta btn-cta-rounded mt-3 m-auto"%>
     <% else %>
-      <span class="btn btn-disabled w-100 mt-3">Il vous manque <strong><%= 500 - @user.profile_exp %> points</strong> avant de pour créer un spot</span>
+      <span class="btn btn-disabled btn-cta btn-cta-rounded mt-3 m-auto">Il manque <strong><%= 500 - @user.profile_exp %> pts</strong> pour créer un spot</span>
     <% end %>
   </div>
 </div>
