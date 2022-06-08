@@ -84,7 +84,7 @@
             <div class="carousel-inner">
               <% spot.photos.each_with_index do |photo, index|%>
                 <div class="carousel-item <%= 'active' if index.zero? %> "data-bs-interval="20000">
-                  <%= cl_image_tag photo.key, crop: :fill, class:"d-block w-100 image-size-index" %>
+                  <%= cl_image_tag photo.key, crop: :fill, width: 1200, class:"d-block w-100 image-size-index" %>
                 </div>
               <% end %>
             </div>

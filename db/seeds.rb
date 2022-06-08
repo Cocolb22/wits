@@ -161,7 +161,7 @@ surf_activity.save!
 jet_ski_activity = Activity.create!(name: "Jetski", description: " Le Jet Ski (abréviation française de l'anglais Jet Ski-riding,
                                   où riding signifie « monter » et Jet Ski « (vagues) déferlantes ») est une pratique
                                   physique individuelle de glisse sur les vagues, au bord de l'océan.",
-                                    icon: 'jet_ski-small.svg', bigicon: "JetSki.svg")
+                                    icon: 'JetSki-small.svg', bigicon: "JetSki.svg")
 jet_ski_activity.save!
 
 kitesurf_activity = Activity.create!(name: "Kitesurf", description: " Le kitesurf, ou planche aérotractée,
