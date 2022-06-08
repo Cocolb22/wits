@@ -33,10 +33,10 @@
     <%= tag.meta name: "direct-upload-url", content: rails_direct_uploads_path%>
   </head>
 
-  <body>
+  <body data-controller="notifications">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-
+    <%= render 'layouts/level-up' %>
 
     <%= yield %>
 
