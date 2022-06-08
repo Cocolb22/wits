@@ -148,6 +148,65 @@ file_olympe = File.open("db/fixtures/fake32.jpeg")
 olympe.photo.attach(io: file_olympe, filename: 'fake32.jpeg', content_type: 'image/jpeg')
 olympe.save!
 
+##################################################################################################
+########################################### ACTIVITIES ###########################################
+##################################################################################################
+
+surf_activity = Activity.create!(name: "Surf", description: " Le surf (abréviation française de l'anglais surf-riding,
+                                  où riding signifie « monter » et surf « (vagues) déferlantes ») est une pratique
+                                  physique individuelle de glisse sur les vagues, au bord de l'océan.",
+                                  icon: 'Surf-small.svg', bigicon: "Surf.svg")
+surf_activity.save!
+
+jet_ski_activity = Activity.create!(name: "Jetski", description: " Le Jet Ski (abréviation française de l'anglais Jet Ski-riding,
+                                  où riding signifie « monter » et Jet Ski « (vagues) déferlantes ») est une pratique
+                                  physique individuelle de glisse sur les vagues, au bord de l'océan.",
+                                    icon: 'jet_ski-small.svg', bigicon: "JetSki.svg")
+jet_ski_activity.save!
+
+kitesurf_activity = Activity.create!(name: "Kitesurf", description: " Le kitesurf, ou planche aérotractée,
+                                      est un sport de glisse consistant à évoluer avec une planche à la surface
+                                      d'une étendue d'eau en étant tracté par un cerf-volant (kite en anglais)
+                                      spécialement adapté, nommé aile ou voile. Ce sport a pris son essor au début
+                                      des années 2000.", icon: 'KiteSurf-small.svg', bigicon: "KiteSurf.svg")
+kitesurf_activity.save!
+
+kayak_activity = Activity.create!(name: "Kayak", description: "Un kayak ou kayac est un type de pirogue légère utilisant
+                                  une pagaie pour le propulser, le diriger et l'équilibrer.",
+                                  icon: "Kayak-small.svg", bigicon: "Kayak.svg")
+kayak_activity.save!
+
+cliff_diving_activity = Activity.create!(name: "Saut de falaise", description: "Le saut de falaises est un sport
+                                        qui consiste à se jeter de falaises où d'autres objets pour profiter d'un saut
+                                        en chute libre avant d'atterrir dans l'eau",
+                                         icon: "SauteFalaise-small.svg", bigicon: "SauteFalaise.svg")
+cliff_diving_activity.save!
+
+yachting_activity = Activity.create!(name: "Char à voile", description: "Un char à voile est un véhicule à roues propulsé
+                                      par une voile. Par métonymie, ce terme désigne aussi le sport qui consiste à
+                                      conduire cet engin. Il est pratiqué sur les grandes plages de sable et quelques
+                                      fois dans les terres.", icon:'CharVoile-small.svg', bigicon: "CharVoile.svg")
+yachting_activity.save!
+
+windsurf_activity = Activity.create!(name: "Planche à voile", description: "La planche à voile (parfois désignée par
+                                    son nom anglais, windsurf) est un type d'embarcation à voile minimaliste,
+                                    c'est aussi le sport de glisse pratiqué avec cette embarcation.",
+                                    icon:'Windsurf-small.svg', bigicon: "Windsurf.svg")
+windsurf_activity.save!
+
+scuba_diving_activity = Activity.create!(name: "Apnée", description: "La plongée sous-marine est une activité
+                                          consistant à rester sous l'eau, soit en apnée dans le cas de la plongée libre,
+                                          soit en respirant à l'aide d'un tuba ou le plus souvent en s'équipant d'une
+                                          bouteille de plongée dans le cas de la plongée en scaphandre autonome.",
+                                         icon: 'Scuba-small.svg', bigicon: "Scuba.svg")
+scuba_diving_activity.save!
+
+catamaran_activity = Activity.create!(name: "Catamaran", description: "Un catamaran est un bateau possédant deux coques,
+                                      en général parallèles l'une à côté de l'autre. Le catamaran possédant deux coques
+                                      se classe donc dans la catégorie des bateaux multicoques qui comprend également
+                                      le trimaran, dont le nom dérive.", icon: 'Sailing-small.svg', bigicon: "Sailing.svg")
+catamaran_activity.save!
+
 #############################################################################################
 ########################################### SPOTS ###########################################
 #############################################################################################
@@ -252,68 +311,60 @@ file_plage_toul_gwenn = File.open("db/fixtures/plage_toul_gwen_2.jpeg")
 plage_toul_gwenn.photos.attach(io: file_plage_toul_gwenn, filename: 'plage_toul_gwen_2.jpeg', content_type: 'image/jpeg')
 plage_toul_gwenn.save!
 
+wits = User.find_by(email: "wits@test.com")
+
+["plages", "ports", "base_nautiques"].each do |filio|
+  CSV.foreach("db/fixtures/#{filio}.csv", headers: :first_row, header_converters: :symbol) do |row|
+    spot = Spot.new(
+      user: wits,
+      full_name: row[:full_name],
+      address: row[:address],
+      latitude: row[:latitude].to_f,
+      longitude: row[:longitude].to_f
+    )
+
+    case filio
+    when "plages"
+      spot.spot_type = "Plage"
+    when "ports"
+      spot.spot_type = "Port"
+    when "base_nautiques"
+      spot.spot_type = "École"
+    end
+
+    row[:photos]&.split("||")&.each do |photo|
+      file = File.open(URI.open(photo))
+      spot.photos.attach(io: file, filename: "#{spot.full_name}.jpeg", content_type: "image/jpeg")
+    end
+    spot.save!(validate: false)
+    print '.'
+
+    Service.create!(
+      spot: spot,
+      parking: row[:parking] == "true",
+      restaurant: row[:restaurant] == "true",
+      shower: row[:shower] == "true",
+      camping: row[:camping] == "true",
+      beach_surveillance: row[:beach_surveillance] == "true"
+    )
+
+
+    row[:activities]&.split("||")&.each do |act|
+      if Activity.find_by(name: act)
+        SpotActivity.create!(
+          spot: spot,
+          activity: Activity.find_by(name: act)
+        )
+      end
+    end
+  end
+end
+
+
 Spot.all.each do |spot|
   WeatherService.new(spot).call
 end
 
-##################################################################################################
-########################################### ACTIVITIES ###########################################
-##################################################################################################
-
-surf_activity = Activity.create!(name: "Surf", description: " Le surf (abréviation française de l'anglais surf-riding,
-                                  où riding signifie « monter » et surf « (vagues) déferlantes ») est une pratique
-                                  physique individuelle de glisse sur les vagues, au bord de l'océan.",
-                                  icon: 'Surf-small.svg', bigicon: "Surf.svg")
-surf_activity.save!
-
-jet_ski_activity = Activity.create!(name: "Jetski", description: " Le Jet Ski (abréviation française de l'anglais Jet Ski-riding,
-                                  où riding signifie « monter » et Jet Ski « (vagues) déferlantes ») est une pratique
-                                  physique individuelle de glisse sur les vagues, au bord de l'océan.",
-                                    icon: 'jet_ski-small.svg', bigicon: "JetSki.svg")
-jet_ski_activity.save!
-
-kitesurf_activity = Activity.create!(name: "Kitesurf", description: " Le kitesurf, ou planche aérotractée,
-                                      est un sport de glisse consistant à évoluer avec une planche à la surface
-                                      d'une étendue d'eau en étant tracté par un cerf-volant (kite en anglais)
-                                      spécialement adapté, nommé aile ou voile. Ce sport a pris son essor au début
-                                      des années 2000.", icon: 'KiteSurf-small.svg', bigicon: "KiteSurf.svg")
-kitesurf_activity.save!
-
-kayak_activity = Activity.create!(name: "Kayak", description: "Un kayak ou kayac est un type de pirogue légère utilisant
-                                  une pagaie pour le propulser, le diriger et l'équilibrer.",
-                                  icon: "Kayak-small.svg", bigicon: "Kayak.svg")
-kayak_activity.save!
-
-cliff_diving_activity = Activity.create!(name: "Saut de falaise", description: "Le saut de falaises est un sport
-                                        qui consiste à se jeter de falaises où d'autres objets pour profiter d'un saut
-                                        en chute libre avant d'atterrir dans l'eau",
-                                         icon: "SauteFalaise-small.svg", bigicon: "SauteFalaise.svg")
-cliff_diving_activity.save!
-
-yachting_activity = Activity.create!(name: "Char à voile", description: "Un char à voile est un véhicule à roues propulsé
-                                      par une voile. Par métonymie, ce terme désigne aussi le sport qui consiste à
-                                      conduire cet engin. Il est pratiqué sur les grandes plages de sable et quelques
-                                      fois dans les terres.", icon:'CharVoile-small.svg', bigicon: "CharVoile.svg")
-yachting_activity.save!
-
-windsurf_activity = Activity.create!(name: "Planche à voile", description: "La planche à voile (parfois désignée par
-                                    son nom anglais, windsurf) est un type d'embarcation à voile minimaliste,
-                                    c'est aussi le sport de glisse pratiqué avec cette embarcation.",
-                                    icon:'Windsurf-small.svg', bigicon: "Windsurf.svg")
-windsurf_activity.save!
-
-scuba_diving_activity = Activity.create!(name: "Apnée", description: "La plongée sous-marine est une activité
-                                          consistant à rester sous l'eau, soit en apnée dans le cas de la plongée libre,
-                                          soit en respirant à l'aide d'un tuba ou le plus souvent en s'équipant d'une
-                                          bouteille de plongée dans le cas de la plongée en scaphandre autonome.",
-                                         icon: 'Scuba-small.svg', bigicon: "Scuba.svg")
-scuba_diving_activity.save!
-
-catamaran_activity = Activity.create!(name: "Catamaran", description: "Un catamaran est un bateau possédant deux coques,
-                                      en général parallèles l'une à côté de l'autre. Le catamaran possédant deux coques
-                                      se classe donc dans la catégorie des bateaux multicoques qui comprend également
-                                      le trimaran, dont le nom dérive.", icon: 'Sailing-small.svg', bigicon: "Sailing.svg")
-catamaran_activity.save!
 
 ##################################################################################################
 ########################################### SPOT_ACTIVITIES ######################################
