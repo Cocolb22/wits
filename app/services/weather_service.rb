@@ -43,18 +43,18 @@ class WeatherService
       end
     end
 
-    URI.open("https://api.stormglass.io/v2/tide/extremes/point?lat=#{lat}&lng=#{lng}",
-            "Authorization" => "fb35486c-2f03-11eb-8db0-0242ac130002-fb35495c-2f03-11eb-8db0-0242ac130002") do |stream|
-      data, meta = JSON.parse(stream.read).values_at('data','meta')
+    # URI.open("https://api.stormglass.io/v2/tide/extremes/point?lat=#{lat}&lng=#{lng}",
+    #         "Authorization" => "fb35486c-2f03-11eb-8db0-0242ac130002-fb35495c-2f03-11eb-8db0-0242ac130002") do |stream|
+    #   data, meta = JSON.parse(stream.read).values_at('data','meta')
 
-      data.each do |tide_data|
-        tide = Tide.new(
-          tide_type: tide_data["type"],
-          time: Time.parse(tide_data["time"]) + 2.hours
-        )
-        tide.weather = Weather.all.find { |weather| tide.time.to_date == weather.datetime.to_date && weather.spot == @spot }
-        tide.save!
-      end
-    end
+    #   data.each do |tide_data|
+    #     tide = Tide.new(
+    #       tide_type: tide_data["type"],
+    #       time: Time.parse(tide_data["time"]) + 2.hours
+    #     )
+    #     tide.weather = Weather.all.find { |weather| tide.time.to_date == weather.datetime.to_date && weather.spot == @spot }
+    #     tide.save!
+    #   end
+    # end
   end
 end
