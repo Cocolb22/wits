@@ -7,3 +7,24 @@ input {
 .password-forgotten {
   margin: 8px auto;
 }
+
+.form-select {
+  border-radius: 15px;
+}
+
+.edit-fix {
+  width: 100% !important;
+}
+
+.mx-1 {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.user_address .mapboxgl-ctrl, .user_favorite_area .mapboxgl-ctrl {
+  width:100% !important;
+}
+
+.form-edit {
+  width: 100% !important;
+}
