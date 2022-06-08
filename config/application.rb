@@ -19,6 +19,7 @@ module Wits
     config.action_view.automatically_disable_submit_tag = false
     config.i18n.default_locale = :fr
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.active_job.queue_adapter = :sidekiq
 
 
     # Configuration for the application, engines, and railties goes here.

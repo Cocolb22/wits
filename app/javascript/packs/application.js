@@ -109,7 +109,3 @@ if (grid_masonry) {
     msnry.layout();
   });
 }
-
-
-// Confetti //
-// https://github.com/loonywizard/js-confetti //

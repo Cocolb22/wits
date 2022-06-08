@@ -1,20 +1,20 @@
 <div class= "container p-3">
-  <h2 class=" txt-primary d-flex justify-content-center">Connexion</h2>
-  <div class= " container label-bold txt-primary p-2 ">
+  <h2 class=" txt-primary d-flex justify-content-center mt-3">Je me connecte</h2>
+  <div class= " container label-bold txt-primary p-2 mt-5">
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs label-bold txt-primary">
-        <%= f.input :email, label:"adresse mail",
+        <%= f.input :email, label:"adresse mail", class: 'label-bold',
                     required: false,
                     autofocus: true,
                     input_html: { autocomplete: "email" } %>
-        <%= f.input :password, label:"mot de passe",
+        <%= f.input :password, label:"mot de passe", class: 'label-bold',
                     required: false,
                     input_html: { autocomplete: "current-password" } %>
         <%= f.input :remember_me, label:"Se souvenir de moi", as: :boolean if devise_mapping.rememberable? %>
       </div>
 
-      <div class="form-actions label-bold txt-primary btn-cta d-flex justify-content-center">
-        <%= f.button :submit, "Se connecter" %>
+      <div class="form-actions label-bold txt-primary btn-cta d-flex justify-content-center connect mt-4">
+        <%= f.button :submit, "Se connecter", class:"input-connect" %>
       </div>
       <% end %>
   </div>

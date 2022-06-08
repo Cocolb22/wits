@@ -1,6 +1,6 @@
 class Spot < ApplicationRecord
   TYPES = ["Plage", "Spot sauvage", "École", "Port"]
-  CATEGORIES = ["Plage Familiale", "Sable Fin", "Pour Les Débutants", "Galets", "Pour Les Experts", "Perle Rare" ]
+  CATEGORIES = ["Plaisance", "Plage Familiale", "Sable Fin", "Pour Les Débutants", "Galets", "Pour Les Experts", "Perle Rare" ]
 
   belongs_to :user
   has_many :comments, dependent: :destroy

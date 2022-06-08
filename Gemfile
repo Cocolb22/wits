@@ -43,9 +43,13 @@ gem 'simple_form', github: 'heartcombo/simple_form'
 gem 'pg_search', '~> 2.3.0'
 gem "geocoder"
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'pry-byebug'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -73,3 +77,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "noticed", "~> 1.5"

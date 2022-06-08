@@ -20,12 +20,6 @@
     </ul>
   </div>
 
-
-<!-- Météo du spot
-<div class="spot-weather">
-<%= @spot.weathers %>
-</div> -->
-
   <div class="show-descr">
     <p><%= @spot.description %></p>
 
@@ -43,7 +37,7 @@
         <%= @spot.spot_type %>
       </div>
       <div class="show-descr-grid-category-content label">
-        Galets
+        Sable
       </div>
       <div class="show-descr-grid-fluent-content label">
         Vert
@@ -99,7 +93,7 @@
 </div>
 
   <div class="gps-container btn-cta btn-fixed call-to-action">
-    Obtenir l'itinéraire
+    <%= link_to "Obtenir l'itinéraire", "https://www.google.fr/maps/place/#{@spot.latitude},#{@spot.longitude}", target:"_blank" %>
   </div>
 
 </div>

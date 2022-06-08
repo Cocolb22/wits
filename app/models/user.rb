@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :favorite_activities
   has_many :favorite_activity_activities, through: :favorite_activities, source: :activity
   has_many :votes, dependent: :destroy
+  has_many :notifications, as: :recipient, dependent: :destroy
 
   has_one_attached :photo
 
@@ -21,6 +22,8 @@ class User < ApplicationRecord
   validates :gender, inclusion: {in: GENDERS}, allow_blank: true
 
   def add_points_and_update_status(points)
+    old_status = status
+
     self.profile_exp += points
     if (20..49).to_a.include?(profile_exp)
       self.status = "Mousse"
@@ -34,6 +37,10 @@ class User < ApplicationRecord
       self.status = "Vieux Briscard"
     end
     self.save
+
+    if old_status != self.status
+      LevelupNotification.with(user: self).deliver(self)
+    end
   end
 
   def next_status
