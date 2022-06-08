@@ -1,3 +1,28 @@
+
+<html>
+  <head>
+    <title>Simple Click Events</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- playground-hide -->
+    <script>
+      const process = { env: {} };
+      process.env.GOOGLE_MAPS_API_KEY =
+        "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg";
+    </script>
+    <!-- playground-hide-end -->
+
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+      defer
+    ></script>
+
+
+<body>
 <div class="container bg-white label-bold txt-primary m-2 p-3 ">
   <h2 class="mb-4 text-center">Ajoutez votre spot !</h2>
   <%= simple_form_for @spot do |f| %>
@@ -34,9 +59,30 @@
     <%= f.input :address, label: "Adresse", required: false,
           input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
           wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+
+            <div id="panel">
+  <div class="search-panel">
+    <input type="PickupAddress" class="form-control mr10" name="PickupAddress" placeholder="Sublocality" id="searchTextField" autocomplete="on" runat="server" required="" data-msg-required="Please enter Pick up Address" aria-required="true"><button onclick="createMap();$('.details-div').removeClass('hidden')">Locate Me</button>
+    <div class="details-div mt10 hidden">
+      <div class="col-md-12">
+        <div> ADDRESS: <input id="address" name="address" type="text" class="form-control border" /></div>
+        <div class="mt10"> LATITUDE: <input type="text" name="latitude" id="latitude"></div>
+        <div class="mt10"> LONGITUDE: <input type="text" name="longitude" id="longitude"></div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+
+<div id="myMap" style="height:100%;width:100%;"></div>
+
+
+
+
       <%= f.input :photos, as: :file, label: "Ajoutez une photo" %>
 
       <%= f.submit "Enregister", class: "btn btn-primary w-100 btn-gradient" %>
     </div>
   <% end %>
 </div>
+</body>
