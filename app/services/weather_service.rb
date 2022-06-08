@@ -49,8 +49,8 @@ class WeatherService
       data.each do |weather_data|
         weather_date = Date.parse(weather_data["date"])
         weather = Weather.all.find { |weather| weather_date == weather.datetime.to_date && weather.spot == @spot }
-        
-        weather.uv = weather_data["uv"]
+
+        weather.uv = weather_data["uvIndex"]
 
         weather_data["tides"].first["tide_data"].each do |tide_data|
           tide = Tide.new(
