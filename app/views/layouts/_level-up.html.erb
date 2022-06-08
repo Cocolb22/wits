@@ -1,6 +1,5 @@
 
 <div class="container-level-up d-none">
-
   <div class="wrapper">
     <div class="container-logo-level-up">
       <%= image_tag "logo/logo-wits-light.svg", class: "logo-wits" %>
@@ -16,15 +15,15 @@
           Tu es maintenant
         </div>
         <div class="level-up-level-subtitle animate__animated animate__heartBeat">
-          <h1><%= current_user.status %></h1>
+          <h1 id="status"><%= current_user.status %></h1>
         </div>
       </div>
       <div class="total-points-counter">
         <i class="fas fa-medal medal-class"></i>
-        <span value="<%= current_user.profile_exp %>" class="total-points-value call-to-action"><%= current_user.profile_exp %>
+        <span id="exp" value="<%= current_user.profile_exp %>" class="total-points-value call-to-action"><%= current_user.profile_exp %>
         </span> <span class="call-to-action">PTS</span>
       </div>
     <% end %>
-    <%= link_to "Continuer", :back, class:"cta" %>
+    <%= link_to "Continuer", profile_path, class:"cta" %>
   </div>
 </div>

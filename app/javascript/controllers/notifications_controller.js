@@ -2,8 +2,6 @@ import { Controller } from "@hotwired/stimulus"
 import consumer from "../channels/consumer"
 
 export default class extends Controller {
-  // static targets = ["statuslevel"]
-
   connect() {
     console.log("Hello from levelup")
     this.channel = consumer.subscriptions.create("NotificationsChannel", {
@@ -11,13 +9,14 @@ export default class extends Controller {
         console.log("la data récupérée après création du channel level up");
         console.log(data);
 
+        document.getElementById("status").innerText = data.user.status
+        document.getElementById("exp").innerText = data.user.profile_exp
+        document.getElementById("exp").setAttribute("value", data.user.profile_exp)
+
         let levelUp = document.querySelector(".container-level-up")
         levelUp.classList.remove("d-none")
-        console.log("level up");
-        console.log(levelUp);
-
-        // Confetti //
-        // https://github.com/loonywizard/js-confetti //
+        // console.log("level up");
+        // console.log(levelUp);
 
         const jsConfetti = new JSConfetti();
 
@@ -29,7 +28,6 @@ export default class extends Controller {
         })
         console.log("jsConfetti");
         console.log(jsConfetti);
-        // Animation //
 
         const counterAnim = (element, start = 0, end, duration = 1000) => {
           const target = document.querySelector('.total-points-value');
