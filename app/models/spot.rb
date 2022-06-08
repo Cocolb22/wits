@@ -15,7 +15,7 @@ class Spot < ApplicationRecord
 
   has_many_attached :photos
 
-  validates :full_name, :address, :description, :spot_type, presence: true
+  validates :full_name, :description, :spot_type, presence: true
   validates :description, length: {minimum: 50}
   validates :spot_type, inclusion: {in: TYPES}
   validates :category, inclusion: {in: CATEGORIES}, allow_blank: true
@@ -58,7 +58,7 @@ class Spot < ApplicationRecord
 
     comments.average(:rating).round(1)
   end
-  
+
   def upvote_spot
     self.upvote += 1
   end

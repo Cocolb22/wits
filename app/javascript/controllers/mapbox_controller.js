@@ -12,7 +12,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/lapin0521/cl44aq76i000d14ql35a9qkmo",
+      style: "mapbox://styles/lapin0521/cl449u0fb008615o5pr1asjca",
       pitch: 30, // pitch in degrees
       bearing: 5, // bearing in degrees
       zoom: 10
@@ -26,9 +26,9 @@ export default class extends Controller {
       this.markersValue.forEach((marker) => {
         const customMarker = document.createElement("a")
         customMarker.className = "marker"
-        // customMarker.id = `spot-${marker.id}`
         customMarker.style.backgroundImage = `url('${marker.image_url}')`
         customMarker.style.backgroundSize = "contain"
+        customMarker.style.zIndex = "1000000"
         customMarker.style.width = "50px"
         customMarker.style.height = "50px"
         customMarker.setAttribute("data-controller", "scroll-to")
@@ -46,24 +46,4 @@ export default class extends Controller {
       this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
       this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
     }
-
-  // hovering(event) {
-  //   console.log(event.currentTarget)
-  //   const spotId = event.currentTarget.dataset.id
-  //   const markerId = `marker-${spotId}`
-
-  //   const marker = document.getElementById(markerId)
-  //   marker.style.width = "75px"
-  //   marker.style.height = "75px"
-  // }
-
-  // leaving(event) {
-  //   console.log(event.currentTarget)
-  //   const spotId = event.currentTarget.dataset.id
-  //   const markerId = `marker-${spotId}`
-
-  //   const marker = document.getElementById(markerId)
-  //   marker.style.width = "50px"
-  //   marker.style.height = "50px"
-  // }
 }

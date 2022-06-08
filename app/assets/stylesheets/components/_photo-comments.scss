@@ -1,4 +1,15 @@
-.uppy-Webcam-buttonContainer {
+.uppy-Webcam-container {
+  position: relative;
+}
+
+.uppy-Webcam-videoContainer {
+  position: inherit;
+  bottom: 10px
+}
+
+.uppy-Webcam-footer {
+  position: inherit;
+  bottom: 110px;
   text-align: center;
   margin-top: 24px;
 }
