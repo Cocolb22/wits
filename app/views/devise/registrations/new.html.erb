@@ -1,5 +1,5 @@
 <div class= "container">
-  <h2 class=" txt-primary d-flex justify-content-center p-3">Créer un compte</h2>
+  <h2 class=" txt-primary d-flex justify-content-center p-3 mt-3">Créer un compte</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -18,8 +18,8 @@
                   input_html: { autocomplete: "new-password" } %>
     </div>
 
-    <div class="form-actions txt-primary btn-cta d-flex justify-content-center">
-      <%= f.button :submit, "Créer un compte" %>
+    <div class="form-actions txt-primary btn-cta d-flex justify-content-center connect">
+      <%= f.button :submit, "Créer un compte", class:'input-connect' %>
     </div>
   <% end %>
 </div>
