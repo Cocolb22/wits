@@ -75,7 +75,7 @@
           <div class="card-image-tag pills pop">
             most popular
           </div>
-           <div id="carouselExampleIndicators_<%= spot.id %>" class="carousel slide" data-bs-ride="carousel">
+          <div id="carouselExampleIndicators_<%= spot.id %>" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <% spot.photos.each_with_index do |photo, index|%>
                   <button type="button" data-bs-target="#carouselExampleIndicators_<%= spot.id %>" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>", aria-current="<%= index.zero? %>"  aria-label="Slide 1"></button>
