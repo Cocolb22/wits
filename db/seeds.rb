@@ -54,8 +54,8 @@ valentin = User.new(
                   last_name: 'Renon', last_name_completed: true,
                   address: "38 rue de bonne nouvelle, 22560 Trebeurden", address_completed: true,
                   birthday: Date.new(1998, 8, 10), birthday_completed: true,
-                  profile_exp: 550,
-                  status: "Vieux Briscard"
+                  profile_exp: 490,
+                  status: "Amiral"
                   )
 file_valentin = File.open("db/fixtures/Valentin.png")
 valentin.photo.attach(io: file_valentin, filename: 'Valentin.png', content_type: 'image/png')
@@ -405,6 +405,12 @@ scuba_diving_to_treb = SpotActivity.create!(spot:evt_treb, activity: scuba_divin
 ########################################### COMMENTS #############################################
 ##################################################################################################
 
+port_treb = Spot.find_by(full_name: "Port de Trébeurden")
+comment_to_treb_01 = Comment.create!(user:aurore, spot:port_treb, content:"Un port bien équipé et pratique pour les sorties, même à marée basse.", rating: 5)
+comment_to_treb_02 = Comment.create!(user:shiyun, spot:port_treb, content:"Assez cher l'été mais tous les services sont là, capitainerie sympathique et dispo.", rating: 4)
+comment_to_treb_03 = Comment.create!(user:sylvie, spot:port_treb, content:"Trop cher !! Je ne recommande pas pour les petits plaisanciers comme moi.", rating: 2)
+
+
 comment_to_treb = Comment.create!( user:valentin, spot:evt_treb, content:" une école pas terrible mais avec une super discothèque au dessus de la plage", rating: 3)
 comment_to_treb_2 = Comment.create!( user:aurore, spot:evt_treb, content:" une école parfaite pour les débutants pour apprendre à naviguer", rating: 5)
 comment_to_treb_3 = Comment.create!( user:shiyun, spot:evt_treb, content:" une plage agréable et proche de tous les commerces nécessaires pour une famille", rating: 5)
@@ -545,3 +551,6 @@ likes_to_comment_8 = Like.create!(user: corentin, comment: comment_to_toul_gwenn
 likes_to_comment_9 = Like.create!(user:aurore, comment: comment_to_ile_grande_3)
 likes_to_comment_10 = Like.create!(user:aurore, comment: comment_to_treb_2 )
 likes_to_comment_11 = Like.create!(user: shiyun, comment: comment_to_tregastel_3 )
+
+Like.create!(user: shiyun, comment: comment_to_treb_01 )
+Like.create!(user: aurore, comment: comment_to_treb_01 )
