@@ -99,7 +99,7 @@
 </div>
 
   <div class="gps-container btn-cta btn-fixed call-to-action">
-    Obtenir l'itinéraire
+    <%= link_to "Obtenir l'itinéraire", "https://www.google.fr/maps/place/#{@spot.latitude},#{@spot.longitude}", target:"_blank" %>
   </div>
 
 </div>
