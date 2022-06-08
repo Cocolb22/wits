@@ -56,3 +56,10 @@
   background:$black-100;
   color:$black-700;
 }
+
+.connect {
+  border-radius: 50px;
+  .input-connect {
+    color: $white !important;
+  }
+}
