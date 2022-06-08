@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
     @user = current_user
     if @user.update(profile_params)
       check_profile_point(@user)
-      sleep 10
+
       redirect_to profile_path
       flash[:notice] = "Profil modifié !"
     else
