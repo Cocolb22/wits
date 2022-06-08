@@ -72,9 +72,11 @@
     <%= link_to spot_path(spot) do %>
       <div class="card-spot" id="spot-<%= spot.id %>">
         <div class="card-spot-carousel">
-          <div class="card-image-tag pills pop">
-            Populaire
-          </div>
+          <% if spot.avg_rating.floor >= 4 %>
+            <div class="card-image-tag pills pop">
+              Populaire
+            </div>
+          <% end %>
            <div id="carouselExampleIndicators_<%= spot.id %>" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <% spot.photos.each_with_index do |photo, index|%>
