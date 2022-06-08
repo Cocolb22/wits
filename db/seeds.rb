@@ -163,7 +163,7 @@ jet_ski_activity = Activity.create!(name: "Jetski", description: " Le Jet Ski (a
                                   physique individuelle de glisse sur les vagues, au bord de l'océan.",
                                     icon: 'JetSki-small.svg', bigicon: "JetSki.svg")
 jet_ski_activity.save!
-
+  
 kitesurf_activity = Activity.create!(name: "Kitesurf", description: " Le kitesurf, ou planche aérotractée,
                                       est un sport de glisse consistant à évoluer avec une planche à la surface
                                       d'une étendue d'eau en étant tracté par un cerf-volant (kite en anglais)
