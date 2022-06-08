@@ -21,7 +21,7 @@ class FavoritesController < ApplicationController
       end
     end
 
-    @favorite.user.add_points_and_update_status(10)
+    @favorite.user.add_points_and_update_status(9)
   end
 
   def destroy
