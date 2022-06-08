@@ -56,3 +56,16 @@
   background:$black-100;
   color:$black-700;
 }
+
+.btn-edit-create {
+  display: flex;
+  flex-direction: column;
+  margin: -70px;
+  a {
+    width:60%;
+  }
+}
+
+.btn-primary {
+  background-color:$primary !important;
+}
