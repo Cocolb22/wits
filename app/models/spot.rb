@@ -16,7 +16,7 @@ class Spot < ApplicationRecord
   has_many_attached :photos
 
   validates :full_name, :description, :spot_type, presence: true
-  validates :description, length: {minimum: 50}
+  validates :description, length: {minimum: 1}
   validates :spot_type, inclusion: {in: TYPES}
   validates :category, inclusion: {in: CATEGORIES}, allow_blank: true
 

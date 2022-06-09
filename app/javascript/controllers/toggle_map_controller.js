@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 import mapboxgl from "mapbox-gl"
 
 export default class extends Controller {
-  static targets = ["map", "latitude", "longitude", "address", "coordinates", "link"]
+  static targets = ["map", "latitude", "longitude", "address", "coordinates", "link", "button"]
 
   static values = {
     apiKey: String,
@@ -11,6 +11,7 @@ export default class extends Controller {
 
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
+    this.markers = []
 
     this.map = new mapboxgl.Map({
       container: this.mapTarget,
@@ -21,8 +22,12 @@ export default class extends Controller {
       zoom: 8
     })
 
-    
+
     this.map.on('click', (e) => {
+      this.markers.forEach((marker) => {
+        marker.remove()
+      })
+
       const lngLat = e.lngLat
       const customMarker = document.createElement("div")
       customMarker.className = "marker"
@@ -32,19 +37,29 @@ export default class extends Controller {
       customMarker.style.width = "50px"
       customMarker.style.height = "50px"
 
-      // new mapboxgl.Marker(customMarker)
-      // .setLngLat([ lngLat.lng, lngLat.lat ])
-      // .addTo(this.map)
+      let marker = new mapboxgl.Marker(customMarker)
+        .setLngLat([ lngLat.lng, lngLat.lat ])
+        .setOffset([0, -22])
+        .addTo(this.map)
 
+      this.markers.push(marker)
 
       this.latitudeTarget.value = lngLat.lat
       this.longitudeTarget.value = lngLat.lng
 
-      this.mapTarget.style.visibility = "hidden"
+      this.buttonTarget.classList.remove("d-none")
+
       this.addressTarget.classList.add("d-none")
       this.coordinatesTarget.classList.remove("d-none")
       this.linkTarget.innerText = "Modifier l'emplacement"
     });
+  }
+
+  validate(event) {
+    event.preventDefault()
+    event.stopPropagation()
+    this.mapTarget.style.visibility = "hidden"
+    this.buttonTarget.classList.add("d-none")
   }
 
   toggle(event) {

@@ -6,11 +6,14 @@
   height: 56px;
   line-height: 56px;
   z-index: 101;
+  a {
+    color:white !important;
+  }
 }
 
 .btn-fixed {
   position:fixed;
-  bottom:45px;
+  bottom:44px;
   left:0;
   width:100vw;
   z-index: 9999;
@@ -26,6 +29,11 @@
   padding: 12px 0;
   height:auto !important;
   line-height:initial !important;
+}
+
+.btn-cta-small {
+  padding: 4px 0;
+  font-size: 16px;
 }
 
 .btn-menu {

@@ -38,7 +38,7 @@ class SpotsController < ApplicationController
     end
 
     @spots = @spots.where(spot_type: params[:spot_type]).distinct if params[:spot_type].present?
-    @spots = @spots.near(params[:location], 3) if params[:location].present?
+    @spots = @spots.near(params[:location], 5) if params[:location].present?
 
     @spots = @spots.sort_by { |spot| -spot.avg_rating } if params[:order] == "desc_moyen_rating"
 
