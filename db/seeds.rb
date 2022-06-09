@@ -13,8 +13,8 @@ valentin = User.new(
                     email: "valentin@test.com",
                     password: "password"
                   )
-file_valentin = File.open("db/fixtures/Valentin.jpeg")
-valentin.photo.attach(io: file_valentin, filename: 'Valentin.jpeg', content_type: 'image/jpeg')
+file_valentin = File.open("db/fixtures/Valentin.png")
+valentin.photo.attach(io: file_valentin, filename: 'Valentin.png', content_type: 'image/png')
 valentin.save!
 
 shiyun = User.new(
@@ -57,8 +57,8 @@ corentin = User.new(
                   profile_exp: 490,
                   status: "Amiral"
                   )
-file_corentin = File.open("db/fixtures/Corentin.png")
-corentin.photo.attach(io: file_corentin, filename: 'Corentin.png', content_type: 'image/png')
+file_corentin = File.open("db/fixtures/Corentin.jpeg")
+corentin.photo.attach(io: file_corentin, filename: 'Corentin.jpeg', content_type: 'image/jpeg')
 corentin.save!
 
 wits = User.new(
