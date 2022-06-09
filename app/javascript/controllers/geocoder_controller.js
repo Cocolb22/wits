@@ -9,7 +9,7 @@ export default class extends Controller {
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
       types: "country,region,place,postcode,locality,neighborhood,address",
-      placeholder: "recherche"
+      placeholder: "Recherche"
     });
     this.geocoder.addTo(this.element)
     document.querySelector(".mapboxgl-ctrl-geocoder--input").value = this.addressTarget.value
