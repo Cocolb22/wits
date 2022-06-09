@@ -9,7 +9,8 @@
   <% else%>
     <div id="imgPreview"></div>
   <% end %>
-  <%= link_to 'Télécharger une photo', '#', data: {behavior: 'uppy-trigger'}, class:"input-upload label-bold" %>
+  <%= f.input :images, as: :file %>
+  <%#= link_to 'Télécharger une photo', '#', data: {behavior: 'uppy-trigger'}, class:"input-upload label-bold" %>
   <%= f.button :button, "Ajouter un commentaire", class: "btn-submit-form-comment btn-cta btn-fixed call-to-action", data: {spot_comments_target: 'btn'} %>
 <% end %>
 

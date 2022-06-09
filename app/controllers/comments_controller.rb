@@ -33,7 +33,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :rating, images: [])
+    params.require(:comment).permit(:content, :rating, :images)
   end
 
   def point_created
