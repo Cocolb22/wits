@@ -1,4 +1,4 @@
-<div class="container bg-white label-bold txt-primary m-2 p-3 mb-5">
+<div class="container bg-white label-bold txt-primary mt-3 p-4">
   <h2 class="mb-4 text-center">Ajoutez votre spot !</h2>
   <%= simple_form_for @spot do |f| %>
     <%= f.input :full_name,
@@ -8,7 +8,8 @@
     <%= f.input :description,
           label: "Description",
           required: false,
-          placeholder: "Décrivez votre spot" %>
+          placeholder: "Décrivez votre spot",
+          as: :text %>
     <%= f.input :category, label: "Catégorie", required: false, collection: Spot::CATEGORIES %>
     <%= f.input :spot_type, label: "Indiquez le type de votre spot", required: false, collection: Spot::TYPES %>
 
@@ -57,6 +58,6 @@
 
     <%= f.input :photos, as: :file, label: "Ajoutez une photo" %>
 
-    <%= f.submit "Enregister", class: "btn btn-primary w-100 btn-gradient" %>
+    <%= f.submit "Enregister", class: "btn btn-cta btn-cta-rounded mb-3" %>
   <% end %>
 </div>
