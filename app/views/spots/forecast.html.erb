@@ -20,164 +20,174 @@
     </ul>
   </div>
 
-  <div class="nav d-flex forecast-days" id="v-pills-tab" role="tablist">
-    <button class="nav-link pills active" id="v-pills-0-tab" data-bs-toggle="pill" data-bs-target="#v-pills-0" type="button" role="tab" aria-controls="v-pills-0" aria-selected="true">
-      AUJOURD'HUI
-    </button>
-    <button class="nav-link pills" id="v-pills-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="false">
-      DEMAIN
-    </button>
-    <% @weathers[2..-1].each_with_index do |weather, index| %>
-      <button class="nav-link pills" id="v-pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#v-pills-<%= index %>" type="button" role="tab" aria-controls="v-pills-<%= index %>" aria-selected="false">
-        <%= I18n.l(Date.today + weather.day.days, format: "%A") %>
+  <% if @weathers.any? %>
+    <div class="nav d-flex forecast-days" id="v-pills-tab" role="tablist">
+      <button class="nav-link pills active" id="v-pills-0-tab" data-bs-toggle="pill" data-bs-target="#v-pills-0" type="button" role="tab" aria-controls="v-pills-0" aria-selected="true">
+        AUJOURD'HUI
       </button>
-    <% end %>
-  </div>
+      <button class="nav-link pills" id="v-pills-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-1" type="button" role="tab" aria-controls="v-pills-1" aria-selected="false">
+        DEMAIN
+      </button>
+      <% @weathers[2..-1].each_with_index do |weather, index| %>
+        <button class="nav-link pills" id="v-pills-<%= index %>-tab" data-bs-toggle="pill" data-bs-target="#v-pills-<%= index %>" type="button" role="tab" aria-controls="v-pills-<%= index %>" aria-selected="false">
+          <%= I18n.l(Date.today + weather.day.days, format: "%A") %>
+        </button>
+      <% end %>
+    </div>
 
-  <div class="tab-content" id="v-pills-tabContent">
-    <% @weathers.each_with_index do |weather, index|%>
-      <div class="container tab-pane fade <%= 'show active' if index.zero? %>" id="v-pills-<%= index %>" role="tabpanel" aria-labelledby="v-pills-<%= index %>-tab">
-        <div class="row">
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <%= image_tag 'icons/tempB.svg'%>
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                temp. min.
+    <div class="tab-content" id="v-pills-tabContent">
+      <% @weathers.each_with_index do |weather, index|%>
+        <div class="container tab-pane fade <%= 'show active' if index.zero? %>" id="v-pills-<%= index %>" role="tabpanel" aria-labelledby="v-pills-<%= index %>-tab">
+          <div class="row">
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <%= image_tag 'icons/tempB.svg'%>
               </div>
-              <div class='forecast-weather-text'><h3><%= weather.tmin%></h3><p>°C</p></div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  temp. min.
+                </div>
+                <div class='forecast-weather-text'><h3><%= weather.tmin%></h3><p>°C</p></div>
+              </div>
+            </div>
+
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <%= image_tag 'icons/tempH.svg'%>
+              </div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  temp. max.
+                </div>
+                <div class='forecast-weather-text'><h3><%= weather.tmax %></h3><p>°C</p></div>
+              </div>
             </div>
           </div>
 
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <%= image_tag 'icons/tempH.svg'%>
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                temp. max.
+          <div class="row">
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <%= get_picto_for(weather.weather) %>
               </div>
-              <div class='forecast-weather-text'><h3><%= weather.tmax %></h3><p>°C</p></div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  météo
+                </div>
+                <h3><%= weather.weather %></h3>
+              </div>
+            </div>
+
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <%= image_tag 'icons/sund.svg'%>
+              </div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  uv
+                </div>
+                <h3><%= weather.uv %></h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <%= image_tag 'icons/wind.svg'%>
+              </div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  vent
+                </div>
+                <div class='forecast-weather-text'><h3><%= weather.wind %> </h3><p>km/h</p></div>
+              </div>
+            </div>
+
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <%= image_tag 'icons/rafale.svg' %>
+              </div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  rafales
+                </div>
+                <div class='forecast-weather-text'><h3><%= weather.gust %></h3><p>km/h</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <i class="fas fa-arrow-down" style="transform:rotate(<%= weather.wind_direction %>deg)"></i>
+
+              </div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  dir. du vent
+                </div>
+                <h3><%= weather.wind_direction %>°</h3>
+              </div>
+            </div>
+
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <%= image_tag 'icons/humidity.svg'%>
+              </div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  pluie
+                </div>
+                <div class='forecast-weather-text'><h3><%= weather.probarain%></h3><p>%</p></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <%= image_tag 'icons/maréeB.svg'%>
+              </div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  marée basse
+                </div>
+                <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "low") %>
+                  <h3><%= tide.time.strftime("%Hh%M") %></h3>
+                <% elsif weather.tides.where(tide_type: "low").any? %>
+                  <h3><%= weather.tides.where(tide_type: "low").last.time.strftime("%Hh%M") %></h3>
+                <% else %>
+                  <h3></h3>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="weather-picto col">
+              <div class="weather-picto-left">
+                <%= image_tag 'icons/maréeH.svg'%>
+              </div>
+              <div class="weather-picto-right">
+                <div class="weather-picto-right-title text-x-small">
+                  marée haute
+                </div>
+                <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "high") %>
+                  <h3><%= tide&.time.strftime("%Hh%M") %></h3>
+                <% elsif weather.tides.where(tide_type: "high").any? %>
+                  <h3><%= weather.tides.where(tide_type: "high").last.time.strftime("%Hh%M") %></h3>
+                <% else %>
+                  <h3></h3>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="row">
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <%= get_picto_for(weather.weather) %>
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                météo
-              </div>
-              <h3><%= weather.weather %></h3>
-            </div>
-          </div>
-
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <%= image_tag 'icons/sund.svg'%>
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                uv
-              </div>
-              <h3><%= weather.uv %></h3>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <%= image_tag 'icons/wind.svg'%>
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                vent
-              </div>
-              <div class='forecast-weather-text'><h3><%= weather.wind %> </h3><p>km/h</p></div>
-            </div>
-          </div>
-
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <%= image_tag 'icons/rafale.svg' %>
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                rafales
-              </div>
-              <div class='forecast-weather-text'><h3><%= weather.gust %></h3><p>km/h</p></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <i class="fas fa-arrow-down" style="transform:rotate(<%= weather.wind_direction %>deg)"></i>
-
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                dir. du vent
-              </div>
-              <h3><%= weather.wind_direction %>°</h3>
-            </div>
-          </div>
-
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <%= image_tag 'icons/humidity.svg'%>
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                pluie
-              </div>
-              <div class='forecast-weather-text'><h3><%= weather.probarain%></h3><p>%</p></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <%= image_tag 'icons/maréeB.svg'%>
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                marée basse
-              </div>
-              <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "low") %>
-                <h3><%= tide.time.strftime("%Hh%M") %></h3>
-              <% else %>
-                <h3><%= weather.tides.where(tide_type: "low").last.time.strftime("%Hh%M") %></h3>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="weather-picto col">
-            <div class="weather-picto-left">
-              <%= image_tag 'icons/maréeH.svg'%>
-            </div>
-            <div class="weather-picto-right">
-              <div class="weather-picto-right-title text-x-small">
-                marée haute
-              </div>
-              <% if tide = weather.tides.find_by("time > ? AND tide_type = ?", Time.now, "high") %>
-                <h3><%= tide.time.strftime("%Hh%M") %></h3>
-              <% else %>
-                <h3><%= weather.tides.where(tide_type: "high").last.time.strftime("%Hh%M") %></h3>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="container">
+      <p class="text-center">Aucun rapport météo pour ce spot.</p>
+    </div>
+  <% end %>
 
   <div class="gps-container btn-cta btn-fixed call-to-action">
     <%= link_to "Plus d'infos météo", "https://www.windy.com/#{@spot.latitude}/#{@spot.longitude}", target:"_blank" %>

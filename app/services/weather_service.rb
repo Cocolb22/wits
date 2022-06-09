@@ -24,46 +24,50 @@ class WeatherService
     lat = @spot.latitude
     lng = @spot.longitude
 
-    URI.open("http://api.meteo-concept.com/api/forecast/daily?latlng=#{latlngt}&token=#{ENV['WEATHER_TOKEN']}") do |stream|
-      city, forecasts = JSON.parse(stream.read).values_at('city','forecast')
+    begin
+      URI.open("http://api.meteo-concept.com/api/forecast/daily?latlng=#{latlngt}&token=#{ENV['WEATHER_TOKEN']}") do |stream|
+        city, forecasts = JSON.parse(stream.read).values_at('city','forecast')
 
-      forecasts.first(7).each do |forecast|
-        Weather.create!(
-          spot: @spot,
-          day: forecast["day"],
-          datetime: Time.parse(forecast['datetime']),
-          wind_direction: (forecast["dirwind10m"]),
-          tmin: forecast["tmin"],
-          tmax: forecast["tmax"],
-          wind: forecast["wind10m"],
-          gust: forecast["gust10m"],
-          probarain:forecast["probarain"],
-          weather: CODES_TEMPS[forecast["weather"].to_i]
-        )
-      end
-    end
-
-    URI.open("https://api.worldweatheronline.com/premium/v1/marine.ashx?q=#{lat},#{lng}&format=json&key=85bca80049ee46f093763719220806&tide=yes&td=24") do |stream|
-      data = JSON.parse(stream.read)['data']["weather"]
-
-      data.each do |weather_data|
-        weather_date = Date.parse(weather_data["date"])
-        weather = Weather.all.find { |weather| weather_date == weather.datetime.to_date && weather.spot == @spot }
-
-        weather.uv = weather_data["uvIndex"]
-
-        weather_data["tides"].first["tide_data"].each do |tide_data|
-          tide = Tide.new(
-            tide_type: tide_data["tide_type"].downcase,
-            time: Time.parse(tide_data["tideDateTime"]) + 2.hours
+        forecasts.first(7).each do |forecast|
+          Weather.create(
+            spot: @spot,
+            day: forecast["day"],
+            datetime: Time.parse(forecast['datetime']),
+            wind_direction: (forecast["dirwind10m"]),
+            tmin: forecast["tmin"],
+            tmax: forecast["tmax"],
+            wind: forecast["wind10m"],
+            gust: forecast["gust10m"],
+            probarain:forecast["probarain"],
+            weather: CODES_TEMPS[forecast["weather"].to_i]
           )
-
-          tide.weather = weather
-          tide.save!
         end
-
-        weather.save!
       end
+
+      URI.open("https://api.worldweatheronline.com/premium/v1/marine.ashx?q=#{lat},#{lng}&format=json&key=#{ENV['WEATHER_TOKEN_2']}&tide=yes&td=24") do |stream|
+        data = JSON.parse(stream.read)['data']["weather"]
+
+        data.each do |weather_data|
+          weather_date = Date.parse(weather_data["date"])
+          weather = Weather.all.find { |weather| weather_date == weather.datetime.to_date && weather.spot == @spot }
+
+          weather.uv = weather_data["uvIndex"]
+
+          weather_data["tides"].first["tide_data"].each do |tide_data|
+            tide = Tide.new(
+              tide_type: tide_data["tide_type"].downcase,
+              time: Time.parse(tide_data["tideDateTime"]) + 2.hours
+            )
+
+            tide.weather = weather
+            tide.save
+          end
+
+          weather.save
+        end
+      end
+    rescue
+      return false
     end
   end
 end

@@ -41,8 +41,6 @@ class User < ApplicationRecord
     if old_status != self.status
       LevelupNotification.with(user: self).deliver(self)
     end
-
-    sleep 10
   end
 
   def next_status

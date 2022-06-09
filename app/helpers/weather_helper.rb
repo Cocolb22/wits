@@ -1,6 +1,8 @@
 module WeatherHelper
 
   def get_picto_for(weather)
+    return unless weather
+
     if weather.match?(/(nuageux|couvert|voilé)/i)
       return image_tag 'icons/clouds.png'
     elsif weather.match?(/(pluie|bruine|averse)/i)

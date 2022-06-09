@@ -14,7 +14,7 @@
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= request.original_url %>" />
-    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:image" content="https://res.cloudinary.com/auroreqoi/image/upload/v1654758870/meta-image_dre01b.png" />
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
 
@@ -33,7 +33,7 @@
     <%= tag.meta name: "direct-upload-url", content: rails_direct_uploads_path%>
   </head>
 
-  <body data-controller="notifications">
+  <body data-controller="notifications" style="margin-bottom: 50px;">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= render 'layouts/level-up' %>
