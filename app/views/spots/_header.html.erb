@@ -39,6 +39,12 @@
 </div>
 
 <div class="container-header">
+  <% if spot.verified %>
+    <div class="spot-certified">
+      <span class="text-x-small-bold margin-right">Spot certifié</span>
+      <i class="fas fa-check-circle voted vote-icon"></i>
+    </div>
+  <% end %>
   <div class="card-spot-infos">
     <div class="card-spot-infos-rating">
       <div class="card-spot-infos-rating-stars">
@@ -61,7 +67,7 @@
     <div class="card-spot-infos-localisation">
       <i class="fas fa-map-marker-alt"></i>
       <div class="card-spot-infos-localisation-city text-x-small-bold">
-      <%= @spot.address %> à 3 km
+      <%= @spot.address %>
       </div>
     </div>
 

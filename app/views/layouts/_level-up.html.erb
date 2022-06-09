@@ -23,6 +23,9 @@
         <span id="exp" value="<%= current_user.profile_exp %>" class="total-points-value call-to-action"><%= current_user.profile_exp %>
         </span> <span class="call-to-action">PTS</span>
       </div>
+      <div class="level-up-gain text-x-small">
+        Bravo! Tu peux maintenant créer ton propre spot !
+      </div>
     <% end %>
     <%= link_to "Continuer", profile_path, class:"cta" %>
   </div>
