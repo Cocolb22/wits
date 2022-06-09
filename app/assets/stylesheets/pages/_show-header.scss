@@ -30,3 +30,17 @@
   height: 270px;
   object-fit: cover;
 }
+
+.spot-certified {
+  position: absolute;
+  right: $spacing-xs;
+  top: $spacing-xs;
+  color: $primary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .margin-right {
+    margin-right: 4px;
+  }
+}

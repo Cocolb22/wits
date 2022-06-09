@@ -321,7 +321,8 @@ wits = User.find_by(email: "wits@test.com")
       address: row[:address],
       latitude: row[:latitude].to_f,
       longitude: row[:longitude].to_f,
-      category: row[:category]
+      category: row[:category],
+      verified: true
     )
 
     case filio
