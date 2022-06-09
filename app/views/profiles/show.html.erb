@@ -77,11 +77,11 @@
     </div>
   </div>
   <div class='btn-edit-create'>
-    <%= link_to "Editer mon Profil", edit_profile_path, class:"btn btn-cta-rounded btn-primary btn-gradient m-auto"%>
+    <%= link_to "Complète ton profil", edit_profile_path, class:"btn btn-cta-rounded btn-primary btn-gradient m-auto"%>
 
 
     <% if @user.profile_exp > 500 %>
-      <%= link_to "Créer un spot", new_spot_path, class:"btn btn-cta btn-cta-rounded mt-3 m-auto"%>
+      <%= link_to "Ajoute ton spot", new_spot_path, class:"btn btn-cta btn-cta-rounded mt-3 m-auto"%>
     <% else %>
       <span class="btn btn-disabled btn-cta btn-cta-rounded mt-3 m-auto">Il manque <strong><%= 500 - @user.profile_exp %> pts</strong> pour créer un spot</span>
     <% end %>
