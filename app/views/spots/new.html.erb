@@ -14,6 +14,7 @@
     <%= f.input :category, label: "Catégorie", required: false, collection: Spot::CATEGORIES %>
     <%= f.input :spot_type, label: "Type", required: false, collection: Spot::TYPES %>
 
+    <label class="form-label my-1">Activités praticables</label>
     <div class="search-sports-grid">
       <% Activity.all.each do |activity| %>
         <div class="search-sport">
@@ -39,7 +40,7 @@
         data-toggle-map-pinpoint-value="<%= image_path "icons/marker.png" %>"
         data-toggle-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 
-      <div data-toggle-map-target="address">
+      <div data-toggle-map-target="address" class="my-2">
         <%= f.input :address, label: "Adresse", required: false,
               input_html: { data: { geocoder_target: "address" }, class: 'd-none' },
               wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
@@ -52,7 +53,7 @@
 
       <div class="my-3">
         <label class="form-label">Pas d'adresse ?</label>
-        <%= link_to "Recherche sur la carte", "#", class: "btn btn-cta btn-cta-rounded btn-cta-small mx-auto", "data-action": "click->toggle-map#toggle", "data-toggle-map-target": "link" %>
+        <%= button_to "Rechercher sur la carte", "#", class: "btn btn-cta-rounded btn-cta-small mx-auto", "data-action": "click->toggle-map#toggle", "data-toggle-map-target": "link" %>
       </div>
 
       <div style="z-index: 100000; min-width: calc(100vw + 100px); min-height: calc(100vh - 25px); position: fixed; top: 0; left: 0; visibility: hidden"
@@ -63,7 +64,7 @@
               data-toggle-map-target="button" data-action="click->toggle-map#validate">Valider</button>
     </div>
 
-    <%= f.input :photos, as: :file, label: "Ajoutez une photo" %>
+    <%= f.input :photos, as: :file, label: "Ajoute une photo" %>
 
     <%= f.submit "Enregister", class: "btn btn-cta-rounded btn-primary btn-gradient w-100 m-auto" %>
   <% end %>

@@ -27,7 +27,9 @@
         <%= render 'comments/rating', spot: @spot%>
       </div>
     <% else %>
-      <%= render 'comments/rating', spot: @spot%>
+      <div data-target="rating">
+        <%= render 'comments/rating', spot: @spot%>
+      </div>
 
       <div class="comments-sorting">
         <div class="pills <%= 'active' if params[:order] == 'recent' || !params[:order].present? %>">
