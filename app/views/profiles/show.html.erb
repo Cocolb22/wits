@@ -30,21 +30,22 @@
       </div>
     </div>
 
-    <div class="show-comments-photos label-bold">
-      Vos photos
-    </div>
-    <div class="grid-masonry">
-    <div class="grid-sizer-masonry"></div>
-      <% current_user.comments.each do |comment| %>
-        <% if comment.images.attached? %>
-          <div class="grid-item-masonry">
-            <% comment.images.each do |image| %>
-              <%= cl_image_tag image.key, crop: :fill %>
+      <div class=" show-comments-photos label-bold">
+        Vos photos
+      </div>
+      <div class="show-comments-photos">
+        <div class="show-comments-photos">
+          <% current_user.comments.each do |comment| %>
+            <% if comment.images.attached? %>
+              <div class="show-comments-photos row">
+                <% comment.images.each do |image| %>
+                  <%= cl_image_tag image.key, crop: :fill, class: "col-sm-4 mw-33" %>
+                <% end %>
+              </div>
             <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+          <% end %>
+        </div>
+      </div>
 
     <div class="show-descr-grid-type">
       <span class="label-bold txt-primary">Zones favorites</span>

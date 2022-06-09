@@ -13,16 +13,24 @@
 
       <div class="btn-col-home">
         <div class="btn-connect call-to-action">
-          <%= link_to "Se connecter", user_session_path %>
+          <% if user_signed_in? %>
+            <%= link_to "Trouve ton spot", search_spots_path %>
+          <% else %>
+            <%= link_to "Connecte toi", user_session_path %>
+          <% end %>
         </div>
 
-        <div class="btn-sign-up call-to-action">
-          <%= link_to "S'inscrire", new_user_registration_path %>
-        </div>
+        <% if user_signed_in? == false %>
+          <div class="btn-sign-up call-to-action">
+            <%= link_to "S'inscrire", new_user_registration_path %>
+          </div>
+        <% end %>
       </div>
 
       <div class="btn-without-connect call-to-action">
-        <%= link_to "Continuer sans se connecter", search_spots_path %>
+        <% if user_signed_in? == false %>
+          <%= link_to "Continuer sans se connecter", search_spots_path %>
+        <% end %>
       </div>
 
     </div>
