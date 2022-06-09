@@ -12,6 +12,7 @@ valentin = User.new(
                     nick_name: 'Valou22',
                     email: "valentin@test.com",
                     password: "password",
+                    status: "Vieux Briscard",
                     profile_exp: 510
                   )
 file_valentin = File.open("db/fixtures/Valentin.png")
@@ -314,7 +315,7 @@ plage_toul_gwenn.save!
 
 wits = User.find_by(email: "wits@test.com")
 
-["plages", "ports", "base_nautiques"].each do |filio|
+["ports", "base_nautiques", "plages"].each do |filio|
   CSV.foreach("db/fixtures/#{filio}.csv", headers: :first_row, header_converters: :symbol) do |row|
     spot = Spot.new(
       user: wits,
@@ -414,34 +415,34 @@ comment_to_treb_02 = Comment.create!(user:shiyun, spot:port_treb, content:"Assez
 comment_to_treb_03 = Comment.create!(user:sylvie, spot:port_treb, content:"Trop cher !! Je ne recommande pas pour les petits plaisanciers comme moi.", rating: 2)
 
 
-comment_to_treb = Comment.create!( user:valentin, spot:evt_treb, content:" une école pas terrible mais avec une super discothèque au dessus de la plage", rating: 4)
-comment_to_treb_2 = Comment.create!( user:aurore, spot:evt_treb, content:" une école parfaite pour les débutants pour apprendre à naviguer", rating: 5)
-comment_to_treb_3 = Comment.create!( user:shiyun, spot:evt_treb, content:" une plage agréable et proche de tous les commerces nécessaires pour une famille", rating: 5)
-comment_to_treb_4 = Comment.create!( user:valentin, spot:evt_treb, content:" Superbe Plage j'y passerai tout mes été", rating: 5)
-comment_to_treb_5 = Comment.create!( user:corentin, spot:evt_treb, content:" Incroyable sable fin ici, parfait pour les fin de soirées autour du feu", rating: 4)
-comment_to_treb_7 = Comment.create!( user:wits, spot:evt_treb, content:" Sympathique avec les enfants, mais beaucoup de monde", rating: 4)
-comment_to_treb_11 = Comment.create!( user:sylvie, spot:evt_treb, content:" il fait froid dans cette région !!!! ", rating: 2)
-comment_to_treb_12 = Comment.create!( user:morganne, spot:evt_treb, content:" hé bé, c'est pas mal hein", rating: 4)
-comment_to_treb_13 = Comment.create!( user:julio, spot:evt_treb, content:" oui ", rating: 4)
-comment_to_treb_17 = Comment.create!( user:olympe, spot:evt_treb, content:" Trop bien !", rating: 4)
-comment_to_treb_27 = Comment.create!( user:arianne, spot:evt_treb, content:" Session en planche à voile de dingue!", rating: 4)
-comment_to_treb_36 = Comment.create!( user:josianne, spot:evt_treb, content:" Gavage ! YEeeewww !", rating: 4)
-comment_to_treb_45 = Comment.new( user:wits, spot:evt_treb, content:" mon premier spot de surf, c'était chill", rating: 4)
+comment_to_treb = Comment.create!( user:valentin, created_at: Time.now - 2.hours, spot:evt_treb, content:" une école pas terrible mais avec une super discothèque au dessus de la plage", rating: 4)
+comment_to_treb_2 = Comment.create!( user:aurore, created_at: Time.now - 3.hours, spot:evt_treb, content:" une école parfaite pour les débutants pour apprendre à naviguer", rating: 5)
+comment_to_treb_3 = Comment.create!( user:shiyun, created_at: Time.now - 2.days, spot:evt_treb, content:" une plage agréable et proche de tous les commerces nécessaires pour une famille", rating: 5)
+comment_to_treb_4 = Comment.create!( user:valentin, created_at: Time.now - 3.hours, spot:evt_treb, content:" Superbe Plage j'y passerai tout mes été", rating: 5)
+comment_to_treb_5 = Comment.create!( user:corentin, created_at: Time.now - 4.hours, spot:evt_treb, content:" Incroyable sable fin ici, parfait pour les fin de soirées autour du feu", rating: 4)
+comment_to_treb_7 = Comment.create!( user:wits, created_at: Time.now - 6.days, spot:evt_treb, content:" Sympathique avec les enfants, mais beaucoup de monde", rating: 4)
+comment_to_treb_11 = Comment.create!( user:sylvie, created_at: Time.now - 6.days, spot:evt_treb, content:" il fait froid dans cette région !!!! ", rating: 2)
+comment_to_treb_12 = Comment.create!( user:morganne, created_at: Time.now - 6.days, spot:evt_treb, content:" hé bé, c'est pas mal hein", rating: 4)
+comment_to_treb_13 = Comment.create!( user:julio, created_at: Time.now - 6.days, spot:evt_treb, content:" oui ", rating: 4)
+comment_to_treb_17 = Comment.create!( user:olympe, created_at: Time.now - 5.days, spot:evt_treb, content:" Trop bien !", rating: 4)
+comment_to_treb_27 = Comment.create!( user:arianne, created_at: Time.now - 5.days, spot:evt_treb, content:" Session en planche à voile de dingue!", rating: 4)
+comment_to_treb_36 = Comment.create!( user:josianne, created_at: Time.now - 5.days, spot:evt_treb, content:" Gavage ! YEeeewww !", rating: 4)
+comment_to_treb_45 = Comment.new( user:wits, created_at: Time.now - 5.days, spot:evt_treb, content:" mon premier spot de surf, c'était chill", rating: 4)
 file_comment_to_treb_photo_1 = File.open("db/fixtures/comment_to_treb_photo_1.jpeg")
 comment_to_treb_45.images.attach(io: file_comment_to_treb_photo_1, filename: 'comment_to_treb_photo_1.jpeg', content_type: 'image/jpeg')
 comment_to_treb_45.save!
-comment_to_treb_50 = Comment.new( user:josianne, spot:evt_treb, content:" je suis venue en hiver pour éviter la foule, il faisait froid mais la session était dingue !!!", rating: 4)
+comment_to_treb_50 = Comment.new( user:josianne, created_at: Time.now - 5.hours, spot:evt_treb, content:" je suis venue en hiver pour éviter la foule, il faisait froid mais la session était dingue !!!", rating: 4)
 file_comment_to_treb_photo_3 = File.open("db/fixtures/comment_to_treb_photo_3.jpeg")
 comment_to_treb_50.images.attach(io: file_comment_to_treb_photo_3, filename: 'comment_to_treb_photo_3.jpeg', content_type: 'image/jpeg')
 comment_to_treb_50.save!
-comment_to_treb_51 = Comment.new( user:wits, spot:evt_treb, content:" jolie petite plage bien sympathique, balade en kayak avec la famille jusqu'à Miliau c'était magnifique ! ", rating: 4)
-comment_to_treb_52 = Comment.create!( user:julio, spot:evt_treb, content:"Les monos de l'école de voile sont top, ça dérape souvent au bambou's après la session et ça finit en boite aux Chandelles !", rating: 5)
-comment_to_treb_53 = Comment.new( user:arianne, spot:evt_treb, content:"Super spot de repli quand ça tabasse partout ailleurs ! Ça ferme fort mais il y a moyen de se caler des petites visières !", rating: 5)
+comment_to_treb_51 = Comment.new( user:wits, created_at: Time.now - 4.days, spot:evt_treb, content:" jolie petite plage bien sympathique, balade en kayak avec la famille jusqu'à Miliau c'était magnifique ! ", rating: 4)
+comment_to_treb_52 = Comment.create!( user:julio, created_at: Time.now - 6.hours, spot:evt_treb, content:"Les monos de l'école de voile sont top, ça dérape souvent au bambou's après la session et ça finit en boite aux Chandelles !", rating: 5)
+comment_to_treb_53 = Comment.new( user:arianne, created_at: Time.now - 3.days, spot:evt_treb, content:"Super spot de repli quand ça tabasse partout ailleurs ! Ça ferme fort mais il y a moyen de se caler des petites visières !", rating: 5)
 file_comment_to_treb_photo_5 = File.open("db/fixtures/comment_to_treb_photo_5.jpeg")
 comment_to_treb_53.images.attach(io: file_comment_to_treb_photo_5, filename: 'comment_to_treb_photo_6.jpeg', content_type: 'image/jpeg')
 comment_to_treb_53.save!
 
-comment_to_treb_54 = Comment.new( user:valentin, spot:evt_treb, content:" Super spot pour le windfoil, Top par vent d'ouest!", rating: 5)
+comment_to_treb_54 = Comment.new( user:valentin, created_at: Time.now - 10.days, spot:evt_treb, content:" Super spot pour le windfoil, Top par vent d'ouest!", rating: 5)
 file_comment_to_treb_photo_6 = File.open("db/fixtures/comment_to_treb_photo_6.jpeg")
 comment_to_treb_54.images.attach(io: file_comment_to_treb_photo_6, filename: 'comment_to_treb_photo_6.jpeg', content_type: 'image/jpeg')
 
