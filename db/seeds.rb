@@ -540,7 +540,15 @@ services_to_ile_grande = Service.create!(spot:evt_ile_grande, restaurant: true, 
 ######################################### LIKES ##################################################
 ##################################################################################################
 
-likes_to_comment = Like.create!(user: valentin, comment: comment_to_treb_2)
+35.times do
+  likes_to_comment = Like.create!(user: valentin, comment: comment_to_treb_54)
+end
+10.times do
+  likes_to_comment = Like.create!(user: valentin, comment: comment_to_treb_53)
+end
+47.times do
+  likes_to_comment = Like.create!(user: valentin, comment: comment_to_treb_52)
+end
 likes_to_comment_1 = Like.create!(user: valentin, comment: comment_to_tresmeur_3)
 likes_to_comment_2 = Like.create!(user: valentin, comment: comment_to_ile_grande)
 
