@@ -2,22 +2,22 @@
   <div>
     <% if vote = Vote.find_by(spot: spot, user: current_user) %>
       <% if vote.upvoted? %>
-        <i class="fas fa-thumbs-up voted"><%= spot.votes.where(upvoted: true).count%></i>
+        <i class="fas fa-thumbs-up voted mr-2 vote-icon"><%= spot.votes.where(upvoted: true).count%></i>
         <%= link_to vote_path(vote, upvoted: false), data: {action: 'click->upvote-spot#patch'},class: 'to-vote', method: :patch  do%>
-          <i class="fas fa-thumbs-down"> <%= spot.votes.where(upvoted: false).count%></i>
+          <i class="fas fa-thumbs-down mr-2 vote-icon"> <%= spot.votes.where(upvoted: false).count%></i>
         <% end %>
       <% else %>
         <%= link_to vote_path(vote, upvoted: true), data: {action: 'click->upvote-spot#patch'},class:'to-vote',  method: :patch do%>
-          <i class="fas fa-thumbs-up" ><%= spot.votes.where(upvoted: true).count%></i>
+          <i class="fas fa-thumbs-up mr-2 vote-icon" ><%= spot.votes.where(upvoted: true).count%></i>
         <% end %>
-        <i class="fas fa-thumbs-down voted"><%= spot.votes.where(upvoted: false).count%></i>
+        <i class="fas fa-thumbs-down voted mr-2 vote-icon"><%= spot.votes.where(upvoted: false).count%></i>
       <% end %>
     <% else %>
       <%= link_to spot_votes_path(spot, upvoted: true), data: {action: 'click->upvote-spot#post'},class:'to-vote', method: :post do %>
-        <i class="fas fa-thumbs-up"><%= spot.votes.where(upvoted: true).count%></i>
+        <i class="fas fa-thumbs-up mr-2 vote-icon"><%= spot.votes.where(upvoted: true).count%></i>
       <% end %>
       <%= link_to spot_votes_path(spot, upvoted: false), data: {action: 'click->upvote-spot#post'},class:'to-vote', method: :post do %>
-        <i class="fas fa-thumbs-down"><%= spot.votes.where(upvoted: false).count%></i>
+        <i class="fas fa-thumbs-down mr-2 vote-icon"><%= spot.votes.where(upvoted: false).count%></i>
       <% end %>
     <% end %>
   </div>

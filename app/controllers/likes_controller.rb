@@ -6,9 +6,8 @@ class LikesController < ApplicationController
     @like.user = current_user
 
     if @like.save
-      if @comment.likes.count % 10 ==
-        @comment.user.profile_exp += 2
-        @comment.user.save
+      if @comment.likes.count % 1
+        @comment.user.add_points_and_update_status(20)
       end
 
       respond_to do |format|

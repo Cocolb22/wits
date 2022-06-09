@@ -10,3 +10,15 @@
 .to-vote {
   color: $black-300;
 }
+
+.vote-icon {
+  font-size:16px;
+}
+
+.upvote-container div a {
+  margin-right:12px;
+}
+.vote-icon:before {
+  margin-right:4px;
+  font-size:16px;
+}

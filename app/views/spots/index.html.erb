@@ -64,7 +64,7 @@
   </div>
 </div>
 <div class="container-header-results container-spots-results">
-  <h3><%= pluralize(@spots.size, "résultat", plural: "résultats") %></h3>
+  <h3 class="label-bold"><%= pluralize(@spots.size, "résultat", plural: "résultats") %></h3>
 </div>
 <div class="container-header container-index container-spots">
 
@@ -72,10 +72,14 @@
     <%= link_to spot_path(spot) do %>
       <div class="card-spot" id="spot-<%= spot.id %>">
         <div class="card-spot-carousel">
-          <div class="card-image-tag pills pop">
-            Populaire
-          </div>
-          <div id="carouselExampleIndicators_<%= spot.id %>" class="carousel slide" data-bs-ride="carousel">
+
+          <% if spot.avg_rating.floor >= 4 %>
+            <div class="card-image-tag pills pop">
+              Populaire
+            </div>
+          <% end %>
+           <div id="carouselExampleIndicators_<%= spot.id %>" class="carousel slide" data-bs-ride="carousel">
+            
             <div class="carousel-indicators">
               <% spot.photos.each_with_index do |photo, index|%>
                   <button type="button" data-bs-target="#carouselExampleIndicators_<%= spot.id %>" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>", aria-current="<%= index.zero? %>"  aria-label="Slide 1"></button>
