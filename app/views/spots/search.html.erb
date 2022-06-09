@@ -5,7 +5,7 @@
 <div class="container-header-search mb-5">
 
   <div class="search-title-place text-center">
-    <h3>Rechercher un lieu</h3>
+    <h3>Cherches ton lieu !</h3>
   </div>
 
   <%= form_with url: "/spots", method: :get do %>
@@ -13,13 +13,12 @@
       <%= text_field_tag :location,
         params[:location],
         class: "form-control d-none",
-        data: { geocoder_target: "address" },
-        placeholder: "Where?"
+        data: { geocoder_target: "address" }
       %>
     </div>
 
     <div class="search-title-sport text-center">
-      <h3>Choisis ton sport</h3>
+      <h3>Choisis ton sport !</h3>
     </div>
     <%=  %>
 
@@ -43,7 +42,7 @@
     </div>
 
     <div class="btn-discover-spots">
-      <%= submit_tag "Je découvre les spots", class: "btn-cta-rounded call-to-action" %>
+      <%= submit_tag "Découvres tes spots", class: "btn-cta-rounded call-to-action" %>
     </div>
 
   <% end %>
