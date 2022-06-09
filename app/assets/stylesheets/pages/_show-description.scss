@@ -96,6 +96,9 @@
   margin-bottom: $spacing-xs;
 }
 
+.show-comments-photos {
+  grid-template-rows: 100px 1fr;
+}
 
 .show-activities {
   margin-top:$spacing-s;
