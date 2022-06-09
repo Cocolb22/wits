@@ -219,8 +219,8 @@ evt_treb = Spot.new(user: wits, full_name: 'École de voile de Trébeurden', str
                       au cœur de la côte de granit rose en Bretagne dont le but est de rendre
                       la voile accessible à tous !', spot_type: 'École', verified: true, icon: "type-sailing.svg", category: "Pour Les Débutants")
 evt_treb.build_address
-file_evt_treb = File.open("db/fixtures/evt_treb.jpeg")
-evt_treb.photos.attach(io: file_evt_treb, filename: 'evt_treb.jpeg', content_type: 'image/jpeg')
+file_evt_treb = File.open("db/fixtures/evt_treb.jpg")
+evt_treb.photos.attach(io: file_evt_treb, filename: 'evt_treb.jpg', content_type: 'image/jpeg')
 
 file_evt_treb = File.open("db/fixtures/spot_tresmeur_photo.jpeg")
 evt_treb.photos.attach(io: file_evt_treb, filename: 'spot_tresmeur_photo.jpeg', content_type: 'image/jpeg')
@@ -522,7 +522,6 @@ favorite_to_aurore_2 = Favorite.create!(user:aurore , spot:evt_perros)
 
 favorite_to_corentin = Favorite.create!(user:corentin, spot: evt_perros)
 favorite_to_corentin_1 = Favorite.create!(user:corentin, spot: evt_tregastel)
-favorite_to_corentin_2 = Favorite.create!(user:corentin, spot: evt_treb )
 
 ##################################################################################################
 ########################################### SERVICES ############################################
