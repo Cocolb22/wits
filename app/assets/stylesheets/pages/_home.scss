@@ -18,14 +18,16 @@
   object-fit: cover;
   top: 0;
   z-index: -2;
+  pointer-events: none;
   background: rgba(0, 0, 0, 0.452);
   -webkit-filter: brightness(0.5);
           filter: brightness(0.5);
  }
- .home-video-wrapper {
- height: 100vh;
- display: flex;
- }
+.home-video-wrapper {
+  height: 100vh;
+  display: flex;
+  pointer-events: none;
+}
 
 .logo {
   display: flex;

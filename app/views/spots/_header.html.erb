@@ -67,7 +67,11 @@
     <div class="card-spot-infos-localisation">
       <i class="fas fa-map-marker-alt"></i>
       <div class="card-spot-infos-localisation-city text-x-small-bold">
-      <%= @spot.address %>
+      <% if @spot.address.present? %>
+        <%= @spot.address %>
+      <% elsif @spot.latitude.present? && @spot.longitude.present? %>
+        <%= [@spot.latitude.round(2), @spot.longitude.round(2)].join(", ") %>
+      <% end %>
       </div>
     </div>
 
