@@ -11,7 +11,8 @@ User.destroy_all
 valentin = User.new(
                     nick_name: 'Valou22',
                     email: "valentin@test.com",
-                    password: "password"
+                    password: "password",
+                    profile_exp: 510
                   )
 file_valentin = File.open("db/fixtures/Valentin.png")
 valentin.photo.attach(io: file_valentin, filename: 'Valentin.png', content_type: 'image/png')
