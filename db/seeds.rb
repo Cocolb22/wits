@@ -401,6 +401,7 @@ surf_to_treb = SpotActivity.create!(spot:evt_treb, activity:surf_activity)
 windsurf_to_treb = SpotActivity.create!(spot:evt_treb, activity: windsurf_activity)
 kayak_to_treb = SpotActivity.create!(spot:evt_treb, activity: kayak_activity)
 scuba_diving_to_treb = SpotActivity.create!(spot:evt_treb, activity: scuba_diving_activity)
+cata_to_treb = SpotActivity.create!(spot:evt_treb, activity: catamaran_activity)
 
 ##################################################################################################
 ########################################### COMMENTS #############################################
@@ -467,22 +468,22 @@ file_comment_to_goas_treiz_photo_3 = File.open("db/fixtures/comment_to_treb_phot
 comment_to_goas_treiz_3.images.attach(io: file_comment_to_goas_treiz_photo_3, filename: 'comment_to_goas_treiz_photo_3.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_3.save!
 
-comment_to_goas_treiz_7 = Comment.new( user:josianne, spot:plage_goas_treiz, content:" je suis venue en hiver pour éviter la foule, il faisait froid !!!", rating: 3)
+comment_to_goas_treiz_7 = Comment.new( user:corentin, spot:plage_goas_treiz, content:" je suis venue en hiver pour éviter la foule, il faisait froid !!!", rating: 3)
 file_comment_to_goas_treiz_photo_7 = File.open("db/fixtures/comment_to_goas_treiz_photo_7.jpeg")
 comment_to_goas_treiz_7.images.attach(io: file_comment_to_goas_treiz_photo_7, filename: 'comment_to_goas_treiz_photo_7.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_7.save!
 
-comment_to_goas_treiz_8 = Comment.new( user:wits, spot:plage_goas_treiz, content:" jolie petite plage bien sympathique, hate de me faire des ami.e.s pour leur faire découvrir ", rating: 4)
+comment_to_goas_treiz_8 = Comment.new( user:corentin, spot:plage_goas_treiz, content:" jolie petite plage bien sympathique, hate de me faire des ami.e.s pour leur faire découvrir ", rating: 4)
 file_comment_to_goas_treiz_photo_8 = File.open("db/fixtures/comment_to_goas_treiz_photo_8.jpeg")
 comment_to_goas_treiz_8.images.attach(io: file_comment_to_goas_treiz_photo_8, filename: 'comment_to_goas_treiz_photo_8.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_8.save!
 
-comment_to_goas_treiz_9 = Comment.new( user:julio, spot:plage_goas_treiz, content:" Spot incroyable par vent d'ouest, du monde à l'eau, grosse session ! ", rating: 4)
+comment_to_goas_treiz_9 = Comment.new( user:corentin, spot:plage_goas_treiz, content:" Spot incroyable par vent d'ouest, du monde à l'eau, grosse session ! ", rating: 4)
 file_comment_to_goas_treiz_photo_9 = File.open("db/fixtures/comment_to_goas_treiz_photo_9.jpeg")
 comment_to_goas_treiz_9.images.attach(io: file_comment_to_goas_treiz_photo_9, filename: 'comment_to_goas_treiz_photo_9.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_9.save!
 
-comment_to_goas_treiz_10 = Comment.new( user:arianne, spot:plage_goas_treiz, content:" Les locaux sont top par contre il y a quelques patates rocheuses en plein milieu, faites gaffe si vous êtes en foil", rating: 5)
+comment_to_goas_treiz_10 = Comment.new( user:corentin, spot:plage_goas_treiz, content:" Les locaux sont top par contre il y a quelques patates rocheuses en plein milieu, faites gaffe si vous êtes en foil", rating: 5)
 file_comment_to_goas_treiz_photo_10 = File.open("db/fixtures/comment_to_goas_treiz_photo_10.jpeg")
 comment_to_goas_treiz_10.images.attach(io: file_comment_to_goas_treiz_photo_10, filename: 'comment_to_goas_treiz_photo_10.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_10.save!
