@@ -37,9 +37,9 @@
         <div class="show-comments-photos">
           <% current_user.comments.each do |comment| %>
             <% if comment.images.attached? %>
-              <div class="show-comments-photos">
+              <div class="show-comments-photos row">
                 <% comment.images.each do |image| %>
-                  <%= cl_image_tag image.key, crop: :fill %>
+                  <%= cl_image_tag image.key, crop: :fill, class: "col-sm-4 mw-33" %>
                 <% end %>
               </div>
             <% end %>
