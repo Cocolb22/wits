@@ -54,8 +54,8 @@ valentin = User.new(
                   last_name: 'Renon', last_name_completed: true,
                   address: "38 rue de bonne nouvelle, 22560 Trebeurden", address_completed: true,
                   birthday: Date.new(1998, 8, 10), birthday_completed: true,
-                  profile_exp: 550,
-                  status: "Vieux Briscard"
+                  profile_exp: 490,
+                  status: "Amiral"
                   )
 file_valentin = File.open("db/fixtures/Valentin.png")
 valentin.photo.attach(io: file_valentin, filename: 'Valentin.png', content_type: 'image/png')
@@ -148,114 +148,6 @@ file_olympe = File.open("db/fixtures/fake32.jpeg")
 olympe.photo.attach(io: file_olympe, filename: 'fake32.jpeg', content_type: 'image/jpeg')
 olympe.save!
 
-#############################################################################################
-########################################### SPOTS ###########################################
-#############################################################################################
-
-evt_treb = Spot.new(user: wits, full_name: 'École de voile de Trébeurden', street: "3 Rue de Traou Meur", zipcode:"22560", city:"Trébeurden",
-                    latitude: 48.768374, longitude: -3.581077,
-                    description: 'L’école de voile de Trébeurden est une association labellisée FFVoile et située
-                      au cœur de la côte de granit rose en Bretagne dont le but est de rendre
-                      la voile accessible à tous !', spot_type: 'École', verified: true, icon: "type-sailing.svg")
-evt_treb.build_address
-file_evt_treb = File.open("db/fixtures/evt_treb.jpeg")
-evt_treb.photos.attach(io: file_evt_treb, filename: 'evt_treb.jpeg', content_type: 'image/jpeg')
-
-file_evt_treb = File.open("db/fixtures/spot_tresmeur_photo.jpeg")
-evt_treb.photos.attach(io: file_evt_treb, filename: 'spot_tresmeur_photo.jpeg', content_type: 'image/jpeg')
-evt_treb.save!
-
-evt_ile_grande = Spot.new(user: wits, full_name: 'Base Nautique Ile Grande', street: "Imp. de Pors-Gelen", zipcode:"22560", city:"Pleumeur-Bodou",
-                          latitude: 48.80651976306186, longitude: -3.5646267302955557,
-                          description: "Affiliée à la Fédération Française de Voile, nous respectons la Charte Qualité,
-                            ce qui nous confère les labels d'école française de voile, de voile loisir et d'école de sport.
-                            Des stages ou locations sont proposés aux particuliers, aux groupes, comités d'entrprises ainsi
-                            qu'aux classes sur une flotte variée (dériveurs, catamarans, PAV, kayak, voilier)
-                            pendant les vacances de la Toussaint, Printemps et d'été.", spot_type: 'École', verified: true, icon: "type-sailing.svg")
-evt_ile_grande.build_address
-file_evt_ile_grande = File.open("db/fixtures/evt_ile_grande.jpeg")
-evt_ile_grande.photos.attach(io: file_evt_ile_grande, filename: 'evt_ile_grande.jpeg', content_type: 'image/jpeg')
-evt_ile_grande.save!
-
-evt_tregastel = Spot.new(user: wits, full_name: 'Club Nautique de Trégastel', street: "41 Av. de la Grève Blanche", zipcode:"22730", city:"Trégastel",
-                        latitude: 48.82996826216762, longitude: -3.52501805913103,
-                        description: "Ecole Française de Voile et Ecole Française de Canoë-Kayak. Une équipe à votre
-                          service : investis dans une démarche qualité, nous vous accueillons toute l'année dans une
-                          ambiance familiale. Un matériel récent et entretenu : adaptées à tous les âges et
-                          tous les niveaux. Pour votre confort, le portage est facilité.
-                          Agréé Jeunesse et Sport", spot_type: 'École', verified: true, icon: "type-sailing.svg")
-evt_tregastel.build_address
-file_evt_tregastel = File.open("db/fixtures/evt_tregastel.jpeg")
-evt_tregastel.photos.attach(io: file_evt_tregastel, filename: 'evt_tregastel.jpeg', content_type: 'image/jpeg')
-evt_tregastel.save!
-
-evt_perros = Spot.new(user: wits, full_name: 'Centre Nautique de Perros-Guirec', street: "Plage de Trestraou", zipcode:"22700", city:"Perros-Guirec",
-                      latitude: 48.8178555, longitude: -3.46072919,
-                      description: 'Découvrir la voile, se perfectionner, louer du matériel ou simplement se laisser
-                        guider lors d’une balade nautique : venez profiter d’un espace de navigation unique, le long
-                        de la Côte de Granit Rose, au large de l’archipel des 7 îles. Une équipe de professionnels
-                        qualifiés et une infrastructure moderne garantissent votre sécurité et votre confort.',
-                      spot_type: 'École', verified: true, icon: "type-sailing.svg")
-evt_perros.build_address
-file_evt_perros = File.open("db/fixtures/evt_perros.jpeg")
-evt_perros.photos.attach(io: file_evt_perros, filename: 'evt_perros.jpeg', content_type: 'image/jpeg')
-evt_perros.save!
-
-plage_goas_treiz = Spot.new(user: wits, full_name: 'Plage de Goas Treiz', street: "Plage de Goas Treiz", zipcode:"22560", city:"Trébeurden",
-                            latitude: 48.781748, longitude: -3.578422,
-                            description: 'A la sortie de Trébeurden, face au marais du Quellen, la plage de Goas Treiz,
-                              orientée Nord-Ouest est le spot de glisse prisé des wingfoilers, windsurfeurs et les kitesurfeurs
-                              de la région. La navigation se fait vers Port Saint Sauveur à l’Ile Grande.
-                              Attention aux ailerons à marée basse, de nombreux cailloux reste immergés.',
-                            spot_type: 'Plage', verified: true, icon: "type-beach.svg")
-plage_goas_treiz.build_address
-file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz.jpeg")
-plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz.jpeg', content_type: 'image/jpeg')
-
-file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz_2.jpeg")
-plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz_2.jpeg', content_type: 'image/jpeg')
-
-file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz_3.jpeg")
-plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz_3.jpeg', content_type: 'image/jpeg')
-plage_goas_treiz.save!
-
-plage_tresmeur = Spot.new(user: wits, full_name: 'Plage de Tresmeur', street: "Plage de Tresmeur", zipcode:"22560", city:"Trébeurden",
-                          latitude: 48.7668390, longitude: -3.58137660,
-                          description: 'C’est le spot à proximité de l’Ecole de voile de Trébeurden.
-                            On y pratique tous les sports de glisse : le windsurf, le wingfoil, le kyte selon
-                            les conditions de vent. Les jours de pétole, les balades en SUP invitent à la découverte de
-                            la côte. A Tresmeur, les bars sont sur la promenade le long de la plage,
-                            le petit plus après une bonne nav.',
-                          spot_type: 'Plage', verified: true, icon: "type-beach.svg")
-plage_tresmeur.build_address
-file_plage_tresmeur = File.open("db/fixtures/plage_tresmeur.jpeg")
-plage_tresmeur.photos.attach(io: file_plage_tresmeur, filename: 'plage_tresmeur.jpeg', content_type: 'image/jpeg')
-file_plage_tresmeur1 = File.open("db/fixtures/spot_tresmeur_photo.jpeg")
-plage_tresmeur.photos.attach(io: file_plage_tresmeur1, filename: 'spot_tresmeur_photo.jpeg', content_type: 'image/jpeg')
-file_plage_tresmeur2 = File.open("db/fixtures/spot_tresmeur_photo_2.jpeg")
-plage_tresmeur.photos.attach(io: file_plage_tresmeur2, filename: 'spot_tresmeur_photo_2.jpeg', content_type: 'image/jpeg')
-file_plage_tresmeur3 = File.open("db/fixtures/spot_tresmeur_photo_3.jpeg")
-plage_tresmeur.photos.attach(io: file_plage_tresmeur3, filename: 'spot_tresmeur_photo_3.jpeg', content_type: 'image/jpeg')
-plage_tresmeur.save!
-
-plage_toul_gwenn = Spot.new(user: User.first, full_name: 'Plage de Toul Gwenn', street: "Plage de Toul Gwenn", zipcode:"22560", city:"Pleumeur-Bodou",
-                            latitude: 48.801364049065796, longitude: -3.563637586114924,
-                            description: 'A l’abri des vents dominants, la plus grande dune de l’Ile Grande abrite
-                              la plage de Toul Gwen. A marée haute, ce véritable lagon de sable blanc à l’eau transparente
-                              est idéale pour s’initier aux plaisirs de la glisse : windsurf et stand up paddle.
-                              En ayant quasiment toujours pied, les sessions entre l’île Aval et l’île Mouton
-                              sont véritablement sécurisées.', spot_type: 'Plage', verified: true, icon: "type-beach.svg")
-plage_toul_gwenn.build_address
-file_plage_toul_gwenn = File.open("db/fixtures/Plage_toul_gwen.jpeg")
-plage_toul_gwenn.photos.attach(io: file_plage_toul_gwenn, filename: 'Plage_toul_gwen.jpeg', content_type: 'image/jpeg')
-file_plage_toul_gwenn = File.open("db/fixtures/plage_toul_gwen_2.jpeg")
-plage_toul_gwenn.photos.attach(io: file_plage_toul_gwenn, filename: 'plage_toul_gwen_2.jpeg', content_type: 'image/jpeg')
-plage_toul_gwenn.save!
-
-Spot.all.each do |spot|
-  WeatherService.new(spot).call
-end
-
 ##################################################################################################
 ########################################### ACTIVITIES ###########################################
 ##################################################################################################
@@ -269,7 +161,7 @@ surf_activity.save!
 jet_ski_activity = Activity.create!(name: "Jetski", description: " Le Jet Ski (abréviation française de l'anglais Jet Ski-riding,
                                   où riding signifie « monter » et Jet Ski « (vagues) déferlantes ») est une pratique
                                   physique individuelle de glisse sur les vagues, au bord de l'océan.",
-                                    icon: 'jet_ski-small.svg', bigicon: "JetSki.svg")
+                                    icon: 'JetSki-small.svg', bigicon: "JetSki.svg")
 jet_ski_activity.save!
 
 kitesurf_activity = Activity.create!(name: "Kitesurf", description: " Le kitesurf, ou planche aérotractée,
@@ -315,6 +207,166 @@ catamaran_activity = Activity.create!(name: "Catamaran", description: "Un catama
                                       le trimaran, dont le nom dérive.", icon: 'Sailing-small.svg', bigicon: "Sailing.svg")
 catamaran_activity.save!
 
+#############################################################################################
+########################################### SPOTS ###########################################
+#############################################################################################
+
+evt_treb = Spot.new(user: wits, full_name: 'École de voile de Trébeurden', street: "3 Rue de Traou Meur", zipcode:"22560", city:"Trébeurden",
+                    latitude: 48.768374, longitude: -3.581077,
+                    description: 'L’école de voile de Trébeurden est une association labellisée FFVoile et située
+                      au cœur de la côte de granit rose en Bretagne dont le but est de rendre
+                      la voile accessible à tous !', spot_type: 'École', verified: true, icon: "type-sailing.svg", category: "Pour Les Débutants")
+evt_treb.build_address
+file_evt_treb = File.open("db/fixtures/evt_treb.jpeg")
+evt_treb.photos.attach(io: file_evt_treb, filename: 'evt_treb.jpeg', content_type: 'image/jpeg')
+
+file_evt_treb = File.open("db/fixtures/spot_tresmeur_photo.jpeg")
+evt_treb.photos.attach(io: file_evt_treb, filename: 'spot_tresmeur_photo.jpeg', content_type: 'image/jpeg')
+evt_treb.save!
+
+evt_ile_grande = Spot.new(user: wits, full_name: 'Base Nautique Ile Grande', street: "Imp. de Pors-Gelen", zipcode:"22560", city:"Pleumeur-Bodou",
+                          latitude: 48.80651976306186, longitude: -3.5646267302955557,
+                          description: "Affiliée à la Fédération Française de Voile, nous respectons la Charte Qualité,
+                            ce qui nous confère les labels d'école française de voile, de voile loisir et d'école de sport.
+                            Des stages ou locations sont proposés aux particuliers, aux groupes, comités d'entrprises ainsi
+                            qu'aux classes sur une flotte variée (dériveurs, catamarans, PAV, kayak, voilier)
+                            pendant les vacances de la Toussaint, Printemps et d'été.", spot_type: 'École', verified: true, category: "Pour Les Débutants", icon: "type-sailing.svg")
+evt_ile_grande.build_address
+file_evt_ile_grande = File.open("db/fixtures/evt_ile_grande.jpeg")
+evt_ile_grande.photos.attach(io: file_evt_ile_grande, filename: 'evt_ile_grande.jpeg', content_type: 'image/jpeg')
+evt_ile_grande.save!
+
+evt_tregastel = Spot.new(user: wits, full_name: 'Club Nautique de Trégastel', street: "41 Av. de la Grève Blanche", zipcode:"22730", city:"Trégastel",
+                        latitude: 48.82996826216762, longitude: -3.52501805913103,
+                        description: "Ecole Française de Voile et Ecole Française de Canoë-Kayak. Une équipe à votre
+                          service : investis dans une démarche qualité, nous vous accueillons toute l'année dans une
+                          ambiance familiale. Un matériel récent et entretenu : adaptées à tous les âges et
+                          tous les niveaux. Pour votre confort, le portage est facilité.
+                          Agréé Jeunesse et Sport", spot_type: 'École', verified: true, icon: "type-sailing.svg", category: "Pour Les Débutants")
+evt_tregastel.build_address
+file_evt_tregastel = File.open("db/fixtures/evt_tregastel.jpeg")
+evt_tregastel.photos.attach(io: file_evt_tregastel, filename: 'evt_tregastel.jpeg', content_type: 'image/jpeg')
+evt_tregastel.save!
+
+evt_perros = Spot.new(user: wits, full_name: 'Centre Nautique de Perros-Guirec', street: "Plage de Trestraou", zipcode:"22700", city:"Perros-Guirec",
+                      latitude: 48.8178555, longitude: -3.46072919,
+                      description: 'Découvrir la voile, se perfectionner, louer du matériel ou simplement se laisser
+                        guider lors d’une balade nautique : venez profiter d’un espace de navigation unique, le long
+                        de la Côte de Granit Rose, au large de l’archipel des 7 îles. Une équipe de professionnels
+                        qualifiés et une infrastructure moderne garantissent votre sécurité et votre confort.',
+                      spot_type: 'École', verified: true, icon: "type-sailing.svg", category: "Pour Les Débutants")
+evt_perros.build_address
+file_evt_perros = File.open("db/fixtures/evt_perros.jpeg")
+evt_perros.photos.attach(io: file_evt_perros, filename: 'evt_perros.jpeg', content_type: 'image/jpeg')
+evt_perros.save!
+
+plage_goas_treiz = Spot.new(user: wits, full_name: 'Plage de Goas Treiz', street: "Plage de Goas Treiz", zipcode:"22560", city:"Trébeurden",
+                            latitude: 48.781748, longitude: -3.578422,
+                            description: 'A la sortie de Trébeurden, face au marais du Quellen, la plage de Goas Treiz,
+                              orientée Nord-Ouest est le spot de glisse prisé des wingfoilers, windsurfeurs et les kitesurfeurs
+                              de la région. La navigation se fait vers Port Saint Sauveur à l’Ile Grande.
+                              Attention aux ailerons à marée basse, de nombreux cailloux reste immergés.',
+                            spot_type: 'Plage', verified: true, icon: "type-beach.svg", category: "Sable Fin")
+plage_goas_treiz.build_address
+file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz.jpeg")
+plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz.jpeg', content_type: 'image/jpeg')
+
+file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz_2.jpeg")
+plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz_2.jpeg', content_type: 'image/jpeg')
+
+file_plage_goas_treiz = File.open("db/fixtures/plage_goas_treiz_3.jpeg")
+plage_goas_treiz.photos.attach(io: file_plage_goas_treiz, filename: 'plage_goas_treiz_3.jpeg', content_type: 'image/jpeg')
+plage_goas_treiz.save!
+
+plage_tresmeur = Spot.new(user: wits, full_name: 'Plage de Tresmeur', street: "Plage de Tresmeur", zipcode:"22560", city:"Trébeurden",
+                          latitude: 48.7668390, longitude: -3.58137660,
+                          description: 'C’est le spot à proximité de l’Ecole de voile de Trébeurden.
+                            On y pratique tous les sports de glisse : le windsurf, le wingfoil, le kyte selon
+                            les conditions de vent. Les jours de pétole, les balades en SUP invitent à la découverte de
+                            la côte. A Tresmeur, les bars sont sur la promenade le long de la plage,
+                            le petit plus après une bonne nav.',
+                          spot_type: 'Plage', verified: true, icon: "type-beach.svg", category: "Plage Familiale")
+plage_tresmeur.build_address
+file_plage_tresmeur = File.open("db/fixtures/plage_tresmeur.jpeg")
+plage_tresmeur.photos.attach(io: file_plage_tresmeur, filename: 'plage_tresmeur.jpeg', content_type: 'image/jpeg')
+file_plage_tresmeur1 = File.open("db/fixtures/spot_tresmeur_photo.jpeg")
+plage_tresmeur.photos.attach(io: file_plage_tresmeur1, filename: 'spot_tresmeur_photo.jpeg', content_type: 'image/jpeg')
+file_plage_tresmeur2 = File.open("db/fixtures/spot_tresmeur_photo_2.jpeg")
+plage_tresmeur.photos.attach(io: file_plage_tresmeur2, filename: 'spot_tresmeur_photo_2.jpeg', content_type: 'image/jpeg')
+file_plage_tresmeur3 = File.open("db/fixtures/spot_tresmeur_photo_3.jpeg")
+plage_tresmeur.photos.attach(io: file_plage_tresmeur3, filename: 'spot_tresmeur_photo_3.jpeg', content_type: 'image/jpeg')
+plage_tresmeur.save!
+
+plage_toul_gwenn = Spot.new(user: User.first, full_name: 'Plage de Toul Gwenn', street: "Plage de Toul Gwenn", zipcode:"22560", city:"Pleumeur-Bodou",
+                            latitude: 48.801364049065796, longitude: -3.563637586114924,
+                            description: 'A l’abri des vents dominants, la plus grande dune de l’Ile Grande abrite
+                              la plage de Toul Gwen. A marée haute, ce véritable lagon de sable blanc à l’eau transparente
+                              est idéale pour s’initier aux plaisirs de la glisse : windsurf et stand up paddle.
+                              En ayant quasiment toujours pied, les sessions entre l’île Aval et l’île Mouton
+                              sont véritablement sécurisées.', category: "Plage Familiale", spot_type: 'Plage', verified: true, icon: "type-beach.svg")
+plage_toul_gwenn.build_address
+file_plage_toul_gwenn = File.open("db/fixtures/Plage_toul_gwen.jpeg")
+plage_toul_gwenn.photos.attach(io: file_plage_toul_gwenn, filename: 'Plage_toul_gwen.jpeg', content_type: 'image/jpeg')
+file_plage_toul_gwenn = File.open("db/fixtures/plage_toul_gwen_2.jpeg")
+plage_toul_gwenn.photos.attach(io: file_plage_toul_gwenn, filename: 'plage_toul_gwen_2.jpeg', content_type: 'image/jpeg')
+plage_toul_gwenn.save!
+
+wits = User.find_by(email: "wits@test.com")
+
+["plages", "ports", "base_nautiques"].each do |filio|
+  CSV.foreach("db/fixtures/#{filio}.csv", headers: :first_row, header_converters: :symbol) do |row|
+    spot = Spot.new(
+      user: wits,
+      full_name: row[:full_name],
+      address: row[:address],
+      latitude: row[:latitude].to_f,
+      longitude: row[:longitude].to_f,
+      category: row[:category]
+    )
+
+    case filio
+    when "plages"
+      spot.spot_type = "Plage"
+    when "ports"
+      spot.spot_type = "Port"
+    when "base_nautiques"
+      spot.spot_type = "École"
+    end
+
+    row[:photos]&.split("||")&.each do |photo|
+      file = File.open(URI.open(photo))
+      spot.photos.attach(io: file, filename: "#{spot.full_name}.jpeg", content_type: "image/jpeg")
+    end
+    spot.save!(validate: false)
+    print '.'
+
+    Service.create!(
+      spot: spot,
+      parking: row[:parking] == "true",
+      restaurant: row[:restaurant] == "true",
+      shower: row[:shower] == "true",
+      camping: row[:camping] == "true",
+      beach_surveillance: row[:beach_surveillance] == "true"
+    )
+
+
+    row[:activities]&.split("||")&.each do |act|
+      if Activity.find_by(name: act)
+        SpotActivity.create!(
+          spot: spot,
+          activity: Activity.find_by(name: act)
+        )
+      end
+    end
+  end
+end
+
+
+Spot.all.each do |spot|
+  WeatherService.new(spot).call
+end
+
+
 ##################################################################################################
 ########################################### SPOT_ACTIVITIES ######################################
 ##################################################################################################
@@ -352,6 +404,12 @@ scuba_diving_to_treb = SpotActivity.create!(spot:evt_treb, activity: scuba_divin
 ##################################################################################################
 ########################################### COMMENTS #############################################
 ##################################################################################################
+
+port_treb = Spot.find_by(full_name: "Port de Trébeurden")
+comment_to_treb_01 = Comment.create!(user:aurore, spot:port_treb, content:"Un port bien équipé et pratique pour les sorties, même à marée basse.", rating: 5)
+comment_to_treb_02 = Comment.create!(user:shiyun, spot:port_treb, content:"Assez cher l'été mais tous les services sont là, capitainerie sympathique et dispo.", rating: 4)
+comment_to_treb_03 = Comment.create!(user:sylvie, spot:port_treb, content:"Trop cher !! Je ne recommande pas pour les petits plaisanciers comme moi.", rating: 2)
+
 
 comment_to_treb = Comment.create!( user:valentin, spot:evt_treb, content:" une école pas terrible mais avec une super discothèque au dessus de la plage", rating: 3)
 comment_to_treb_2 = Comment.create!( user:aurore, spot:evt_treb, content:" une école parfaite pour les débutants pour apprendre à naviguer", rating: 5)
@@ -493,3 +551,6 @@ likes_to_comment_8 = Like.create!(user: corentin, comment: comment_to_toul_gwenn
 likes_to_comment_9 = Like.create!(user:aurore, comment: comment_to_ile_grande_3)
 likes_to_comment_10 = Like.create!(user:aurore, comment: comment_to_treb_2 )
 likes_to_comment_11 = Like.create!(user: shiyun, comment: comment_to_tregastel_3 )
+
+Like.create!(user: shiyun, comment: comment_to_treb_01 )
+Like.create!(user: aurore, comment: comment_to_treb_01 )

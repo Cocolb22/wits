@@ -1,4 +1,5 @@
 .mapboxgl-ctrl-geocoder {
+  position: relative;
   width: 80%;
   border: 0.5px solid rgba(0,0,0,0.08);
   border-radius: 50px;
@@ -26,11 +27,11 @@
   display:none;
 }
 .custom-icon-search {
-  position: absolute;
-  right: 40px;
-  z-index: 999;
-  top: 3px;
   i {
+    position: absolute;
+    right: 40px;
+    z-index: 999;
+    top: 24px;
     font-size:20px;
     color:$black-300;
   }
@@ -41,4 +42,18 @@
     i {
       color:$black;
     }
+}
+
+
+.toogle-map-add-spot {
+  .mapboxgl-canvas {
+    width:100%;
+    height:100%;
+  }
+  .mapboxgl-ctrl input {
+    display: none !important;
+  }
+  .mapboxgl-ctrl-geocoder {
+    border:none;
+  }
 }

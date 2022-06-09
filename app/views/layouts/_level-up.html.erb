@@ -1,29 +1,29 @@
 
-<div class="container-level-up">
-
+<div class="container-level-up d-none">
   <div class="wrapper">
     <div class="container-logo-level-up">
       <%= image_tag "logo/logo-wits-light.svg", class: "logo-wits" %>
     </div>
-    <div class="medal">
-      <%= image_tag 'level/level_vieux_briscard.svg', class:"hat-class animate__animated animate__swing" %>
-
-      <%# <%= image_tag 'level/level_'current_user.status'.svg' %>
-    </div>
-    <div class="level-up-content label-bold">
-      <h2>Niveau supérieur</h2>
-      <div class="level-up-content-subtitle text-x-small">
-        Tu es maintenant
+    <% if current_user %>
+      <div class="medal hat-class animate__animated animate__swing">
+        <%= icon_for_status(current_user.status) %>
+        <%# <%= image_tag 'level/level_'current_user.status'.svg' %>
       </div>
-      <div class="level-up-level-subtitle animate__animated animate__heartBeat">
-        <h1><%= current_user.status %></h1>
+      <div class="level-up-content label-bold">
+        <h2>Niveau supérieur</h2>
+        <div class="level-up-content-subtitle text-x-small">
+          Tu es maintenant
+        </div>
+        <div class="level-up-level-subtitle animate__animated animate__heartBeat">
+          <h1 id="status"><%= current_user.status %></h1>
+        </div>
       </div>
-    </div>
-    <div class="total-points-counter">
-      <i class="fas fa-medal medal-class"></i>
-      <span value="<%= current_user.profile_exp %>" class="total-points-value call-to-action"><%= current_user.profile_exp %>
-      </span> <span class="call-to-action">PTS</span>
-    </div>
-    <div class="cta">Continuer</div>
+      <div class="total-points-counter">
+        <i class="fas fa-medal medal-class"></i>
+        <span id="exp" value="<%= current_user.profile_exp %>" class="total-points-value call-to-action"><%= current_user.profile_exp %>
+        </span> <span class="call-to-action">PTS</span>
+      </div>
+    <% end %>
+    <%= link_to "Continuer", profile_path, class:"cta" %>
   </div>
 </div>

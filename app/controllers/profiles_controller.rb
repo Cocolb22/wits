@@ -11,6 +11,8 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     if @user.update(profile_params)
+      check_profile_point(@user)
+
       redirect_to profile_path
       flash[:notice] = "Profil modifié !"
     else
@@ -44,7 +46,7 @@ class ProfilesController < ApplicationController
 
   def comments
     @user = current_user
-    @comments = @user.comments
+    @comments = @user.comments.order("id DESC")
   end
 
   private

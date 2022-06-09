@@ -1,6 +1,6 @@
 <div class= "container m-auto">
 
-  <h2 class="txt-primary d-flex justify-content-center p-3">Mot de passe oublié?</h2>
+  <h2 class="txt-primary d-flex justify-content-center p-3 mt-3">Mot de passe oublié?</h2>
 
   <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= f.error_notification %>
@@ -12,8 +12,8 @@
                   input_html: { autocomplete: "email" } %>
     </div>
 
-    <div class="form-actions btn-cta justify-content-center txt-primary">
-      <%= f.button :submit, "Envoyer le lien pour changer mon mot de passe" %>
+    <div class="form-actions btn-cta justify-content-center txt-primary connect mt-3">
+      <%= f.button :submit, "Envoyer le lien pour changer mon mot de passe", class: 'input-connect' %>
     </div>
   <% end %>
 </div>
