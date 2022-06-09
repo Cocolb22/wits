@@ -1,4 +1,4 @@
-<%= simple_form_for [ spot, comment ], html: { data: {spot_comments_target: 'form', action: 'submit->spot-comments#post', uppy:'comment[images][]'}, class:"d-none px-3", id:"form-comments"} do |f| %>
+<%= simple_form_for [ spot, comment ], html: { data: {spot_comments_target: 'form', uppy:'comment[images][]'}, class:"d-none px-3", id:"form-comments"} do |f| %>
   <div class="form-exit text-x-small-bold", data-spot-comments-target= "exit", data-action = "click->spot-comments#exit">Quitter</div>
   <%= f.input :content, label:"Commentaire", input_html: { data: { spot_comments_target: "input" } }, class:"input-content" %>
   <%= f.input :rating, label:"note", input_html: { data: { spot_comments_target: "input" } }, class:"input-rating label" %>
@@ -14,6 +14,6 @@
   <%= f.button :button, "Ajouter un commentaire", class: "btn-submit-form-comment btn-cta btn-fixed call-to-action", data: {spot_comments_target: 'btn'} %>
 <% end %>
 
-<div class = "gps-container btn-cta btn-fixed call-to-action", data-spot-comments-target="addcomment", data-action = "click->spot-comments#display_form">
+<div class="gps-container btn-cta btn-fixed call-to-action", data-spot-comments-target="addcomment", data-action = "click->spot-comments#display_form">
   Laisse un commentaire
 </div>
