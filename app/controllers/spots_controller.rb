@@ -100,7 +100,7 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:full_name, :description, :category, :latitude, :longitude, :spot_type, :address, icon: [], activity_ids: [])
+    params.require(:spot).permit(:full_name, :description, :category, :latitude, :longitude, :spot_type, :address, :photos, icon: [], activity_ids: [])
   end
 
   def verifiy_user_exp
