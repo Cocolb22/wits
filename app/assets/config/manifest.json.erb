@@ -3,8 +3,6 @@
   "description": "Le spot parfait pour ton sport nautique préféré.",
   "display": "fullscreen",
   "name": "WITS",
-  "scope": "<%= root_path %>",
-  "start_url": "<%= root_path %>",
   "icons": [
     <% files = Dir.entries(Rails.root.join("app/assets/images/favicons/")).select {|f| !File.directory? f} %>
     <% files.each_with_index do |file, index| %>
