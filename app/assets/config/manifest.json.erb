@@ -2,6 +2,7 @@
   "background_color": "#5FC1FA",
   "description": "Le spot parfait pour ton sport nautique préféré.",
   "display": "fullscreen",
+  "start_url": "<%= root_path %>",
   "name": "WITS",
   "icons": [
     <% files = Dir.entries(Rails.root.join("app/assets/images/favicons/")).select {|f| !File.directory? f} %>
