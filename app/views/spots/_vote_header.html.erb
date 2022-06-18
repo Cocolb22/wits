@@ -1,6 +1,6 @@
 <div data-controller='upvote-spot' data-upvote-spot-target='vote' class='upvote-container'>
   <div>
-    <% if spot.verified = false %>
+    <% if !spot.verified %>
       <% if vote = Vote.find_by(spot: spot, user: current_user) %>
         <% if vote.upvoted? %>
           <i class="fas fa-thumbs-up voted mr-2 vote-icon"><%= spot.votes.where(upvoted: true).count%></i>

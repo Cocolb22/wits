@@ -29,6 +29,7 @@ class SpotsController < ApplicationController
 
     if params[:activities]
       @spots = Spot.joins(:activities)
+                   .order(id: :desc)
                    .includes(:comments, :spot_activities, :activities, photos_attachments: [:blob])
                    .where("activities.id IN (?)", params[:activities]
                    .reject(&:blank?).map(&:to_i)).distinct

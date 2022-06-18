@@ -8,14 +8,16 @@ User.destroy_all
 #############################################################################################
 ########################################### USERS ###########################################
 #############################################################################################
-corentin = User.new(
-                    nick_name: 'Cocolb22',
-                    email: "corentin@test.com",
-                    password: "password"
+valentin = User.new(
+                    nick_name: 'Valou22',
+                    email: "valentin@test.com",
+                    password: "password",
+                    status: "Vieux Briscard",
+                    profile_exp: 510
                   )
-file_corentin = File.open("db/fixtures/Corentin.jpeg")
-corentin.photo.attach(io: file_corentin, filename: 'Corentin.jpeg', content_type: 'image/jpeg')
-corentin.save!
+file_valentin = File.open("db/fixtures/Valentin.png")
+valentin.photo.attach(io: file_valentin, filename: 'Valentin.png', content_type: 'image/png')
+valentin.save!
 
 shiyun = User.new(
                   email: "shiyun@test.com",
@@ -46,20 +48,20 @@ file_aurore = File.open("db/fixtures/Aurore.jpeg")
 aurore.photo.attach(io: file_aurore, filename: 'aurore.jpeg', content_type: 'image/jpeg')
 aurore.save!
 
-valentin = User.new(
-                  nick_name: 'Neron22',
-                  email: "valentin@test.com",
+corentin = User.new(
+                  nick_name: 'Coco',
+                  email: "corentin@test.com",
                   password: "password",
-                  first_name: 'Valentin', first_name_completed: true,
-                  last_name: 'Renon', last_name_completed: true,
+                  first_name: 'Corentin', first_name_completed: true,
+                  last_name: 'Le bris', last_name_completed: true,
                   address: "38 rue de bonne nouvelle, 22560 Trebeurden", address_completed: true,
                   birthday: Date.new(1998, 8, 10), birthday_completed: true,
                   profile_exp: 490,
                   status: "Amiral"
                   )
-file_valentin = File.open("db/fixtures/Valentin.png")
-valentin.photo.attach(io: file_valentin, filename: 'Valentin.png', content_type: 'image/png')
-valentin.save!
+file_corentin = File.open("db/fixtures/Corentin.jpeg")
+corentin.photo.attach(io: file_corentin, filename: 'Corentin.jpeg', content_type: 'image/jpeg')
+corentin.save!
 
 wits = User.new(
               nick_name: 'Wits',
@@ -217,8 +219,8 @@ evt_treb = Spot.new(user: wits, full_name: 'École de voile de Trébeurden', str
                       au cœur de la côte de granit rose en Bretagne dont le but est de rendre
                       la voile accessible à tous !', spot_type: 'École', verified: true, icon: "type-sailing.svg", category: "Pour Les Débutants")
 evt_treb.build_address
-file_evt_treb = File.open("db/fixtures/evt_treb.jpeg")
-evt_treb.photos.attach(io: file_evt_treb, filename: 'evt_treb.jpeg', content_type: 'image/jpeg')
+file_evt_treb = File.open("db/fixtures/evt_treb.jpg")
+evt_treb.photos.attach(io: file_evt_treb, filename: 'evt_treb.jpg', content_type: 'image/jpeg')
 
 file_evt_treb = File.open("db/fixtures/spot_tresmeur_photo.jpeg")
 evt_treb.photos.attach(io: file_evt_treb, filename: 'spot_tresmeur_photo.jpeg', content_type: 'image/jpeg')
@@ -313,7 +315,7 @@ plage_toul_gwenn.save!
 
 wits = User.find_by(email: "wits@test.com")
 
-["plages", "ports", "base_nautiques"].each do |filio|
+["ports", "base_nautiques", "plages"].each do |filio|
   CSV.foreach("db/fixtures/#{filio}.csv", headers: :first_row, header_converters: :symbol) do |row|
     spot = Spot.new(
       user: wits,
@@ -401,6 +403,7 @@ surf_to_treb = SpotActivity.create!(spot:evt_treb, activity:surf_activity)
 windsurf_to_treb = SpotActivity.create!(spot:evt_treb, activity: windsurf_activity)
 kayak_to_treb = SpotActivity.create!(spot:evt_treb, activity: kayak_activity)
 scuba_diving_to_treb = SpotActivity.create!(spot:evt_treb, activity: scuba_diving_activity)
+cata_to_treb = SpotActivity.create!(spot:evt_treb, activity: catamaran_activity)
 
 ##################################################################################################
 ########################################### COMMENTS #############################################
@@ -412,34 +415,34 @@ comment_to_treb_02 = Comment.create!(user:shiyun, spot:port_treb, content:"Assez
 comment_to_treb_03 = Comment.create!(user:sylvie, spot:port_treb, content:"Trop cher !! Je ne recommande pas pour les petits plaisanciers comme moi.", rating: 2)
 
 
-comment_to_treb = Comment.create!( user:valentin, spot:evt_treb, content:" une école pas terrible mais avec une super discothèque au dessus de la plage", rating: 3)
-comment_to_treb_2 = Comment.create!( user:aurore, spot:evt_treb, content:" une école parfaite pour les débutants pour apprendre à naviguer", rating: 5)
-comment_to_treb_3 = Comment.create!( user:shiyun, spot:evt_treb, content:" une plage agréable et proche de tous les commerces nécessaires pour une famille", rating: 5)
-comment_to_treb_4 = Comment.create!( user:valentin, spot:evt_treb, content:" Superbe Plage j'y passerai tout mes été", rating: 5)
-comment_to_treb_5 = Comment.create!( user:corentin, spot:evt_treb, content:" Incroyable sable fin ici, parfait pour les fin de soirées autour du feu", rating: 4)
-comment_to_treb_7 = Comment.create!( user:wits, spot:evt_treb, content:" Sympathique avec les enfants, mais beaucoup de monde", rating: 2)
-comment_to_treb_11 = Comment.create!( user:sylvie, spot:evt_treb, content:" il fait froid dans cette région !!!! ", rating: 2)
-comment_to_treb_12 = Comment.create!( user:morganne, spot:evt_treb, content:" hé bé, c'est pas mal hein", rating: 4)
-comment_to_treb_13 = Comment.create!( user:julio, spot:evt_treb, content:" oui ", rating: 3)
-comment_to_treb_17 = Comment.create!( user:olympe, spot:evt_treb, content:" ok sans plus", rating: 3)
-comment_to_treb_27 = Comment.create!( user:arianne, spot:evt_treb, content:" je crois avoir vu jean yves le drian en maillot de bain mdr", rating: 3)
-comment_to_treb_36 = Comment.create!( user:josianne, spot:evt_treb, content:" vous pensez qu'il y a une vie après la mort?", rating: 4)
-comment_to_treb_45 = Comment.new( user:wits, spot:evt_treb, content:" mon premier spot de surf, c'était chill", rating: 4)
+comment_to_treb = Comment.create!( user:valentin, created_at: Time.now - 2.hours, spot:evt_treb, content:" une école pas terrible mais avec une super discothèque au dessus de la plage", rating: 4)
+comment_to_treb_2 = Comment.create!( user:aurore, created_at: Time.now - 3.hours, spot:evt_treb, content:" une école parfaite pour les débutants pour apprendre à naviguer", rating: 5)
+comment_to_treb_3 = Comment.create!( user:shiyun, created_at: Time.now - 2.days, spot:evt_treb, content:" une plage agréable et proche de tous les commerces nécessaires pour une famille", rating: 5)
+comment_to_treb_4 = Comment.create!( user:valentin, created_at: Time.now - 3.hours, spot:evt_treb, content:" Superbe Plage j'y passerai tout mes été", rating: 5)
+comment_to_treb_5 = Comment.create!( user:corentin, created_at: Time.now - 4.hours, spot:evt_treb, content:" Incroyable sable fin ici, parfait pour les fin de soirées autour du feu", rating: 4)
+comment_to_treb_7 = Comment.create!( user:wits, created_at: Time.now - 6.days, spot:evt_treb, content:" Sympathique avec les enfants, mais beaucoup de monde", rating: 4)
+comment_to_treb_11 = Comment.create!( user:sylvie, created_at: Time.now - 6.days, spot:evt_treb, content:" il fait froid dans cette région !!!! ", rating: 2)
+comment_to_treb_12 = Comment.create!( user:morganne, created_at: Time.now - 6.days, spot:evt_treb, content:" hé bé, c'est pas mal hein", rating: 4)
+comment_to_treb_13 = Comment.create!( user:julio, created_at: Time.now - 6.days, spot:evt_treb, content:" oui ", rating: 4)
+comment_to_treb_17 = Comment.create!( user:olympe, created_at: Time.now - 5.days, spot:evt_treb, content:" Trop bien !", rating: 4)
+comment_to_treb_27 = Comment.create!( user:arianne, created_at: Time.now - 5.days, spot:evt_treb, content:" Session en planche à voile de dingue!", rating: 4)
+comment_to_treb_36 = Comment.create!( user:josianne, created_at: Time.now - 5.days, spot:evt_treb, content:" Gavage ! YEeeewww !", rating: 4)
+comment_to_treb_45 = Comment.new( user:wits, created_at: Time.now - 5.days, spot:evt_treb, content:" mon premier spot de surf, c'était chill", rating: 4)
 file_comment_to_treb_photo_1 = File.open("db/fixtures/comment_to_treb_photo_1.jpeg")
 comment_to_treb_45.images.attach(io: file_comment_to_treb_photo_1, filename: 'comment_to_treb_photo_1.jpeg', content_type: 'image/jpeg')
 comment_to_treb_45.save!
-comment_to_treb_50 = Comment.new( user:josianne, spot:evt_treb, content:" je suis venue en hiver pour éviter la foule, il faisait froid mais la session était dingue !!!", rating: 4)
+comment_to_treb_50 = Comment.new( user:josianne, created_at: Time.now - 5.hours, spot:evt_treb, content:" je suis venue en hiver pour éviter la foule, il faisait froid mais la session était dingue !!!", rating: 4)
 file_comment_to_treb_photo_3 = File.open("db/fixtures/comment_to_treb_photo_3.jpeg")
 comment_to_treb_50.images.attach(io: file_comment_to_treb_photo_3, filename: 'comment_to_treb_photo_3.jpeg', content_type: 'image/jpeg')
 comment_to_treb_50.save!
-comment_to_treb_51 = Comment.new( user:wits, spot:evt_treb, content:" jolie petite plage bien sympathique, balade en kayak avec la famille jusqu'à Miliau c'était magnifique ! ", rating: 4)
-comment_to_treb_52 = Comment.create!( user:julio, spot:evt_treb, content:" Les monos de l'école de voile sont top, ça dérape souvent au bambou's après la session et ça finit en boite aux Chandelles !", rating: 2)
-comment_to_treb_53 = Comment.new( user:arianne, spot:evt_treb, content:" Super spot de repli quand ça tabasse partout ailleurs ! Ça ferme fort mais il y a moyen de se caler des petites visières !", rating: 3)
+comment_to_treb_51 = Comment.new( user:wits, created_at: Time.now - 4.days, spot:evt_treb, content:" jolie petite plage bien sympathique, balade en kayak avec la famille jusqu'à Miliau c'était magnifique ! ", rating: 4)
+comment_to_treb_52 = Comment.create!( user:julio, created_at: Time.now - 6.hours, spot:evt_treb, content:"Les monos de l'école de voile sont top, ça dérape souvent au bambou's après la session et ça finit en boite aux Chandelles !", rating: 5)
+comment_to_treb_53 = Comment.new( user:arianne, created_at: Time.now - 3.days, spot:evt_treb, content:"Super spot de repli quand ça tabasse partout ailleurs ! Ça ferme fort mais il y a moyen de se caler des petites visières !", rating: 5)
 file_comment_to_treb_photo_5 = File.open("db/fixtures/comment_to_treb_photo_5.jpeg")
 comment_to_treb_53.images.attach(io: file_comment_to_treb_photo_5, filename: 'comment_to_treb_photo_6.jpeg', content_type: 'image/jpeg')
 comment_to_treb_53.save!
 
-comment_to_treb_54 = Comment.new( user:valentin, spot:evt_treb, content:" Super spot pour le Wingfoil, mais j'y viens souvent aussi avec ma fille ! Elle adore !", rating: 3)
+comment_to_treb_54 = Comment.new( user:valentin, created_at: Time.now - 10.days, spot:evt_treb, content:" Super spot pour le windfoil, Top par vent d'ouest!", rating: 5)
 file_comment_to_treb_photo_6 = File.open("db/fixtures/comment_to_treb_photo_6.jpeg")
 comment_to_treb_54.images.attach(io: file_comment_to_treb_photo_6, filename: 'comment_to_treb_photo_6.jpeg', content_type: 'image/jpeg')
 
@@ -467,22 +470,22 @@ file_comment_to_goas_treiz_photo_3 = File.open("db/fixtures/comment_to_treb_phot
 comment_to_goas_treiz_3.images.attach(io: file_comment_to_goas_treiz_photo_3, filename: 'comment_to_goas_treiz_photo_3.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_3.save!
 
-comment_to_goas_treiz_7 = Comment.new( user:josianne, spot:plage_goas_treiz, content:" je suis venue en hiver pour éviter la foule, il faisait froid !!!", rating: 3)
+comment_to_goas_treiz_7 = Comment.new( user:corentin, spot:plage_goas_treiz, content:" je suis venue en hiver pour éviter la foule, il faisait froid !!!", rating: 3)
 file_comment_to_goas_treiz_photo_7 = File.open("db/fixtures/comment_to_goas_treiz_photo_7.jpeg")
 comment_to_goas_treiz_7.images.attach(io: file_comment_to_goas_treiz_photo_7, filename: 'comment_to_goas_treiz_photo_7.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_7.save!
 
-comment_to_goas_treiz_8 = Comment.new( user:wits, spot:plage_goas_treiz, content:" jolie petite plage bien sympathique, hate de me faire des ami.e.s pour leur faire découvrir ", rating: 4)
+comment_to_goas_treiz_8 = Comment.new( user:corentin, spot:plage_goas_treiz, content:" jolie petite plage bien sympathique, hate de me faire des ami.e.s pour leur faire découvrir ", rating: 4)
 file_comment_to_goas_treiz_photo_8 = File.open("db/fixtures/comment_to_goas_treiz_photo_8.jpeg")
 comment_to_goas_treiz_8.images.attach(io: file_comment_to_goas_treiz_photo_8, filename: 'comment_to_goas_treiz_photo_8.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_8.save!
 
-comment_to_goas_treiz_9 = Comment.new( user:julio, spot:plage_goas_treiz, content:" Spot incroyable par vent d'ouest, du monde à l'eau, grosse session ! ", rating: 4)
+comment_to_goas_treiz_9 = Comment.new( user:corentin, spot:plage_goas_treiz, content:" Spot incroyable par vent d'ouest, du monde à l'eau, grosse session ! ", rating: 4)
 file_comment_to_goas_treiz_photo_9 = File.open("db/fixtures/comment_to_goas_treiz_photo_9.jpeg")
 comment_to_goas_treiz_9.images.attach(io: file_comment_to_goas_treiz_photo_9, filename: 'comment_to_goas_treiz_photo_9.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_9.save!
 
-comment_to_goas_treiz_10 = Comment.new( user:arianne, spot:plage_goas_treiz, content:" Les locaux sont top par contre il y a quelques patates rocheuses en plein milieu, faites gaffe si vous êtes en foil", rating: 5)
+comment_to_goas_treiz_10 = Comment.new( user:corentin, spot:plage_goas_treiz, content:" Les locaux sont top par contre il y a quelques patates rocheuses en plein milieu, faites gaffe si vous êtes en foil", rating: 5)
 file_comment_to_goas_treiz_photo_10 = File.open("db/fixtures/comment_to_goas_treiz_photo_10.jpeg")
 comment_to_goas_treiz_10.images.attach(io: file_comment_to_goas_treiz_photo_10, filename: 'comment_to_goas_treiz_photo_10.jpeg', content_type: 'image/jpeg')
 comment_to_goas_treiz_10.save!
@@ -519,7 +522,6 @@ favorite_to_aurore_2 = Favorite.create!(user:aurore , spot:evt_perros)
 
 favorite_to_corentin = Favorite.create!(user:corentin, spot: evt_perros)
 favorite_to_corentin_1 = Favorite.create!(user:corentin, spot: evt_tregastel)
-favorite_to_corentin_2 = Favorite.create!(user:corentin, spot: evt_treb )
 
 ##################################################################################################
 ########################################### SERVICES ############################################
@@ -537,7 +539,15 @@ services_to_ile_grande = Service.create!(spot:evt_ile_grande, restaurant: true, 
 ######################################### LIKES ##################################################
 ##################################################################################################
 
-likes_to_comment = Like.create!(user: valentin, comment: comment_to_treb_2)
+35.times do
+  likes_to_comment = Like.create!(user: valentin, comment: comment_to_treb_54)
+end
+10.times do
+  likes_to_comment = Like.create!(user: valentin, comment: comment_to_treb_53)
+end
+47.times do
+  likes_to_comment = Like.create!(user: valentin, comment: comment_to_treb_52)
+end
 likes_to_comment_1 = Like.create!(user: valentin, comment: comment_to_tresmeur_3)
 likes_to_comment_2 = Like.create!(user: valentin, comment: comment_to_ile_grande)
 
