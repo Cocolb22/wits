@@ -9,7 +9,7 @@ class FavoritesController < ApplicationController
 
     @spot = Spot.find(params[:spot_id])
     @favorite.spot = @spot
-
+    authorize @favorite
     if @favorite.save
       respond_to do |format|
         format.html { redirect_to spot_path(@spot) }
@@ -27,7 +27,7 @@ class FavoritesController < ApplicationController
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
-
+    authorize @favorite
     respond_to do |format|
       format.html { redirect_to spot_path(@favorite.spot) }
       format.text { render partial: "favorites/create", locals: { spot: @favorite.spot }, formats: [:html] }

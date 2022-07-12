@@ -4,6 +4,7 @@ class VotesController < ApplicationController
     @vote = Vote.new(upvoted: params[:upvoted])
     @vote.spot = @spot
     @vote.user = current_user
+    authorize @vote
     if @vote.save
       respond_to do |format|
         format.html { redirect_to vote_path(@vote) }
@@ -18,6 +19,7 @@ class VotesController < ApplicationController
   def update
     @vote = Vote.find(params[:id])
     @vote.update(upvoted: params[:upvoted])
+    authorize @vote
     if @vote.save
       respond_to do |format|
         format.html { redirect_to vote_path(@vote) }

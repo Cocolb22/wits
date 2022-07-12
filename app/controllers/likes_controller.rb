@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     @comment = Comment.find(params[:comment_id])
     @like.comment = @comment
     @like.user = current_user
-
+    authorize @like
     if @like.save
       if @comment.likes.count % 1
         @comment.user.add_points_and_update_status(20)
@@ -19,7 +19,7 @@ class LikesController < ApplicationController
 
   def destroy
     @like = Like.find(params[:id])
-
+    authorize @like
     @like.destroy
     respond_to do |format|
       format.html { redirect_to comments_spot_path(@like.comment.spot) }
