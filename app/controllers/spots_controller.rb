@@ -26,7 +26,6 @@ class SpotsController < ApplicationController
 
   def index
     session[:query_search] = request.query_string
-
     if params[:activities]
       @spots = Spot.joins(:activities)
                    .order(id: :desc)
@@ -51,6 +50,7 @@ class SpotsController < ApplicationController
         id: spot.id
       }
     end
+    @spots = policy_scope(Spot)
   end
 
   def show
@@ -59,6 +59,7 @@ class SpotsController < ApplicationController
     @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @services = @spot.service
     @activities = @spot.activities
+    authorize @spot
   end
 
   def comments
@@ -76,12 +77,14 @@ class SpotsController < ApplicationController
     elsif params[:order] == "popular"
       @comments = @comments.sort_by { |comment| -comment.likes.count }
     end
+    authorize @spot
   end
 
   def forecast
     @spot = Spot.includes(photos_attachments: [:blob]).find(params[:id])
     @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @weathers = @spot.weathers
+    authorize @spot
   end
 
   def upvote

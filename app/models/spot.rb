@@ -53,12 +53,6 @@ class Spot < ApplicationRecord
     self.address = "#{street}, #{zipcode} #{city}"
   end
 
-  def avg_rating
-    return 0 if comments.empty?
-
-    comments.average(:rating).round(1)
-  end
-
   def upvote_spot
     self.upvote += 1
   end

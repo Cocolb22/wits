@@ -26,7 +26,7 @@ gem 'redis', '~> 4.0'
 # gem 'image_processing', '~> 1.2'
 
 # Pundit
-# gem 'pundit'
+gem 'pundit'
 
 # Cloudinary
 gem 'dotenv-rails', groups: [:development, :test]
