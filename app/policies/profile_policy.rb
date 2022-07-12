@@ -1,4 +1,4 @@
-class SpotPolicy < ApplicationPolicy
+class ProfilePolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -6,35 +6,23 @@ class SpotPolicy < ApplicationPolicy
     end
   end
 
-  def new?
-    user.profile_exp >= 500
-  end
-
-  def create?
-    new?
-  end
-
   def show?
+    record == user
+  end
+
+  def edit?
     true
   end
 
-  def search?
+  def update?
     true
   end
 
-  def forecast?
+  def spots?
     true
   end
 
   def comments?
-    true
-  end
-
-  def upvote?
-    true
-  end
-
-  def downvote?
     true
   end
 end
