@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comments = @spot.comments
     @comment.spot = @spot
     @comment.user = current_user
+    authorize @comment
 
     if @comment.save
       respond_to do |format|
