@@ -12,7 +12,7 @@ class ProfilesController < ApplicationController
 
   def update
    @user = current_user
-   authorize @user
+   authorize @user, policy_class: ProfilePolicy
     if @user.update(profile_params)
       check_profile_point(@user)
 
@@ -46,13 +46,13 @@ class ProfilesController < ApplicationController
         id: spot.id
       }
     end
-    authorize @user
+    authorize @user, policy_class: ProfilePolicy
   end
 
   def comments
     @user = current_user
     @comments = @user.comments.order("id DESC")
-    authorize @user
+    authorize @user, policy_class: ProfilePolicy
   end
 
   private

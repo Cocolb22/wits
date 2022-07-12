@@ -25,4 +25,13 @@ class ProfilePolicy < ApplicationPolicy
   def comments?
     true
   end
+
+  def spots
+    record == user
+  end
+
+def comments
+  true
+end
+
 end
