@@ -2,14 +2,17 @@ class ProfilesController < ApplicationController
 
   def show
     @user = current_user
+    authorize @user, policy_class: ProfilePolicy
   end
 
   def edit
     @user = current_user
+    authorize @user, policy_class: ProfilePolicy
   end
 
   def update
-    @user = current_user
+   @user = current_user
+   authorize @user, policy_class: ProfilePolicy
     if @user.update(profile_params)
       check_profile_point(@user)
 
@@ -18,6 +21,7 @@ class ProfilesController < ApplicationController
     else
       render :edit
     end
+
   end
 
   def spots
@@ -42,11 +46,13 @@ class ProfilesController < ApplicationController
         id: spot.id
       }
     end
+    authorize @user, policy_class: ProfilePolicy
   end
 
   def comments
     @user = current_user
     @comments = @user.comments.order("id DESC")
+    authorize @user, policy_class: ProfilePolicy
   end
 
   private

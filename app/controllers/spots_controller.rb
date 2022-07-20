@@ -1,17 +1,18 @@
 class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index search]
-  before_action :verifiy_user_exp, only: %i[new create]
+
+  rescue_from Pundit::NotAuthorizedError, with: :verifiy_user_exp
 
   def new
-    verifiy_user_exp
     @spot = Spot.new
+    authorize @spot
     @spot.spot_activities.build
   end
 
   def create
-    verifiy_user_exp
     @spot = Spot.new(spot_params)
     @spot.user = current_user
+    authorize @spot
 
     if @spot.save
       WeatherService.new(@spot).call
@@ -22,19 +23,20 @@ class SpotsController < ApplicationController
     end
   end
 
-  def search; end
+  def search
+    authorize Spot
+  end
 
   def index
     session[:query_search] = request.query_string
-
     if params[:activities]
-      @spots = Spot.joins(:activities)
+      @spots = policy_scope(Spot).joins(:activities)
                    .order(id: :desc)
                    .includes(:comments, :spot_activities, :activities, photos_attachments: [:blob])
                    .where("activities.id IN (?)", params[:activities]
                    .reject(&:blank?).map(&:to_i)).distinct
     else
-      @spots = Spot.order(id: :desc)
+      @spots = policy_scope(Spot).order(id: :desc)
                    .includes(:comments, :spot_activities, :activities, photos_attachments: [:blob])
     end
 
@@ -59,6 +61,7 @@ class SpotsController < ApplicationController
     @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @services = @spot.service
     @activities = @spot.activities
+    authorize @spot
   end
 
   def comments
@@ -76,12 +79,14 @@ class SpotsController < ApplicationController
     elsif params[:order] == "popular"
       @comments = @comments.sort_by { |comment| -comment.likes.count }
     end
+    authorize @spot
   end
 
   def forecast
     @spot = Spot.includes(photos_attachments: [:blob]).find(params[:id])
     @user_favorite = Favorite.find_by(user: current_user, spot: @spot)
     @weathers = @spot.weathers
+    authorize @spot
   end
 
   def upvote
@@ -89,6 +94,7 @@ class SpotsController < ApplicationController
     @spot.upvote_spot
     @spot.save
     redirect_to spot_path(@spot)
+    authorize @spot
   end
 
   def downvote
@@ -96,6 +102,7 @@ class SpotsController < ApplicationController
     @spot.downvote_spot
     @spot.save
     redirect_to spot_path(@spot)
+    authorize @spot
   end
 
   private
@@ -105,9 +112,7 @@ class SpotsController < ApplicationController
   end
 
   def verifiy_user_exp
-    if current_user.profile_exp < 500
-      redirect_to profile_path
-      flash[:alert] = "Vous n'avez pas assez de points pour créer un spot."
-    end
+    redirect_to profile_path
+    flash[:alert] = "Vous n'avez pas assez de points pour créer un spot."
   end
 end
